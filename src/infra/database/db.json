@@ -160,6 +160,13 @@
             "status": false,
             "rescuedBy": "1124265861109256282",
             "rescuedAt": "2023-07-07T17:51:50.162Z"
+        },
+        "YSXL-LOKP-BDCM": {
+            "type": "role",
+            "content": "1126933829056221234",
+            "status": false,
+            "rescuedBy": "1124265861109256282",
+            "rescuedAt": "2023-07-07T17:53:13.126Z"
         }
     }
 }
