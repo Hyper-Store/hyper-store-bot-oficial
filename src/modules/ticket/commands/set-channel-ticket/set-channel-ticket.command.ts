@@ -27,8 +27,9 @@ class SetChannelTicketCommand extends BaseSlashCommand {
     }
 
     async exec(interaction: ChatInputCommandInteraction, client: Client): Promise<void> {
-        if (!interaction.appPermissions?.has(Discord.PermissionFlagsBits.Administrator)) {
+        if (!interaction.memberPermissions?.has(Discord.PermissionFlagsBits.Administrator)) {
             interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: "Administrador" }) })
+            return;
         }
 
         const category_channel = interaction.options.getChannel("category");

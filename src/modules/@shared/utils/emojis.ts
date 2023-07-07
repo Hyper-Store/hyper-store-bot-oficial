@@ -16,7 +16,9 @@ const emojis = {
     save: "💾",
     time: "<:time:1126892524410245130>",
     money: "<:money:1126894405354266754>",
-    email: "📭"
+    email: "📭",
+    date: "📅",
+    id: "🆔"
 }
 
 export { emojis }

@@ -27,13 +27,13 @@ class ClearCommand extends BaseSlashCommand {
     }
 
     async exec(interaction: ChatInputCommandInteraction, client: Client): Promise<void> {
-        if (!interaction.appPermissions?.has(Discord.PermissionFlagsBits.Administrator)) {
-            interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: "Administrador" }) })
+        if (!interaction.memberPermissions?.has(Discord.PermissionFlagsBits.ManageMessages)) {
+            interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: "Gerenciar mensagens" }) })
+            return;
         }
 
         const quantity = interaction.options.getNumber("quantity");
 
-        console.log(quantity)
         try {
             if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;
             await interaction.channel.bulkDelete(quantity!)

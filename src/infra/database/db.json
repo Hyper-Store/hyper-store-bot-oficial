@@ -141,7 +141,25 @@
                 "createdAt": "2023-07-07T15:50:28.716Z",
                 "closedAt": "",
                 "reopenedAt": "2023-07-07T15:50:46.109Z"
+            },
+            "1126905388768444476": {
+                "ownerId": "1124265861109256282",
+                "reason": "Tydi ben",
+                "type": "budget",
+                "channelId": "1126905388768444476",
+                "messageId": "1126905390760742952",
+                "sessionId": "fa725dfe-8dba-4212-a2c4-851773e9c39c",
+                "createdAt": "2023-07-07T15:59:19.467Z"
             }
+        }
+    },
+    "reedemkey": {
+        "TBUM-NGJQ-CAJU": {
+            "type": "message",
+            "content": "teste",
+            "status": false,
+            "rescuedBy": "1124265861109256282",
+            "rescuedAt": "2023-07-07T17:51:50.162Z"
         }
     }
 }

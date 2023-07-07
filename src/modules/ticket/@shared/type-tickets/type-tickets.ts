@@ -17,6 +17,13 @@ export const TypeTicket: TypeTicketType[] = [
         description: "Realize uma compra de um produto"
     },
     {
+        id: "budget",
+        emoji_custom: "📦",
+        emoji: "📦",
+        title: "Orçamento",
+        description: "Realize um orçamento de um site ou bot personalizado"
+    },
+    {
         id: "doubt",
         emoji_custom: "💡",
         emoji: "💡",

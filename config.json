@@ -6,5 +6,8 @@
     },
     "purchases": {
         "mercadopago": {}
+    },
+    "reedemkey": {
+        "banner": "https://cdn.discordapp.com/attachments/1126899145517572206/1126924848703217694/standard.gif"
     }
 }
