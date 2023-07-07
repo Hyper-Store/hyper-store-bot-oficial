@@ -1,1 +1,1 @@
-# hyper-store-bot-oficial
+# clean-typescript-discord-base

@@ -1,0 +1,147 @@
+{
+    "ticket": {
+        "config": {
+            "category_id": "1126890855005954078",
+            "category_close_id": "1122084406539071519",
+            "support_role": "1121968691005882399"
+        },
+        "sessions": {
+            "1123438580522553424": {
+                "ownerId": "1091424433094275094",
+                "email": "teste@gmail.com",
+                "reason": "testee",
+                "type": "help",
+                "channelId": "1123438580522553424",
+                "messageId": "1123438582200275036",
+                "sessionId": "074721a1-0ac2-4456-859f-8560350397de",
+                "createdAt": "2023-06-28T02:23:15.508Z"
+            },
+            "1123441900007993404": {
+                "ownerId": "1091424433094275094",
+                "email": "contato@gmail.com",
+                "reason": "12345",
+                "type": "repport",
+                "channelId": "1123441900007993404",
+                "messageId": "1123441902511988787",
+                "sessionId": "5ca8ed16-6bdc-48d6-a018-4d7c3b47ee7c",
+                "createdAt": "2023-06-28T02:32:51.256Z"
+            },
+            "1123442654026416169": {
+                "ownerId": "1091424433094275094",
+                "email": "contatodaniel@gmail.com",
+                "reason": "123123123",
+                "type": "help",
+                "channelId": "1123442654026416169",
+                "messageId": "1123442657151160330",
+                "sessionId": "2bafcedf-bd52-49bd-923c-7bc4af539dd4",
+                "createdAt": "2023-06-28T02:39:35.114Z"
+            },
+            "1123444097055727626": {
+                "ownerId": "1091424433094275094",
+                "email": "cntt@gmail.com",
+                "reason": "1231231223",
+                "type": "suggestion",
+                "channelId": "1123444097055727626",
+                "messageId": "1123444098624409640",
+                "sessionId": "55c19788-8d2a-4989-806c-597d84d144f6",
+                "createdAt": "2023-06-28T02:42:11.635Z"
+            },
+            "1123449099832795187": {
+                "ownerId": "1091424433094275094",
+                "email": "teste",
+                "reason": "1111111",
+                "type": "repport",
+                "channelId": "1123449099832795187",
+                "messageId": "1123449101846065202",
+                "sessionId": "679636fe-b2f4-46e2-a743-4b0eef5e3345",
+                "createdAt": "2023-06-28T03:05:27.472Z"
+            },
+            "1126895539137560577": {
+                "ownerId": "1124265861109256282",
+                "reason": "teeeeeeeeeeee",
+                "type": "buy",
+                "channelId": "1126895539137560577",
+                "messageId": "1126895540811087965",
+                "sessionId": "3152905a-ecb3-4af1-93d9-ff4024829d8d",
+                "createdAt": "2023-07-07T15:19:56.704Z"
+            },
+            "1126898438378901685": {
+                "ownerId": "1124265861109256282",
+                "reason": "Motivo de ticket",
+                "type": "buy",
+                "channelId": "1126898438378901685",
+                "messageId": "1126898439947571290",
+                "sessionId": "bcf27983-8971-482d-9eb3-a0562c3aa248",
+                "createdAt": "2023-07-07T15:31:47.090Z"
+            },
+            "1126898524055932968": {
+                "ownerId": "1124265861109256282",
+                "reason": "tikcet asdad",
+                "type": "doubt",
+                "channelId": "1126898524055932968",
+                "messageId": "1126898526568329246",
+                "sessionId": "07fa7d7a-dd43-462c-9bc7-907a9ae244c7",
+                "createdAt": "2023-07-07T15:32:16.266Z"
+            },
+            "1126899079977381949": {
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeeeeeeeee",
+                "type": "buy",
+                "channelId": "1126899079977381949",
+                "messageId": "1126899081579606086",
+                "sessionId": "738ef2e2-9866-482e-bd28-eba0a9c1ab2e",
+                "createdAt": "2023-07-07T15:34:27.986Z"
+            },
+            "1126899977059315842": {
+                "ownerId": "1124265861109256282",
+                "reason": "teeeeeeeeeeeee",
+                "type": "doubt",
+                "channelId": "1126899977059315842",
+                "messageId": "1126899978720252014",
+                "sessionId": "ed27112e-fee2-469f-9296-0ec25828aaa5",
+                "createdAt": "2023-07-07T15:37:50.685Z"
+            },
+            "1126901678248054855": {
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeeeeeeeee",
+                "type": "buy",
+                "channelId": "1126901678248054855",
+                "messageId": "1126901679716048916",
+                "sessionId": "7ed102bb-f549-4073-a084-99571eb7f589",
+                "createdAt": "2023-07-07T15:44:45.200Z"
+            },
+            "1126901991839367340": {
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeeeeee",
+                "type": "doubt",
+                "channelId": "1126901991839367340",
+                "messageId": "1126901993328345309",
+                "sessionId": "dd651084-d9ae-48d5-bfb9-a48ab0ce3a1f",
+                "createdAt": "2023-07-07T15:46:02.689Z",
+                "closedAt": "2023-07-07T15:47:49.857Z"
+            },
+            "1126902775708651600": {
+                "ownerId": "1124265861109256282",
+                "reason": "teeeeeeeeeeee",
+                "type": "buy",
+                "channelId": "1126902775708651600",
+                "messageId": "1126902777302495405",
+                "sessionId": "8200cab4-7c9f-48ca-858d-cb2d22b626bf",
+                "createdAt": "2023-07-07T15:47:48.195Z",
+                "closedAt": "",
+                "reopenedAt": "2023-07-07T15:49:25.857Z"
+            },
+            "1126903106354032660": {
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeeeeeee",
+                "type": "doubt",
+                "channelId": "1126903106354032660",
+                "messageId": "1126903107482296322",
+                "sessionId": "5216b2f0-b5ab-4d80-aa0c-d98b2c54af6d",
+                "createdAt": "2023-07-07T15:50:28.716Z",
+                "closedAt": "",
+                "reopenedAt": "2023-07-07T15:50:46.109Z"
+            }
+        }
+    }
+}
