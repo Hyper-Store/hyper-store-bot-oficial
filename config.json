@@ -5,7 +5,10 @@
         "category_close_id": "1126902334094585956"
     },
     "purchases": {
-        "mercadopago": {}
+        "mercadopago": {},
+        "products": {
+            "banner": "https://cdn.discordapp.com/attachments/1037732718290665573/1085949536935084112/standard.gif"
+        }
     },
     "reedemkey": {
         "banner": "https://cdn.discordapp.com/attachments/1126899145517572206/1126924848703217694/standard.gif"

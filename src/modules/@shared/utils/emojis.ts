@@ -18,7 +18,9 @@ const emojis = {
     money: "<:money:1126894405354266754>",
     email: "📭",
     date: "📅",
-    id: "🆔"
+    id: "🆔",
+    box: "<:box:1126970419807797358>",
+    buy: "<:buy:1126971247264288778>"
 }
 
 export { emojis }

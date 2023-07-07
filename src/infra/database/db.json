@@ -168,5 +168,18 @@
             "rescuedBy": "1124265861109256282",
             "rescuedAt": "2023-07-07T17:53:13.126Z"
         }
+    },
+    "purchases": {
+        "products": {
+            "8707862a-4f1e-4d1e-88f5-ca168be213ea": {
+                "id": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
+                "title": "teste",
+                "description": "eeeeeeeeeeeee",
+                "price": 2,
+                "stock": [],
+                "image": "",
+                "createdAt": "2023-07-07T22:10:17.236Z"
+            }
+        }
     }
 }

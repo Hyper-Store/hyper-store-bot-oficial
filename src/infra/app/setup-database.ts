@@ -18,4 +18,8 @@ export class Database {
     public add(key: string, value: Object) {
         return this.db.add(key, value);
     }
+
+    public push(key: string, value: Object) {
+        return this.db.push(key, value);
+    }
 }
