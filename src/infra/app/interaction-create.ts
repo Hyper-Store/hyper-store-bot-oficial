@@ -11,6 +11,4 @@ export const setupCommandInteraction = (client: Client): void => {
 
         await command.exec(interaction, client)
     });
-
-
 }

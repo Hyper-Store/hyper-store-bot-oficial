@@ -1,6 +1,6 @@
 import "dotenv/config"
 import "./setup-database";
-import { Client, Collection } from "discord.js"
+import Discord, { Client, Collection, Partials } from "discord.js"
 import { setupCommand } from "./setup-commands";
 import { setupCommandInteraction } from "./interaction-create";
 import { setupEvents } from "./setup-events";
@@ -14,7 +14,14 @@ declare module "discord.js" {
 }
 
 const client = new Client({
-    intents: 32767
+    intents: [
+        Discord.GatewayIntentBits.DirectMessages,
+        Discord.GatewayIntentBits.Guilds,
+        Discord.GatewayIntentBits.GuildMessages,
+        Discord.IntentsBitField.Flags.GuildMessages,
+        Discord.IntentsBitField.Flags.MessageContent,
+    ],
+    partials: [Partials.Channel]
 })
 
 
