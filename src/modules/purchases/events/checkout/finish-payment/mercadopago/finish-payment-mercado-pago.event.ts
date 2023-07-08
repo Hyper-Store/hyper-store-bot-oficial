@@ -24,7 +24,7 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
 
         if (interaction.user.id !== checkout.ownerId) return;
 
-        console.log('ta aq')
+
     }
 }
 
