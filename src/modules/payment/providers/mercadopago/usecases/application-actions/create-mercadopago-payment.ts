@@ -7,13 +7,13 @@ export class CreateMercadopagoPaymentUsecase {
     async execute({ mercadopagoPaymentId }: CreateMercadopagoPaymentUsecase.Input) {
 
         const mercadoPagoPayment = await MercadopagoGateway.findById(mercadopagoPaymentId)
-        if(!mercadoPagoPayment) return
+        if (!mercadoPagoPayment) return
+
 
         const paymentAlreadyExists = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
-        if(paymentAlreadyExists) return
+        if (paymentAlreadyExists) return
 
         await MercadopagoRepository.create(mercadoPagoPayment)
-
     }
 }
 

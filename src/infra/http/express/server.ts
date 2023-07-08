@@ -1,5 +1,6 @@
 import { CreateMercadopagoPaymentUsecase } from "@/modules/payment/providers/mercadopago/usecases/application-actions"
 import express from "express"
+import "dotenv/config"
 
 const app = express()
 app.use(express.json())

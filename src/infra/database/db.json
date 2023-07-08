@@ -192,6 +192,15 @@
                 "createdAt": "2023-07-08T15:43:33.316Z",
                 "closedAt": "",
                 "reopenedAt": "2023-07-08T15:46:55.167Z"
+            },
+            "1127358676752154656": {
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeeee",
+                "type": "doubt",
+                "channelId": "1127358676752154656",
+                "messageId": "1127358679780438027",
+                "sessionId": "d4e39970-2196-4e61-9b76-ca2298510d9c",
+                "createdAt": "2023-07-08T22:00:35.865Z"
             }
         }
     },
@@ -297,6 +306,31 @@
                 "quantity": 1,
                 "status": "pending",
                 "createdAt": "2023-07-08T19:11:05.429Z"
+            },
+            "1127323140045942824": {
+                "id": "9f1ca80c-9d10-48c7-ae95-36be69b4c9de",
+                "ownerId": "1124265861109256282",
+                "productId": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
+                "quantity": 1,
+                "status": "pending",
+                "createdAt": "2023-07-08T19:39:38.028Z"
+            },
+            "1127358702953959524": {
+                "id": "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c",
+                "ownerId": "1124265861109256282",
+                "productId": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
+                "quantity": 1,
+                "status": "pending",
+                "createdAt": "2023-07-08T22:00:56.863Z"
+            }
+        },
+        "payment": {
+            "paymentManagement": {
+                "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c": {
+                    "checkoutId": "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c",
+                    "dateTimeCreated": "2023-07-08T22:23:57.799Z",
+                    "status": "PENDING"
+                }
             }
         }
     }
