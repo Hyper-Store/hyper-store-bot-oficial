@@ -8,6 +8,7 @@ import { randomUUID } from "crypto";
 import { Interaction, Message, } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { ProductType } from "../../@types/Product.type";
+import { ProductRepository } from "../../repositories/product.repository";
 
 
 class ModalSubmitedAddProductPurchasesEvent extends BaseEvent {
@@ -46,7 +47,7 @@ class ModalSubmitedAddProductPurchasesEvent extends BaseEvent {
 
         const uuid_generated = randomUUID();
 
-        new Database().set(`purchases.products.${uuid_generated}`, {
+        await ProductRepository.create({
             id: uuid_generated,
             title,
             description,
@@ -54,7 +55,7 @@ class ModalSubmitedAddProductPurchasesEvent extends BaseEvent {
             stock: [],
             image: image || "",
             createdAt: new Date()
-        } as ProductType)
+        })
 
         await interaction.deferUpdate();
 
