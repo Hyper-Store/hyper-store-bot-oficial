@@ -1,7 +1,7 @@
 import { colors } from '@/modules/@shared/utils/colors';
 import { emojis } from '@/modules/@shared/utils/emojis';
 import Discord, { Interaction } from 'discord.js';
-import { ProductType } from '../../@types/Product.type';
+import { ProductType } from '../../../@types/Product.type';
 import { DatabaseConfig } from '@/infra/app/setup-config';
 
 export const ProductMessage = async (interaction: Interaction, product: ProductType) => {

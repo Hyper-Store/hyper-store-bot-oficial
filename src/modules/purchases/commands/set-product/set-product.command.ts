@@ -37,7 +37,7 @@ class SetProductPurchasesCommand extends BaseSlashCommand {
             return;
         }
 
-        const list_product: any = [];
+        const list_product: Discord.SelectMenuComponentOptionData[] = [];
 
         Object.keys(products).forEach((product) => {
             list_product.push({

@@ -2,7 +2,7 @@ import { BaseEvent } from "@/modules/@shared/domain";
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { ProductMessage } from "../../@shared/product-message/product-message";
+import { ProductMessage } from "../../@shared/messages/product-message/product-message";
 import { Database } from "@/infra/app/setup-database";
 import { ProductType } from "../../@types/Product.type";
 import { colors } from "@/modules/@shared/utils/colors";

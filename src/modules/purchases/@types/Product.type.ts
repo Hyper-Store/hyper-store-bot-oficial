@@ -7,5 +7,7 @@ export type ProductType = {
     image?: string
     price: number,
     stock: ProductStockType[],
-    createdAt?: Date
+    createdAt?: Date,
+    channelId?: string,
+    messageId?: string
 }

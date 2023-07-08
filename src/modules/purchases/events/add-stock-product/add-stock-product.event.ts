@@ -8,6 +8,7 @@ import { ProductNotExistError } from "../../@shared/errors/product-not-exist";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { randomUUID } from "crypto";
+import { UpdateMessageProduct } from "../../@shared/workers/update-message-product";
 
 
 class AddStockProductPurchasesEvent extends BaseEvent {
@@ -64,6 +65,8 @@ class AddStockProductPurchasesEvent extends BaseEvent {
                 })
             })
 
+            UpdateMessageProduct(interaction, product.id);
+
             interaction.editReply({
                 embeds: [
                     new Discord.EmbedBuilder()
@@ -71,6 +74,8 @@ class AddStockProductPurchasesEvent extends BaseEvent {
                         .setDescription(`> ${emojis.success} Estoque adicionado ao produto com sucesso, veja abaixo o estoque adicionado!\n\`\`\`${stock_collector.join('\n')}\`\`\`\n**${emojis.box} | Produto:** ${product.title} \`(\`${product.id}\`)\``)
                 ]
             })
+
+            return;
         })
 
         return;
