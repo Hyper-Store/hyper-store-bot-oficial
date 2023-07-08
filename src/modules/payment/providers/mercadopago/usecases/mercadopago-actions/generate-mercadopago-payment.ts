@@ -1,4 +1,11 @@
 import * as mercadopago from 'mercadopago';
+import "dotenv/config"
+
+mercadopago.configure({
+    access_token: process.env.MERCADOPAGO_ACCESS_TOKEN!,
+    client_id: process.env.MERCADOPAGO_CLIENT_ID,
+    client_secret: process.env.MERCADOPAGO_CLIENT_SECRET
+});
 
 export class GenerateMercadopagoPaymentUsecase {
 

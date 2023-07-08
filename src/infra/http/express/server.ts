@@ -1,16 +1,15 @@
 import { CreateMercadopagoPaymentUsecase } from "@/modules/payment/providers/mercadopago/usecases/application-actions"
 import express from "express"
+import "dotenv/config"
 
 const app = express()
 app.use(express.json())
 
 app.post("/payment/mercadopago/callback", async (req, res) => {
 
-    // await new CreateMercadopagoPaymentUsecase().execute({
-    //     mercadopagoPaymentId: req.body.id
-    // })
-
-    res.status(200).json({ ok: true })
+    await new CreateMercadopagoPaymentUsecase().execute({
+        mercadopagoPaymentId: req.body.id
+    })
 })
 
 
