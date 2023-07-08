@@ -9,7 +9,7 @@ app.post("/payment/mercadopago/callback", async (req, res) => {
 
     await MercadopagoRedirectorUsecase.execute({
         action: req.body.action,
-        paymentId: req.body.data.id
+        paymentId: req.body?.data?.id ?? ""
     })
 
     res.status(200).json({ ok: true })

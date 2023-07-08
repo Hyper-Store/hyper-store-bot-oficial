@@ -233,7 +233,7 @@
                 "id": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
                 "title": "teste",
                 "description": "eeeeeeeeeeeee",
-                "price": 2,
+                "price": 0.01,
                 "stock": [
                     {
                         "id": "2321331",
@@ -338,16 +338,28 @@
         "paymentManagement": {
             "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c": {
                 "checkoutId": "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c",
-                "dateTimeCreated": "2023-07-08T22:53:29.803Z",
+                "dateTimeCreated": "2023-07-08T23:13:09.839Z",
                 "status": "PENDING"
             }
         },
         "mercadopago": {
-            "ref-60476369268": {
-                "paymentId": "60476369268",
+            "ref-60374970287": {
+                "paymentId": "60374970287",
                 "amount": 2,
                 "status": "PENDING",
-                "expirationDate": "2023-07-08T23:03:29.804Z"
+                "expirationDate": "2023-07-08T23:21:13.856Z"
+            },
+            "ref-60374976745": {
+                "paymentId": "60374976745",
+                "amount": 0.01,
+                "status": "PENDING",
+                "expirationDate": "2023-07-08T23:22:04.246Z"
+            },
+            "ref-60374971677": {
+                "paymentId": "60374971677",
+                "amount": 0.01,
+                "status": "PENDING",
+                "expirationDate": "2023-07-08T23:23:09.841Z"
             }
         }
     }

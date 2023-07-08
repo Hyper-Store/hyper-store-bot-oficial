@@ -9,14 +9,14 @@ export class MercadopagoRedirectorUsecase {
 
     static async execute({ action, paymentId }: MercadopagoRedirectorUsecase.Input): Promise<void> {
 
-        if(action === "payment.created") await CreateMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
+        if (action === "payment.created") await CreateMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
 
-        if(action === "payment.updated"){
+        if (action === "payment.updated") {
             const mercadopagoPayment = await MercadopagoRepository.findByPaymentId(paymentId)
-            
-            if(mercadopagoPayment?.status === "APPROVED") await ApproveMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
-            if(mercadopagoPayment?.status === "CANCELLED") await CancelMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
-            if(mercadopagoPayment?.status === "REFUNDED") await RefundMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
+
+            if (mercadopagoPayment?.status === "APPROVED") await ApproveMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
+            if (mercadopagoPayment?.status === "CANCELLED") await CancelMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
+            if (mercadopagoPayment?.status === "REFUNDED") await RefundMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
 
         }
 
