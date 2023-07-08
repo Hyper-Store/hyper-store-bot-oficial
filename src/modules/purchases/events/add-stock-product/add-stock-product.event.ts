@@ -38,7 +38,7 @@ class AddStockProductPurchasesEvent extends BaseEvent {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.notifiy} Agora envie o estoque por linha, cada linha ou mensagem será um estoque, digite finalizar para finalizar!`)
+                    .setDescription(`> ${emojis.notifiy} Agora envie o estoque por linha, cada linha ou mensagem será um estoque, digite finalizar para finalizar!\n\n**${emojis.box} | Produto:** ${product.title} \`(\`${product.id}\`)\``)
             ],
             components: []
         })
@@ -57,13 +57,20 @@ class AddStockProductPurchasesEvent extends BaseEvent {
         })
 
         collector?.on('end', (message) => {
-            stock_collector.forEach(async (m) => {
+            stock_collector.forEach(async (item) => {
                 await new Database().push(`purchases.products.${product_id}.stock`, {
                     id: randomUUID(),
-                    content: m
+                    content: item
                 })
             })
-            interaction.reply({ embeds: [] })
+
+            interaction.editReply({
+                embeds: [
+                    new Discord.EmbedBuilder()
+                        .setColor(colors.invisible!)
+                        .setDescription(`> ${emojis.success} Estoque adicionado ao produto com sucesso, veja abaixo o estoque adicionado!\n\`\`\`${stock_collector.join('\n')}\`\`\`\n**${emojis.box} | Produto:** ${product.title} \`(\`${product.id}\`)\``)
+                ]
+            })
         })
 
         return;

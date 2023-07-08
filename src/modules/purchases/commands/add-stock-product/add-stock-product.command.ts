@@ -43,7 +43,7 @@ class AddStockProductPurchasesCommand extends BaseSlashCommand {
             list_product.push({
                 emoji: "📦",
                 label: `${products[product].title} - ID: (${products[product].id.slice(0, 8)})`,
-                description: `💸 R$${products[product].price.toFixed(2)} - 🎁 ${products[product].stock.length} STOCK`,
+                description: `💸 R$${products[product].price.toFixed(2)} - 🎁 ${products[product].stock.length} Estoque`,
                 value: products[product].id,
             })
         })
