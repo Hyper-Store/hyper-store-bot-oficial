@@ -187,6 +187,13 @@
             "status": false,
             "rescuedBy": "1124265861109256282",
             "rescuedAt": "2023-07-07T17:53:13.126Z"
+        },
+        "FZHI-ERLZ-JBNE": {
+            "type": "message",
+            "content": "htpts://download.com",
+            "status": false,
+            "rescuedBy": "1124265861109256282",
+            "rescuedAt": "2023-07-08T03:42:29.022Z"
         }
     },
     "purchases": {
@@ -196,22 +203,16 @@
                 "title": "teste",
                 "description": "eeeeeeeeeeeee",
                 "price": 2,
-                "stock": [],
+                "stock": [
+                    {
+                        "id": "1f58d5ba-3ede-4918-82dc-19c59912670d",
+                        "content": "asdad"
+                    }
+                ],
                 "image": "",
                 "createdAt": "2023-07-07T22:10:17.236Z",
                 "channelId": "1126885038814924850",
                 "messageId": "1127081622831894649"
-            },
-            "5c62ae13-cbc8-41f2-9ecd-83c70e7532d9": {
-                "id": "5c62ae13-cbc8-41f2-9ecd-83c70e7532d9",
-                "title": "Produto x",
-                "description": "Produto x1",
-                "price": 20,
-                "stock": [],
-                "image": "",
-                "createdAt": "2023-07-08T03:31:19.509Z",
-                "channelId": "1126886459484422205",
-                "messageId": "1127081801760899152"
             }
         }
     }

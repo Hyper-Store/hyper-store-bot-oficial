@@ -1,16 +1,16 @@
 import { BaseEvent } from "@/modules/@shared/domain";
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
-import { Interaction } from "discord.js";
+import { Interaction, Message } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { ProductMessage } from "../../@shared/product-message/product-message";
 import { Database } from "@/infra/app/setup-database";
 import { ProductType } from "../../@types/Product.type";
+import { ProductNotExistError } from "../../@shared/errors/product-not-exist";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
-import { ProductNotExistError } from "../../@shared/errors/product-not-exist";
+import { randomUUID } from "crypto";
 
 
-class SetProductPurchasesEvent extends BaseEvent {
+class AddStockProductPurchasesEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -19,7 +19,7 @@ class SetProductPurchasesEvent extends BaseEvent {
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
         if (!interaction.isStringSelectMenu()) return;
-        if (interaction.customId !== "set_product") return;
+        if (interaction.customId !== "add_stock_product") return;
         if (!interaction.memberPermissions?.has(Discord.PermissionFlagsBits.Administrator)) {
             interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: "Administrator" }) })
             return;
@@ -33,17 +33,37 @@ class SetProductPurchasesEvent extends BaseEvent {
             return;
         }
 
-        const message_created = await interaction.channel?.send(await ProductMessage(interaction, product as ProductType))
-
-        await new Database().set(`purchases.products.${product_id}`, { ...product, channelId: message_created?.channelId, messageId: message_created?.id })
-
         interaction.update({
+            content: `${interaction.user}`,
             embeds: [
                 new Discord.EmbedBuilder()
                     .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Produto setado ao canal com sucesso!`)
+                    .setDescription(`> ${emojis.notifiy} Agora envie o estoque por linha, cada linha ou mensagem será um estoque, digite finalizar para finalizar!`)
             ],
             components: []
+        })
+        const stock_collector: string[] = [];
+
+        const collectorFilter = (m: Message) => m.author.id === interaction.user.id
+        const collector = interaction.channel?.createMessageCollector({ filter: collectorFilter });
+
+        collector?.on('collect', (message) => {
+            message.delete();
+
+            if (message.content === "finalizar") return collector.stop();
+            message.content.split('\n').forEach(m => {
+                stock_collector.push(m);
+            })
+        })
+
+        collector?.on('end', (message) => {
+            stock_collector.forEach(async (m) => {
+                await new Database().push(`purchases.products.${product_id}.stock`, {
+                    id: randomUUID(),
+                    content: m
+                })
+            })
+            interaction.reply({ embeds: [] })
         })
 
         return;
@@ -51,6 +71,6 @@ class SetProductPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new SetProductPurchasesEvent()
+    const buttonClickedEvent = new AddStockProductPurchasesEvent()
     buttonClickedEvent.setupConsumer(client)
 }

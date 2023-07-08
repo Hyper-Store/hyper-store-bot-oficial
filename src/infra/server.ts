@@ -44,8 +44,4 @@ client.on("ready", async () => {
     }
 })
 
-client.on('messageCreate', (message) => {
-    console.log(message.content)
-})
-
 process.setMaxListeners(0);
