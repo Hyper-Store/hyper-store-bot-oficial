@@ -1,6 +1,6 @@
 import * as mercadopago from 'mercadopago';
 
-export class GenerateMercadpagoPaymentUsecase {
+export class GenerateMercadopagoPaymentUsecase {
 
     async execute({ product, customer, paymentManagementId }: GenerateMercadpagoPaymentUsecase.Input) {
 

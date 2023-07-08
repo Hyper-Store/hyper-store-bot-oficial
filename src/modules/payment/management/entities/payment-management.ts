@@ -11,9 +11,22 @@ export class PaymentManagementEntity {
     static create(input: PaymentManagementEntity.Input): PaymentManagementEntity {
         const paymentManagement = new PaymentManagementEntity({
             ...input,
-            dateTimeCreated: input.dateTimeCreated || new Date() 
+            dateTimeCreated: input.dateTimeCreated || new Date(),
+            status: "PENDING"
         });
         return paymentManagement;
+    }
+
+    refund(): void {
+        this.props.status = "REFUNDED"
+    }
+    
+    cancel(): void {
+        this.props.status = "CANCELLED"
+    }
+
+    approve(): void {
+        this.props.status = "APPROVED"
     }
 
     toJSON(): PaymentManagementEntity.JSON {
@@ -29,12 +42,14 @@ export class PaymentManagementEntity {
 
 export namespace PaymentManagementEntity {
     export type PaymentProviders = "mercadopago" | "paypal"
+    export type Status = "PENDING" | "REFUNDED" | "APPROVED" | "CANCELLED"
 
     export type Props = {
         checkoutId: string,
         paymentProvider?: PaymentProviders,
         paymentProviderId?: string
         dateTimeCreated: Date
+        status?: Status
     }
 
     export type Input = {
