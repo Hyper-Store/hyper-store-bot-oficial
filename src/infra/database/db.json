@@ -203,52 +203,11 @@
                 "title": "teste",
                 "description": "eeeeeeeeeeeee",
                 "price": 2,
-                "stock": [
-                    {
-                        "id": "1f58d5ba-3ede-4918-82dc-19c59912670d",
-                        "content": "asdad"
-                    },
-                    {
-                        "id": "dab1420c-5d13-49d1-bf37-15eaf4e77cd0",
-                        "content": "Teste asdasdassd"
-                    },
-                    {
-                        "id": "1835062a-6073-49de-8749-5d344584eaee",
-                        "content": "Teste aaaa"
-                    },
-                    {
-                        "id": "76ab36a6-edb9-4bb9-9046-547af51189ab",
-                        "content": "Produto x teste para adicionar estoque"
-                    },
-                    {
-                        "id": "717e4bc3-46d4-4f40-8ad3-b55642c523f0",
-                        "content": "aq teste teste "
-                    },
-                    {
-                        "id": "54999276-2df4-44a2-a5c1-868a1ccaa6d1",
-                        "content": "teste 22222"
-                    },
-                    {
-                        "id": "08bc1744-35bc-4685-83ac-58da1d2ac5a1",
-                        "content": "helo"
-                    },
-                    {
-                        "id": "e0ab7b70-4c58-4dc9-9313-9bd24a7e31af",
-                        "content": "teste"
-                    },
-                    {
-                        "id": "e140dce0-f72a-4d28-a026-f42dec2327dc",
-                        "content": "hello"
-                    },
-                    {
-                        "id": "5d6801de-eb28-4c79-9121-6152832fdde9",
-                        "content": "asdasdasdsadsadasdasd"
-                    }
-                ],
+                "stock": [],
                 "image": "",
                 "createdAt": "2023-07-07T22:10:17.236Z",
                 "channelId": "1126886459484422205",
-                "messageId": "1127196483037446155"
+                "messageId": "1127229832518979666"
             }
         }
     }

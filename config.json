@@ -11,7 +11,8 @@
         }
     },
     "reedemkey": {
-        "banner": "https://cdn.discordapp.com/attachments/1126899145517572206/1126924848703217694/standard.gif"
+        "banner": "https://cdn.discordapp.com/attachments/1126899145517572206/1126924848703217694/standard.gif",
+        "role_notification_stock": "1127202955142107258"
     },
     "feedback": {
         "emoji_auto_react": "💕",

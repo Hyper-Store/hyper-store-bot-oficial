@@ -22,7 +22,7 @@ export const ProductMessage = async (interaction: Interaction, product: ProductT
             new Discord.ActionRowBuilder<any>()
                 .addComponents(
                     new Discord.ButtonBuilder()
-                        .setCustomId('buy')
+                        .setCustomId(`buy_${product.id}`)
                         .setLabel('Comprar')
                         .setEmoji(emojis.buy)
                         .setStyle(3)
