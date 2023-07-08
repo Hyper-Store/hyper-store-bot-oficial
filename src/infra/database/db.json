@@ -233,7 +233,7 @@
                 "id": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
                 "title": "teste",
                 "description": "eeeeeeeeeeeee",
-                "price": 2,
+                "price": 0.01,
                 "stock": [
                     {
                         "id": "2321331",
@@ -338,130 +338,28 @@
         "paymentManagement": {
             "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c": {
                 "checkoutId": "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c",
-                "dateTimeCreated": "2023-07-08T22:53:29.803Z",
+                "dateTimeCreated": "2023-07-08T23:13:09.839Z",
                 "status": "PENDING"
             }
         },
         "mercadopago": {
-            "ref-60476369268": {
-                "paymentId": "60476369268",
+            "ref-60374970287": {
+                "paymentId": "60374970287",
                 "amount": 2,
                 "status": "PENDING",
-                "expirationDate": "2023-07-08T23:03:29.804Z"
+                "expirationDate": "2023-07-08T23:21:13.856Z"
             },
-            "ref-60373138421": {
-                "paymentId": "60373138421",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:49:36.781Z"
+            "ref-60374976745": {
+                "paymentId": "60374976745",
+                "amount": 0.01,
+                "status": "PENDING",
+                "expirationDate": "2023-07-08T23:22:04.246Z"
             },
-            "ref-60475527142": {
-                "paymentId": "60475527142",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:48:52.043Z"
-            },
-            "ref-60373300609": {
-                "paymentId": "60373300609",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:53:10.897Z"
-            },
-            "ref-60475794168": {
-                "paymentId": "60475794168",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:51:50.832Z"
-            },
-            "ref-60475817144": {
-                "paymentId": "60475817144",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:53:35.141Z"
-            },
-            "ref-60373301761": {
-                "paymentId": "60373301761",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:54:38.253Z"
-            },
-            "ref-60475743140": {
-                "paymentId": "60475743140",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:52:15.663Z"
-            },
-            "ref-60373163471": {
-                "paymentId": "60373163471",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:51:22.681Z"
-            },
-            "ref-60373138779": {
-                "paymentId": "60373138779",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:50:05.163Z"
-            },
-            "ref-60475676588": {
-                "paymentId": "60475676588",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:50:30.389Z"
-            },
-            "ref-60373163127": {
-                "paymentId": "60373163127",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:51:00.417Z"
-            },
-            "ref-60373642553": {
-                "paymentId": "60373642553",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:59:41.487Z"
-            },
-            "ref-60373411479": {
-                "paymentId": "60373411479",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:56:41.975Z"
-            },
-            "ref-60373578301": {
-                "paymentId": "60373578301",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:58:04.700Z"
-            },
-            "ref-60373389039": {
-                "paymentId": "60373389039",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:55:24.551Z"
-            },
-            "ref-60373388721": {
-                "paymentId": "60373388721",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:55:04.087Z"
-            },
-            "ref-60373411969": {
-                "paymentId": "60373411969",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:57:19.342Z"
-            },
-            "ref-60373411119": {
-                "paymentId": "60373411119",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:56:12.422Z"
-            },
-            "ref-60373438591": {
-                "paymentId": "60373438591",
-                "amount": 2,
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-08T22:56:01.046Z"
+            "ref-60374971677": {
+                "paymentId": "60374971677",
+                "amount": 0.01,
+                "status": "PENDING",
+                "expirationDate": "2023-07-08T23:23:09.841Z"
             }
         }
     }
