@@ -334,14 +334,5 @@
             }
         }
     },
-    "payment": {
-        "paymentManagement": {
-            "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c": {
-                "checkoutId": "8934fc2d-ccf3-4494-ab9d-e396a3e8a55c",
-                "dateTimeCreated": "2023-07-08T23:18:47.070Z",
-                "status": "PENDING"
-            }
-        },
-        "mercadopago": {}
-    }
+    "payment": {}
 }
