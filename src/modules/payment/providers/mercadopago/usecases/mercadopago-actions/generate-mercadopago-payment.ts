@@ -1,13 +1,13 @@
 import * as mercadopago from 'mercadopago';
 
-export class GenerateMercadpagoPaymentUsecase {
+export class GenerateMercadopagoPaymentUsecase {
 
     async execute({ product, customer, paymentManagementId }: GenerateMercadpagoPaymentUsecase.Input) {
 
         const totalPrice = product.price
 
         const minutes = 10  // 1 hour
-        
+
         const expirationDate = new Date()
         expirationDate.setMinutes(expirationDate.getMinutes() + minutes)
 
@@ -46,7 +46,7 @@ export class GenerateMercadpagoPaymentUsecase {
 }
 
 
-export namespace GenerateMercadpagoPaymentUsecase {
+export namespace GenerateMercadopagoPaymentUsecase {
 
     export type Product = {
         title: string
