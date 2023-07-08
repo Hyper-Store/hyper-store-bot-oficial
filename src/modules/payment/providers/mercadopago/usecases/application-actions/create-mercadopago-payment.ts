@@ -9,7 +9,6 @@ export class CreateMercadopagoPaymentUsecase {
         const mercadoPagoPayment = await MercadopagoGateway.findById(mercadopagoPaymentId)
         if (!mercadoPagoPayment) return
 
-
         const paymentAlreadyExists = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
         if (paymentAlreadyExists) return
 

@@ -39,8 +39,6 @@ export class MercadopagoGateway {
                 expirationDate,
             }
         } catch (err) {
-            console.log(id)
-            console.log(err)
             return null
         }
 

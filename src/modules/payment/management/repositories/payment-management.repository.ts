@@ -8,8 +8,8 @@ export class PaymentManagementRepository {
     static async create(paymentManagementEntity: PaymentManagementEntity): Promise<void> {
         const database = new Database()
         database.set(
-            `purchases.payment.paymentManagement.${paymentManagementEntity.checkoutId}`, 
-        paymentManagementEntity.toJSON()
+            `payment.paymentManagement.${paymentManagementEntity.checkoutId}`,
+            paymentManagementEntity.toJSON()
         )
     }
 }
