@@ -5,7 +5,6 @@ const app = express()
 app.use(express.json())
 
 app.post("/payment/mercadopago/callback", async (req, res) => {
-    console.log(req.body)
 
     // await new CreateMercadopagoPaymentUsecase().execute({
     //     mercadopagoPaymentId: req.body.id
