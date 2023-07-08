@@ -7,6 +7,8 @@ export class RefundMercadopagoPaymentUsecase {
         const mercadopagoPayment = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
         if (!mercadopagoPayment) return
 
+        if(mercadopagoPayment.status === "REFUNDED") return
+
         mercadopagoPayment.status = "REFUNDED"
 
         await MercadopagoRepository.update(mercadopagoPayment)
