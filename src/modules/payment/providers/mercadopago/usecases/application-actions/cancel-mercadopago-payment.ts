@@ -14,7 +14,7 @@ export class CancelMercadopagoPaymentUsecase {
 }
 
 export namespace CancelMercadopagoPaymentUsecase {
-    
+
     export type Input = {
         mercadopagoPaymentId: string
     }

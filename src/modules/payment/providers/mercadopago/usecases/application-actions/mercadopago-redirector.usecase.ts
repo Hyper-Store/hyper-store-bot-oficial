@@ -17,7 +17,8 @@ export class MercadopagoRedirectorUsecase {
             if (mercadopagoPayment?.status === "APPROVED") await ApproveMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
             if (mercadopagoPayment?.status === "CANCELLED") await CancelMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
             if (mercadopagoPayment?.status === "REFUNDED") await RefundMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
-
+            console.log(action)
+            console.log(mercadopagoPayment)
         }
 
     }
