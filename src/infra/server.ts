@@ -1,6 +1,13 @@
 import client from "./app/app";
 import Discord from 'discord.js'
 
+import * as mercadopago from 'mercadopago';
+
+mercadopago.configure({
+    access_token: process.env.MERCADOPAGO_ACCESS_TOKEN!,
+});
+
+
 type ActivitiesProps = {
     content: string,
     type: Exclude<Discord.ActivityType, Discord.ActivityType.Custom>,
