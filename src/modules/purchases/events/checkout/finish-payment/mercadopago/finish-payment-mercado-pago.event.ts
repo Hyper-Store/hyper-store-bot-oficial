@@ -28,7 +28,7 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
 
         new CreatePaymentManagementUsecase().execute({ checkoutId: checkout.id });
 
-        new GenerateMercadopagoPaymentUsecase().execute({
+        const payment_data = await new GenerateMercadopagoPaymentUsecase().execute({
             product: {
                 title: product.title,
                 price: product.price * checkout.quantity
@@ -38,6 +38,8 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
             },
             paymentManagementId: checkout.id
         })
+
+        console.log(payment_data.data.paymentLink)
     }
 }
 
