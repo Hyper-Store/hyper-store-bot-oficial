@@ -3,8 +3,8 @@ import express from "express"
 
 const app = express()
 
-app.post("payment/mercadopago", async (req, res) => {
-
+app.post("payment/mercadopago/callback", async (req, res) => {
+    console.log("hello world")
     await new CreateMercadopagoPaymentUsecase().execute({
         mercadopagoPaymentId: req.body.id
     })
