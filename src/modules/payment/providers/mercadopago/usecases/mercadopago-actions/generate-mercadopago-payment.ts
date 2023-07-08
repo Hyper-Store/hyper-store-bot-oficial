@@ -2,7 +2,7 @@ import * as mercadopago from 'mercadopago';
 
 export class GenerateMercadopagoPaymentUsecase {
 
-    async execute({ product, customer, paymentManagementId }: GenerateMercadpagoPaymentUsecase.Input) {
+    async execute({ product, customer, paymentManagementId }: GenerateMercadopagoPaymentUsecase.Input) {
 
         const totalPrice = product.price
 

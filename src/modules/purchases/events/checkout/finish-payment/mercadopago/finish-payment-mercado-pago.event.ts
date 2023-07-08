@@ -28,7 +28,16 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
 
         new CreatePaymentManagementUsecase().execute({ checkoutId: checkout.id });
 
-        new GenerateMercadopagoPaymentUsecase().execute({ product: {} })
+        new GenerateMercadopagoPaymentUsecase().execute({
+            product: {
+                title: product.title,
+                price: product.price * checkout.quantity
+            },
+            customer: {
+                email: 'contato@gmail.com'
+            },
+            paymentManagementId: checkout.id
+        })
     }
 }
 
