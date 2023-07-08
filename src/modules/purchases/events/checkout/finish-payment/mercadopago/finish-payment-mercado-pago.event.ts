@@ -6,6 +6,8 @@ import { ProductType } from "@/modules/purchases/@types/Product.type";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { CheckoutType } from "../../@shared/_types/Checkout.type";
+import { CreatePaymentManagementUsecase } from "@/modules/payment/management/usecases";
+import { GenerateMercadopagoPaymentUsecase } from "@/modules/payment/providers/mercadopago/usecases/mercadopago-actions";
 
 class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
     constructor() {
@@ -24,7 +26,18 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
 
         if (interaction.user.id !== checkout.ownerId) return;
 
-        console.log('ta aq')
+        new CreatePaymentManagementUsecase().execute({ checkoutId: checkout.id });
+
+        new GenerateMercadopagoPaymentUsecase().execute({
+            product: {
+                title: product.title,
+                price: product.price * checkout.quantity
+            },
+            customer: {
+                email: 'contato@gmail.com'
+            },
+            paymentManagementId: checkout.id
+        })
     }
 }
 
