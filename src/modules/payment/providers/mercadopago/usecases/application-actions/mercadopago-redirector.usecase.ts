@@ -1,4 +1,4 @@
-import { MercadopagoRepository } from "../../repositories"
+import { MercadopagoGateway } from "../../gateways"
 import { ApproveMercadopagoPaymentUsecase } from "./approve-mercadopago-payment"
 import { CancelMercadopagoPaymentUsecase } from "./cancel-mercadopago-payment"
 import { CreateMercadopagoPaymentUsecase } from "./create-mercadopago-payment"
@@ -12,7 +12,7 @@ export class MercadopagoRedirectorUsecase {
         if (action === "payment.created") await CreateMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
 
         if (action === "payment.updated") {
-            const mercadopagoPayment = await MercadopagoRepository.findByPaymentId(paymentId)
+            const mercadopagoPayment = await MercadopagoGateway.findById(paymentId)
 
             if (mercadopagoPayment?.status === "APPROVED") await ApproveMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
             if (mercadopagoPayment?.status === "CANCELLED") await CancelMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId })
