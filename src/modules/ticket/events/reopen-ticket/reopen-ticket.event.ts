@@ -26,8 +26,9 @@ class ReopenTicketEvent extends BaseEvent {
 
         if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;
 
+        const typeTicket = TypeTicket.find(type => type.id === ticketData.type)
         await interaction.channel?.edit({
-            name: `${TypeTicket.find(type => type.id === ticketData.type)?.emoji}}・${GetUserNameLowerCase(ownerUser?.user.username!)}`,
+            name: `${typeTicket?.emoji}}・${typeTicket?.title}-${GetUserNameLowerCase(ownerUser?.user.username!)}`,
             parent: (await new Database().db.get('ticket.config.category_id') as string),
             permissionOverwrites: [
                 {

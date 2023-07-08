@@ -15,7 +15,7 @@ class ButtonClickedEvent extends BaseEvent {
 
     async exec(interaction: Message): Promise<void> {
         if (interaction.channelId !== await new DatabaseConfig().get('feedback.channel_id')) return;
-        if (/(ruim|orrivel|péssimo|terrível|lixo|merda|mérda|scammer|scam)/i.test(interaction.content)) {
+        if (/(ruim|orrivel|péssimo|terrível|lixo|merda|mérda|scammer|scam|cu|bosta|veia|horrivel|não comprem)/i.test(interaction.content)) {
             interaction.delete();
             interaction.author.send({
                 embeds: [

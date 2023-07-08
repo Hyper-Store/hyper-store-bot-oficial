@@ -20,7 +20,13 @@ const emojis = {
     date: "📅",
     id: "🆔",
     box: "<:box:1126970419807797358>",
-    buy: "<:buy:1126971247264288778>"
+    buy: "<:buy:1126971247264288778>",
+    accept: "<a:accept:1127260602717458442>",
+    notaccept: "<a:notaccept:1127260600142135347>",
+    add: "<:add:1127273062384013432>",
+    remove: "<:remove:1127273255049367552>",
+    mercadopago: "<:mercadopago:1127291259443236954>",
+    paypal: "<:paypal:1127294331305340969>"
 }
 
 export { emojis }

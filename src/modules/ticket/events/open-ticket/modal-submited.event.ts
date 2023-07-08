@@ -43,8 +43,10 @@ class ButtonClickedEvent extends BaseEvent {
             ephemeral: true
         })
 
+        const typeTicket = TypeTicket.find(type => type.id === formData.typeTicket)
+
         const channel_created = await interaction.guild?.channels.create({
-            name: `${TypeTicket.find(type => type.id === formData.typeTicket)?.emoji}・${GetUserNameLowerCase(interaction.user.username)}`,
+            name: `${typeTicket?.emoji}・${typeTicket?.title}-${GetUserNameLowerCase(interaction.user.username)}`,
             parent: (await new DatabaseConfig().db.get('ticket.category_id') as string),
             permissionOverwrites: [
                 {

@@ -170,6 +170,28 @@
                 "messageId": "1127081264713826345",
                 "sessionId": "97637dfd-337a-4c81-9426-fb30565e26f4",
                 "createdAt": "2023-07-08T03:37:46.794Z"
+            },
+            "1127253780992372877": {
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeee",
+                "type": "buy",
+                "channelId": "1127253780992372877",
+                "messageId": "1127253782674296893",
+                "sessionId": "3139133e-651f-4cd3-9698-14558fef0ea6",
+                "createdAt": "2023-07-08T15:03:20.759Z",
+                "closedAt": "",
+                "reopenedAt": "2023-07-08T15:04:55.630Z"
+            },
+            "1127264450018291904": {
+                "ownerId": "1099020843171975240",
+                "reason": "aaaadfdsf",
+                "type": "buy",
+                "channelId": "1127264450018291904",
+                "messageId": "1127264451461120122",
+                "sessionId": "aaed3e4e-cb24-408f-82d6-4d8a67fd0c83",
+                "createdAt": "2023-07-08T15:43:33.316Z",
+                "closedAt": "",
+                "reopenedAt": "2023-07-08T15:46:55.167Z"
             }
         }
     },
@@ -203,11 +225,70 @@
                 "title": "teste",
                 "description": "eeeeeeeeeeeee",
                 "price": 2,
-                "stock": [],
+                "stock": [
+                    {
+                        "id": "2321331",
+                        "content": "1123123123123"
+                    },
+                    {
+                        "id": "2321331",
+                        "content": "1123123123123"
+                    },
+                    {
+                        "id": "2321331",
+                        "content": "1123123123123"
+                    },
+                    {
+                        "id": "2321331",
+                        "content": "1123123123123"
+                    },
+                    {
+                        "id": "c3065183-5c71-4906-baa5-b7d854780035",
+                        "content": "ta"
+                    },
+                    {
+                        "id": "773fabf1-143d-47f7-b0ca-7ab2869f0641",
+                        "content": "b"
+                    }
+                ],
                 "image": "",
                 "createdAt": "2023-07-07T22:10:17.236Z",
                 "channelId": "1126886459484422205",
-                "messageId": "1127229832518979666"
+                "messageId": "1127285752787632188"
+            }
+        },
+        "checkouts": {
+            "1127281052319223931": {
+                "id": "1c3d7538-ddab-473b-a5c3-b36f3dbc1d75",
+                "ownerId": "1124265861109256282",
+                "productId": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
+                "quantity": 6,
+                "status": "pending",
+                "createdAt": "2023-07-08T16:52:23.459Z"
+            },
+            "1127285204587917403": {
+                "id": "880ad2ed-4fe0-45e0-96fa-94122b672f7b",
+                "ownerId": "1035695838707585044",
+                "productId": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
+                "quantity": 4,
+                "status": "pending",
+                "createdAt": "2023-07-08T17:08:53.370Z"
+            },
+            "1127293710221189182": {
+                "id": "e924643f-adeb-4804-a881-319bf57433f4",
+                "ownerId": "1099020843171975240",
+                "productId": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
+                "quantity": 1,
+                "status": "pending",
+                "createdAt": "2023-07-08T17:42:41.059Z"
+            },
+            "1127294562214367252": {
+                "id": "d783a0ee-52f6-4e0f-b6a8-19a3b4b350f9",
+                "ownerId": "1099020843171975240",
+                "productId": "8707862a-4f1e-4d1e-88f5-ca168be213ea",
+                "quantity": 1,
+                "status": "pending",
+                "createdAt": "2023-07-08T17:46:04.411Z"
             }
         }
     }

@@ -12,10 +12,12 @@
     },
     "reedemkey": {
         "banner": "https://cdn.discordapp.com/attachments/1126899145517572206/1126924848703217694/standard.gif",
-        "role_notification_stock": "1127202955142107258"
+        "role_notification_stock": "1127202955142107258",
+        "category_id": "1127195910829527051",
+        "channel_terms_of_services": "1126885396190597140"
     },
     "feedback": {
-        "emoji_auto_react": "💕",
+        "emoji_auto_react": "<a:star:1127252794362044426>",
         "channel_id": "1126885491548110878"
     }
 }
