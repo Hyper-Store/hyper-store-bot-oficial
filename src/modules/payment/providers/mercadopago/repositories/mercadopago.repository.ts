@@ -13,4 +13,8 @@ export class MercadopagoRepository {
     static async create(mercadopagoPayment: MercadopagoModel): Promise<void> {
         new Database().set(`payment.mercadopago.ref-${mercadopagoPayment.paymentId}`, mercadopagoPayment)
     }
+
+    static async update(mercadopagoPayment: MercadopagoModel): Promise<void> {
+        new Database().set(`payment.mercadopago.ref-${mercadopagoPayment.paymentId}`, mercadopagoPayment)
+    }
 }

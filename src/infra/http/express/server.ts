@@ -1,4 +1,4 @@
-import { CreateMercadopagoPaymentUsecase } from "@/modules/payment/providers/mercadopago/usecases/application-actions"
+import { MercadopagoRedirectorUsecase } from "@/modules/payment/providers/mercadopago/usecases/application-actions"
 import express from "express"
 import "dotenv/config"
 
@@ -7,8 +7,9 @@ app.use(express.json())
 
 app.post("/payment/mercadopago/callback", async (req, res) => {
 
-    await new CreateMercadopagoPaymentUsecase().execute({
-        mercadopagoPaymentId: req.body?.data?.id ?? ""
+    await MercadopagoRedirectorUsecase.execute({
+        action: req.body.action,
+        paymentId: req.body.data.id
     })
 
     res.status(200).json({ ok: true })

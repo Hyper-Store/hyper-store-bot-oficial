@@ -4,7 +4,7 @@ import { MercadopagoRepository } from "../../repositories"
 
 export class CreateMercadopagoPaymentUsecase {
 
-    async execute({ mercadopagoPaymentId }: CreateMercadopagoPaymentUsecase.Input) {
+    static async execute({ mercadopagoPaymentId }: CreateMercadopagoPaymentUsecase.Input) {
 
         const mercadoPagoPayment = await MercadopagoGateway.findById(mercadopagoPaymentId)
         if (!mercadoPagoPayment) return
