@@ -6,9 +6,9 @@ app.use(express.json())
 
 app.post("/payment/mercadopago/callback", async (req, res) => {
 
-    // await new CreateMercadopagoPaymentUsecase().execute({
-    //     mercadopagoPaymentId: req.body.id
-    // })
+    await new CreateMercadopagoPaymentUsecase().execute({
+        mercadopagoPaymentId: req.body.data.id ?? ""
+    })
 
     res.status(200).json({ ok: true })
 })
