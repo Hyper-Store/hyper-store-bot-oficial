@@ -14,7 +14,6 @@ export class CreateMercadopagoPaymentUsecase {
 
         await MercadopagoRepository.create(mercadoPagoPayment)
 
-        
     }
 }
 
