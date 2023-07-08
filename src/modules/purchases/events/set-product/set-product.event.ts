@@ -25,8 +25,7 @@ class SetProductPurchasesEvent extends BaseEvent {
         }
 
         const product_id = interaction.values[0];
-        const products = await new Database().get(`purchases.products`) as ProductType[] || []
-        const product = products.find((product: ProductType) => product.id === product_id);
+        const product = await new Database().get(`purchases.products.${product_id}`) as ProductType
 
         const message_created = await interaction.channel?.send(await ProductMessage(interaction, product as ProductType))
 

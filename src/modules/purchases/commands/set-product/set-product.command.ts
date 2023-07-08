@@ -59,7 +59,7 @@ class SetProductPurchasesCommand extends BaseSlashCommand {
                     .addComponents(
                         new Discord.StringSelectMenuBuilder()
                             .setCustomId('set_product')
-                            .setPlaceholder('▶ Escolha uma opção')
+                            .setPlaceholder('⏩ Escolha uma opção')
                             .setOptions(list_product)
                     ),
                 new Discord.ActionRowBuilder<any>()
@@ -79,7 +79,8 @@ class SetProductPurchasesCommand extends BaseSlashCommand {
                             .setDisabled(products.length <= 25)
                             .setStyle(1)
                     )
-            ]
+            ],
+            ephemeral: true
         })
 
         return;

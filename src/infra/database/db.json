@@ -150,6 +150,26 @@
                 "messageId": "1126905390760742952",
                 "sessionId": "fa725dfe-8dba-4212-a2c4-851773e9c39c",
                 "createdAt": "2023-07-07T15:59:19.467Z"
+            },
+            "1127081129736929361": {
+                "ownerId": "1124265861109256282",
+                "reason": "asdsadasda",
+                "type": "carlao",
+                "channelId": "1127081129736929361",
+                "messageId": "1127081131288825886",
+                "sessionId": "97637dfd-337a-4c81-9426-fb30565e26f4",
+                "createdAt": "2023-07-08T03:37:46.794Z",
+                "closedAt": "",
+                "reopenedAt": "2023-07-08T03:38:22.777Z"
+            },
+            "1127081262704758886": {
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeeee",
+                "type": "budget",
+                "channelId": "1127081262704758886",
+                "messageId": "1127081264713826345",
+                "sessionId": "97637dfd-337a-4c81-9426-fb30565e26f4",
+                "createdAt": "2023-07-08T03:37:46.794Z"
             }
         }
     },
@@ -178,7 +198,20 @@
                 "price": 2,
                 "stock": [],
                 "image": "",
-                "createdAt": "2023-07-07T22:10:17.236Z"
+                "createdAt": "2023-07-07T22:10:17.236Z",
+                "channelId": "1126885038814924850",
+                "messageId": "1127081622831894649"
+            },
+            "5c62ae13-cbc8-41f2-9ecd-83c70e7532d9": {
+                "id": "5c62ae13-cbc8-41f2-9ecd-83c70e7532d9",
+                "title": "Produto x",
+                "description": "Produto x1",
+                "price": 20,
+                "stock": [],
+                "image": "",
+                "createdAt": "2023-07-08T03:31:19.509Z",
+                "channelId": "1126886459484422205",
+                "messageId": "1127081801760899152"
             }
         }
     }
