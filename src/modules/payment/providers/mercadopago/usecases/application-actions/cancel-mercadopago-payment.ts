@@ -7,6 +7,8 @@ export class CancelMercadopagoPaymentUsecase {
         const mercadopagoPayment = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
         if (!mercadopagoPayment) return
 
+        if(mercadopagoPayment.status === "CANCELLED") return
+
         mercadopagoPayment.status = "CANCELLED"
 
         await MercadopagoRepository.update(mercadopagoPayment)
