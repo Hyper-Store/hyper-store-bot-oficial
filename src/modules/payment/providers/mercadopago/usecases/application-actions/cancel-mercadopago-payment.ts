@@ -1,3 +1,4 @@
+import { EventEmitterSingleton } from "@/modules/@shared/providers"
 import { MercadopagoRepository } from "../../repositories"
 
 
@@ -12,6 +13,9 @@ export class CancelMercadopagoPaymentUsecase {
         mercadopagoPayment.status = "CANCELLED"
 
         await MercadopagoRepository.update(mercadopagoPayment)
+
+        const eventEmitter = EventEmitterSingleton.getInstance()
+        eventEmitter.emit("mercadopago.paymentCancelledEvent", mercadopagoPayment)
     }
 }
 
