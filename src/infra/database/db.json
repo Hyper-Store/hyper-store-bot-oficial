@@ -3,7 +3,7 @@
         "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca": {
             "title": "Teste",
             "description": "testete",
-            "price": 25,
+            "price": 0.01,
             "stock": [
                 {
                     "id": "e545fd26-3f6f-4571-83e4-48bda8ace064",
@@ -15,6 +15,92 @@
             "createdAt": "2023-07-09T01:06:29.499Z",
             "channelId": "1126886459484422205",
             "messageId": "1127405475923775488"
+        }
+    },
+    "checkouts": {
+        "1127484274044567603": {
+            "id": "1127484274044567603",
+            "ownerId": "1124265861109256282",
+            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "ref": "d4219079-5347-4ce9-b34c-9b01dabe6a20",
+            "status": "PENDING",
+            "quantity": 1,
+            "createdAt": "2023-07-09T06:19:59.490Z"
+        },
+        "1127484325538050169": {
+            "id": "1127484325538050169",
+            "ownerId": "1124265861109256282",
+            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "ref": "ab00d140-5a0e-44b5-9033-482a6659e651",
+            "status": "PENDING",
+            "quantity": 1,
+            "createdAt": "2023-07-09T06:20:11.737Z"
+        },
+        "1127485450605568151": {
+            "id": "1127485450605568151",
+            "ownerId": "1124265861109256282",
+            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "ref": "92a11d3f-bbba-4098-9e52-7aebf6dd1ae9",
+            "status": "PENDING",
+            "quantity": 1,
+            "createdAt": "2023-07-09T06:24:40.043Z"
+        },
+        "1127486851381465128": {
+            "id": "1127486851381465128",
+            "ownerId": "1124265861109256282",
+            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "ref": "40ddc08b-67e5-498e-84bd-c02ce69e0d5d",
+            "status": "PENDING",
+            "quantity": 1,
+            "createdAt": "2023-07-09T06:30:14.083Z"
+        }
+    },
+    "payment": {
+        "paymentManagement": {
+            "1127484325538050169": {
+                "checkoutId": "1127484325538050169",
+                "dateTimeCreated": "2023-07-09T06:20:18.817Z",
+                "status": "PENDING",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60387190491"
+            },
+            "1127485450605568151": {
+                "checkoutId": "1127485450605568151",
+                "dateTimeCreated": "2023-07-09T06:24:46.829Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60387191053"
+            },
+            "1127486851381465128": {
+                "checkoutId": "1127486851381465128",
+                "dateTimeCreated": "2023-07-09T06:30:19.397Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60387191761"
+            }
+        },
+        "mercadopago": {
+            "ref-60387190491": {
+                "paymentId": "60387190491",
+                "amount": 0.01,
+                "paymentManagementId": "1127484325538050169",
+                "status": "CANCELLED",
+                "expirationDate": "2023-07-09T06:30:18.819Z"
+            },
+            "ref-60387191053": {
+                "paymentId": "60387191053",
+                "amount": 0.01,
+                "paymentManagementId": "1127485450605568151",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-09T06:34:46.830Z"
+            },
+            "ref-60387191761": {
+                "paymentId": "60387191761",
+                "amount": 0.01,
+                "paymentManagementId": "1127486851381465128",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-09T06:40:19.399Z"
+            }
         }
     }
 }
