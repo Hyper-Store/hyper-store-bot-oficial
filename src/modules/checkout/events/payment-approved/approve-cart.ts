@@ -6,17 +6,28 @@ import { ProductStockModel } from "@/modules/product/models/product-stock.model"
 import { ProductStockRepository } from "@/modules/product/repositories/product-stock.repository";
 import { ProductModel } from "@/modules/product/models/product.model";
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
+import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel";
 
 export class ApproveCartUsecase {
     static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<void | boolean> {
         console.log("ApproveCartUsecases")
         const checkout = await CheckoutRepository.findById(checkoutId);
         const product = await ProductRepository.findById(checkout?.productId!);
-        const guild = await client.guilds.cache.get(process.env.GUILD_ID!)
+        const guild = await client.guilds.cache.get(process.env.GUILD_ID!);
+        const channel = guild?.channels.cache.get(checkout?.id!);
         const owner = guild?.members.cache.get(checkout?.ownerId!);
 
-        console.log(client.guilds.cache.map(user => user.name).join(", "))
-        if (!owner) return;
+        if (!owner || !channel || !channel.isTextBased()) return;
+
+        await channel.send({
+            ...await CheckoutProductMessageChannel({
+                client,
+                user: owner,
+                product: product!,
+                stock: stocks,
+                checkout: checkout!
+            })
+        })
 
         owner?.send({
             ...await CheckoutProductMessagePrivate({
