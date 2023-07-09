@@ -12,7 +12,7 @@ export class ApprovePaymentUsecase {
         paymentManagementEntity.approve()
 
         await PaymentManagementRepository.update(paymentManagementEntity)
-        
+
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         await rabbitmq.publishInExchange(
             "paymentManagement",

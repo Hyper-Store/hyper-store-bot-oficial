@@ -20,8 +20,8 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
         rabbitmq.bindQueue(queueName, "paymentManagement", "paymentManagement.approved")
         rabbitmq.consume(queueName, async (message, channel) => {
             const msg = JSON.parse(message.content.toString())
-
-            ApproveCartUsecase.execute(client, msg.checkoutId);
+            channel.ack(message)
+            await ApproveCartUsecase.execute(client, msg.checkoutId);
         })
     }
 }
