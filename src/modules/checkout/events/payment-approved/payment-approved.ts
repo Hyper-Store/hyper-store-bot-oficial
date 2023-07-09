@@ -13,7 +13,7 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
     }
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
-        
+
     }
 }
 

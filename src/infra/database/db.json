@@ -68,6 +68,27 @@
                 "paymentManagementId": "1127474048096546846",
                 "status": "APPROVED",
                 "expirationDate": "2023-07-09T05:49:20.738Z"
+            },
+            "ref-60387190491": {
+                "paymentId": "60387190491",
+                "amount": 0.01,
+                "paymentManagementId": "1127484325538050169",
+                "status": "CANCELLED",
+                "expirationDate": "2023-07-09T06:30:18.819Z"
+            },
+            "ref-60387191053": {
+                "paymentId": "60387191053",
+                "amount": 0.01,
+                "paymentManagementId": "1127485450605568151",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-09T06:34:46.830Z"
+            },
+            "ref-60387191761": {
+                "paymentId": "60387191761",
+                "amount": 0.01,
+                "paymentManagementId": "1127486851381465128",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-09T06:40:19.399Z"
             }
         },
         "paymentManagement": {
