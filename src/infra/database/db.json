@@ -6,70 +6,112 @@
             "price": 0.01,
             "image": "",
             "id": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "stock": {
-                "37eb8a4b-fb9c-45cd-a0f5-8592797f87b3": {
-                    "id": "37eb8a4b-fb9c-45cd-a0f5-8592797f87b3",
-                    "content": "a"
-                }
-            },
             "createdAt": "2023-07-09T18:04:37.737Z",
             "channelId": "1126886459484422205",
-            "messageId": "1127662879001288824"
+            "messageId": "1127662879001288824",
+            "stock": {
+                "e5dcc883-cb57-46a9-bf0b-ca722e75ccc1": {
+                    "content": "asdasdasdasdasdasdasdasd",
+                    "id": "e5dcc883-cb57-46a9-bf0b-ca722e75ccc1"
+                },
+                "756296c3-6168-4c8b-85e4-94d42bc4f101": {
+                    "content": "asdasdasdasdassdasd",
+                    "id": "756296c3-6168-4c8b-85e4-94d42bc4f101"
+                }
+            }
+        }
+    },
+    "purchases": {
+        "products": {
+            "3ada358b-74a7-4365-89fe-48b59215c826": {
+                "title": "Produto 1",
+                "description": "testete",
+                "price": 0.01,
+                "image": "",
+                "id": "3ada358b-74a7-4365-89fe-48b59215c826",
+                "createdAt": "2023-07-09T18:04:37.737Z",
+                "stock": {
+                    "50037970-3c25-4652-be13-c4aece28a368": {
+                        "content": "j",
+                        "id": "50037970-3c25-4652-be13-c4aece28a368"
+                    },
+                    "b90a863b-c08a-4a10-9f13-322effe569d5": {
+                        "content": "k",
+                        "id": "b90a863b-c08a-4a10-9f13-322effe569d5"
+                    },
+                    "5e2ca97f-b8ef-4327-8363-c0de1e82acb2": {
+                        "content": "asd",
+                        "id": "5e2ca97f-b8ef-4327-8363-c0de1e82acb2"
+                    },
+                    "9741f987-7e5f-4093-a0ab-6f52e15b6193": {
+                        "content": "asdasd",
+                        "id": "9741f987-7e5f-4093-a0ab-6f52e15b6193"
+                    },
+                    "531f663b-2cf4-4ff6-a796-2362d1822df8": {
+                        "content": "aasdasdasd",
+                        "id": "531f663b-2cf4-4ff6-a796-2362d1822df8"
+                    },
+                    "64267459-41ff-478b-8f4e-e1f8bd2526b6": {
+                        "content": "asdasdasd",
+                        "id": "64267459-41ff-478b-8f4e-e1f8bd2526b6"
+                    },
+                    "622cebe5-99a1-4e54-919b-128463d7d16d": {
+                        "content": "asdasdasd",
+                        "id": "622cebe5-99a1-4e54-919b-128463d7d16d"
+                    },
+                    "df63d74d-e424-4978-aded-f9bcbf213e53": {
+                        "content": "assd",
+                        "id": "df63d74d-e424-4978-aded-f9bcbf213e53"
+                    },
+                    "abc14931-35fc-4d2e-8623-df34465d3241": {
+                        "content": "asdasdasd",
+                        "id": "abc14931-35fc-4d2e-8623-df34465d3241"
+                    },
+                    "bb510ea3-2c12-4b80-98c1-b6334d10c228": {
+                        "content": "asdsadasdasdasd",
+                        "id": "bb510ea3-2c12-4b80-98c1-b6334d10c228"
+                    },
+                    "e5dcc883-cb57-46a9-bf0b-ca722e75ccc1": {
+                        "content": "asdasdasdasdasdasdasdasd",
+                        "id": "e5dcc883-cb57-46a9-bf0b-ca722e75ccc1"
+                    },
+                    "756296c3-6168-4c8b-85e4-94d42bc4f101": {
+                        "content": "asdasdasdasdassdasd",
+                        "id": "756296c3-6168-4c8b-85e4-94d42bc4f101"
+                    }
+                }
+            }
         }
     },
     "checkouts": {
-        "1127663234372087828": {
-            "id": "1127663234372087828",
+        "1127675886305558688": {
+            "id": "1127675886305558688",
             "ownerId": "1124265861109256282",
             "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "86d60557-2bc3-42a3-a577-df73bb9d2b01",
+            "ref": "0e764e71-6aac-4997-a029-93db818af3dd",
             "status": "PENDING",
-            "quantity": 1,
-            "price": 0.01,
-            "createdAt": "2023-07-09T18:10:58.786Z"
-        },
-        "1127665904117895190": {
-            "id": "1127665904117895190",
-            "ownerId": "1124265861109256282",
-            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "fe9bf338-45f1-4139-a9e0-160915ac13c3",
-            "status": "PENDING",
-            "quantity": 1,
-            "price": 0.01,
-            "createdAt": "2023-07-09T18:21:34.047Z"
+            "quantity": 10,
+            "price": 0.1,
+            "createdAt": "2023-07-09T19:01:14.335Z"
         }
     },
     "payment": {
         "paymentManagement": {
-            "1127663234372087828": {
-                "checkoutId": "1127663234372087828",
-                "dateTimeCreated": "2023-07-09T18:11:05.068Z",
+            "1127675886305558688": {
+                "checkoutId": "1127675886305558688",
+                "dateTimeCreated": "2023-07-09T19:01:29.675Z",
                 "status": "APPROVED",
                 "paymentProvider": "mercadopago",
-                "paymentProviderId": "60402694223"
-            },
-            "1127665904117895190": {
-                "checkoutId": "1127665904117895190",
-                "dateTimeCreated": "2023-07-09T18:21:49.826Z",
-                "status": "APPROVED",
-                "paymentProvider": "mercadopago",
-                "paymentProviderId": "60505705522"
+                "paymentProviderId": "60404262079"
             }
         },
         "mercadopago": {
-            "ref-60402694223": {
-                "paymentId": "60402694223",
-                "amount": 0.01,
-                "paymentManagementId": "1127663234372087828",
+            "ref-60404262079": {
+                "paymentId": "60404262079",
+                "amount": 0.1,
+                "paymentManagementId": "1127675886305558688",
                 "status": "APPROVED",
-                "expirationDate": "2023-07-09T18:21:05.071Z"
-            },
-            "ref-60505705522": {
-                "paymentId": "60505705522",
-                "amount": 0.01,
-                "paymentManagementId": "1127665904117895190",
-                "status": "APPROVED",
-                "expirationDate": "2023-07-09T18:31:49.828Z"
+                "expirationDate": "2023-07-09T19:11:29.678Z"
             }
         }
     }

@@ -4,6 +4,7 @@ import { ProductRepository } from "@/modules/product/repositories/product.reposi
 import { CheckoutProductMessagePrivate } from "./messages/CheckoutProductMessagePrivate";
 import { ProductStockModel } from "@/modules/product/models/product-stock.model";
 import { ProductStockRepository } from "@/modules/product/repositories/product-stock.repository";
+import { ProductModel } from "@/modules/product/models/product.model";
 
 export class ApproveCartUsecase {
     static async execute(client: Client, checkoutId: string) {
@@ -14,19 +15,20 @@ export class ApproveCartUsecase {
         const channel = client.channels.cache.get(checkout?.id!);
         if (!channel || !channel.isTextBased()) return;
 
-        const stockProduct = []
+        const stockProduct: ProductStockModel[] = []
 
         for (const stockKey of Object.keys(product?.stock!)) {
             if (stockProduct.length >= checkout?.quantity!) break;
-            stockProduct.push(product?.stock![stockKey])
+            stockProduct.push(product?.stock![stockKey]!)
             await ProductStockRepository.delete(product?.id!, product?.stock![stockKey].id!)
         }
 
         owner?.send({
-            ...CheckoutProductMessagePrivate({
+            ...await CheckoutProductMessagePrivate({
+                client,
                 user: owner,
                 product: product!,
-                stock: stockProduct as ProductStockModel[],
+                stock: stockProduct,
                 checkout: checkout!
             })
         })

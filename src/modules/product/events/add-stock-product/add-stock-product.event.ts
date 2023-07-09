@@ -61,7 +61,6 @@ class AddStockProductEvent extends BaseEvent {
         collector?.on('end', (message) => {
             stock_collector.forEach(async (item) => {
                 await ProductStockRepository.add(product_id, {
-                    id: randomUUID(),
                     content: item
                 })
             })
