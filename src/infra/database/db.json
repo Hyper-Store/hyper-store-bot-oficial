@@ -1,1 +1,31 @@
-{}
+{
+    "products": {
+        "d1de3546-31f5-4908-bbb5-c4978f373ae9": {
+            "id": "d1de3546-31f5-4908-bbb5-c4978f373ae9",
+            "title": "testeeeeeeeeeeee",
+            "description": "aaaaaaaaaaaaaa",
+            "price": 25,
+            "stock": [],
+            "image": "",
+            "createdAt": "2023-07-09T00:28:47.773Z"
+        },
+        "09db9266-8761-4dc6-8528-1aa532472607": {
+            "id": "09db9266-8761-4dc6-8528-1aa532472607",
+            "title": "batata",
+            "description": "23432423423",
+            "price": 1,
+            "stock": [],
+            "image": "23432",
+            "createdAt": "2023-07-09T00:36:37.515Z"
+        },
+        "91d44972-da78-475b-af18-cf3b9b0d3988": {
+            "id": "91d44972-da78-475b-af18-cf3b9b0d3988",
+            "title": "dsfdsfsd",
+            "description": "fsdfsdfsdf",
+            "price": 1,
+            "stock": [],
+            "image": "fdsfdsf",
+            "createdAt": "2023-07-09T00:37:26.258Z"
+        }
+    }
+}
