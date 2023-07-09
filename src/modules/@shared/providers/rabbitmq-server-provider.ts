@@ -27,7 +27,7 @@ export class RabbitmqServerProvider {
     }
 
     async assertExchange(exchange: string, type: string, options?: Options.AssertExchange) {
-        return this.channel!.assertExchange(exchange, type, options);
+        return this.channel?.assertExchange(exchange, type, options);
     }
 
     async assertQueue(queue: string, options?: Options.AssertQueue) {
