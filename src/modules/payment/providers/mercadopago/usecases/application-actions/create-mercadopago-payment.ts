@@ -1,6 +1,7 @@
 import { RabbitmqServerProvider } from "@/modules/@shared/providers/rabbitmq-server-provider"
 import { MercadopagoGateway } from "../../gateways"
 import { MercadopagoRepository } from "../../repositories"
+import { RabbitmqSingletonService } from "@/modules/@shared/services"
 
 
 export class CreateMercadopagoPaymentUsecase {
@@ -15,10 +16,12 @@ export class CreateMercadopagoPaymentUsecase {
 
         await MercadopagoRepository.create(mercadoPagoPayment)
 
-        const rabbitmq = new RabbitmqServerProvider(process.env.RABBITMQ_LOGIN_CREDENTIALS!)
-        rabbitmq.start()
-        await rabbitmq.assertExchange('payments', 'direct', { durable: true })
-        await rabbitmq.publishInExchange('payments', 'payment.created', JSON.stringify(mercadoPagoPayment))
+        const rabbitmq = await RabbitmqSingletonService.getInstance()
+        await rabbitmq.publishInExchange(
+            "mercadopagoPayment",
+            "mercadopagoPayment.created",
+            JSON.stringify(mercadoPagoPayment)
+        )
     }
 }
 
