@@ -23,6 +23,7 @@ const sleep = (ms: number): Promise<void> => {
 
 
 client.on("ready", async () => {
+    
     setupConsumers()
     console.log("✅ Bot is ready!")
 

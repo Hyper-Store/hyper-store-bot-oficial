@@ -8,15 +8,17 @@ import { ProductModel } from "@/modules/product/models/product.model";
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
 
 export class ApproveCartUsecase {
-    static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input) {
+    static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<boolean> {
+        console.log("ApproveCartUsecases")
         const checkout = await CheckoutRepository.findById(checkoutId);
         const product = await ProductRepository.findById(checkout?.productId!);
         const owner = client.users.cache.get(checkout?.ownerId!);
 
-        const channel = client.channels.cache.get(checkout?.id!);
-        if (!channel || !channel.isTextBased()) return;
-
-
+        // const channel = client.channels.cache.get(checkout?.id!);
+        // if (!channel || !channel.isTextBased()) return false;
+        console.log(owner, checkout?.ownerId)
+        if(!owner) return false;
+        
         owner?.send({
             ...await CheckoutProductMessagePrivate({
                 client,
@@ -35,7 +37,7 @@ export class ApproveCartUsecase {
                 checkoutId: checkout?.id
             })
         )
-
+        return true
     }
 }
 

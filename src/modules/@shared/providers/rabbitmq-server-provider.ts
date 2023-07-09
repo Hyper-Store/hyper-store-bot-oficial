@@ -42,10 +42,12 @@ export class RabbitmqServerProvider {
         return this.channel!.publish(exchange, routingKey, Buffer.from(message));
     }
 
-    async consume(queue: string, callback:  (message: Message, channel: Channel) => Promise<void>) {
+    async consume(queue: string, callback:  (message: Message, channel: Channel) => Promise<void | boolean>) {
         return await this.channel!.consume(queue, async (message) => {
-            await callback(message!, this.channel!);
-            await this.start()
+            const result = await callback(message!, this.channel!);
+            if(typeof result === "boolean"){
+                if(!result) return this.channel!.nack(message!);
+            }
             this.channel!.ack(message!);
         }, { noAck: false,  });
     }
