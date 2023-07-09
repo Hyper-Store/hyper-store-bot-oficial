@@ -1,5 +1,4 @@
 node_modules
 dist
-.env
 .rabbitmq_data
 .mongo-data
