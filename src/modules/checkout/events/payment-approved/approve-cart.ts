@@ -23,6 +23,7 @@ export class ApproveCartUsecase {
             await ProductStockRepository.delete(product?.id!, product?.stock![stockKey].id!)
         }
 
+
         owner?.send({
             ...await CheckoutProductMessagePrivate({
                 client,
@@ -32,5 +33,7 @@ export class ApproveCartUsecase {
                 checkout: checkout!
             })
         })
+
+
     }
 }
