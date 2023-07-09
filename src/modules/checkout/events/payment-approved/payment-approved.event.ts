@@ -19,7 +19,7 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
         rabbitmq.bindQueue(queueName, "checkout", "checkout.stock_reserved")
         rabbitmq.consume(queueName, async (message, channel) => {
             const msg = JSON.parse(message.content.toString())
-            await ApproveCartUsecase.execute(client, msg.checkoutId)
+            await ApproveCartUsecase.execute(client, { ...msg })
         })
     }
 }

@@ -28,7 +28,7 @@ export const CheckoutProductMessagePrivate = async (props: Props) => {
                 .addFields(
                     {
                         name: `**${emojis.box} | Produto:**`,
-                        value: `\`R$${props.product.title}\``
+                        value: `\`${props.product.title}\``
                     },
                     {
                         name: `**${emojis.buy} | Quantidade:**`,
