@@ -13,7 +13,8 @@ const setMercadopagoProviderConsumer = async () => {
         const msg = JSON.parse(message.content.toString())
 
         await SetMercadopagoProviderUsecase.execute({
-            paymentManagementId: msg.paymentManagementId
+            paymentManagementId: msg.paymentManagementId,
+            mercadopagoProviderId: msg.paymentId
         })
     })
 }

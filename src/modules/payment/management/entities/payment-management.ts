@@ -17,6 +17,11 @@ export class PaymentManagementEntity {
         return paymentManagement;
     }
 
+    setMercadopagoProvider(paymentProviderId: string): void {
+        this.props.paymentProvider = "mercadopago"
+        this.props.paymentProviderId = paymentProviderId
+    }
+
     refund(): void {
         this.props.status = "REFUNDED"
     }
