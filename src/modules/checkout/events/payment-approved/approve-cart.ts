@@ -5,6 +5,7 @@ import { CheckoutProductMessagePrivate } from "./messages/CheckoutProductMessage
 import { ProductStockModel } from "@/modules/product/models/product-stock.model";
 import { ProductStockRepository } from "@/modules/product/repositories/product-stock.repository";
 import { ProductModel } from "@/modules/product/models/product.model";
+import { RabbitmqSingletonService } from "@/modules/@shared/services";
 
 export class ApproveCartUsecase {
     static async execute(client: Client, checkoutId: string) {
@@ -16,7 +17,18 @@ export class ApproveCartUsecase {
         const channel = client.channels.cache.get(checkout?.id!);
         if (!channel || !channel.isTextBased()) return;
 
-        if (stockCount < checkout?.quantity!) return;
+        if (stockCount < checkout?.quantity!) {
+            const rabbitmq = await RabbitmqSingletonService.getInstance()
+            await rabbitmq.publishInExchange(
+                "checkout",
+                "checkout.failed_reserve_stock",
+                JSON.stringify({ 
+                    reason: "PRODUCT_OUT_OF_STOCK",
+                    checkoutId: checkout?.id
+                })
+            )
+            return
+        };
 
         const stockProduct: ProductStockModel[] = []
 

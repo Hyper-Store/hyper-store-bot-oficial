@@ -6,4 +6,5 @@ export const bindingRabbitmq = async () => {
 
     rabbitmq.assertExchange("mercadopagoPayment", "direct")
     rabbitmq.assertExchange("paymentManagement", "direct")
+    rabbitmq.assertExchange("checkout", "direct")
 }
