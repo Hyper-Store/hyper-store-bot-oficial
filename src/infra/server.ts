@@ -5,11 +5,9 @@ import fg from "fast-glob"
 
 const setupConsumers = () => {
     fg.sync("**/src/modules/**/**.consumer.ts")
-    .map(async file => { (await import(`../../${file}`))})
+        .map(async file => { (await import(`../../${file}`)) })
 
 }
-
-setupConsumers()
 
 type ActivitiesProps = {
     content: string,
@@ -25,6 +23,7 @@ const sleep = (ms: number): Promise<void> => {
 
 
 client.on("ready", async () => {
+    setupConsumers()
     console.log("✅ Bot is ready!")
 
     const activities: ActivitiesProps[] = [

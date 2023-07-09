@@ -28,11 +28,11 @@ export class ApproveCartUsecase {
         })
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()
-            await rabbitmq.publishInExchange(
-                "checkout",
-                "checkout.delivered",
-                JSON.stringify({ 
-                    checkoutId: checkout?.id
+        await rabbitmq.publishInExchange(
+            "checkout",
+            "checkout.delivered",
+            JSON.stringify({
+                checkoutId: checkout?.id
             })
         )
 
@@ -40,9 +40,9 @@ export class ApproveCartUsecase {
 }
 
 export namespace ApproveCartUsecase {
-    
-        export type Input = {
-            checkoutId: string
-            stocks: ProductStockModel[]
-        }
+
+    export type Input = {
+        checkoutId: string
+        stocks: ProductStockModel[]
+    }
 }
