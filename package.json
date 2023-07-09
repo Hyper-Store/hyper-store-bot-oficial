@@ -19,8 +19,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/amqplib": "^0.10.1",
     "@types/glob": "^8.0.0",
     "@types/mongoose": "^5.11.97",
+    "amqplib": "^0.10.3",
     "chalk": "^5.0.1",
     "concurrently": "^8.2.0",
     "discord.js": "^14.3.0",
