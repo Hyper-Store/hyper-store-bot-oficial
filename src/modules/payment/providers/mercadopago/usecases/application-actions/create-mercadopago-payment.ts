@@ -13,7 +13,7 @@ export class CreateMercadopagoPaymentUsecase {
 
         const paymentAlreadyExists = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
         if (paymentAlreadyExists) return
-
+        
         await MercadopagoRepository.create(mercadopagoPayment)
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()

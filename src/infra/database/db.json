@@ -18,109 +18,33 @@
         }
     },
     "checkouts": {
-        "1127443879155736576": {
-            "id": "1127443879155736576",
+        "1127446873108648038": {
+            "id": "1127446873108648038",
             "ownerId": "1124265861109256282",
             "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
-            "ref": "a91a4353-1ea9-4ee7-b521-3aaf82d8eea3",
+            "ref": "69aa19b3-f2f0-487e-9550-c75e940da120",
             "status": "PENDING",
             "quantity": 1,
-            "createdAt": "2023-07-09T03:39:21.481Z"
-        },
-        "1127444602278916187": {
-            "id": "1127444602278916187",
-            "ownerId": "1124265861109256282",
-            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
-            "ref": "b20b59d8-36d8-4071-a730-f8e5eadd4f2d",
-            "status": "PENDING",
-            "quantity": 1,
-            "createdAt": "2023-07-09T03:42:13.851Z"
-        },
-        "1127445345652191253": {
-            "id": "1127445345652191253",
-            "ownerId": "1124265861109256282",
-            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
-            "ref": "1e6b4d89-3d59-4ca4-8676-b2dd29c3c073",
-            "status": "PENDING",
-            "quantity": 1,
-            "createdAt": "2023-07-09T01:23:13.320Z"
-        },
-        "1127435533124128768": {
-            "id": "1127435533124128768",
-            "ownerId": "1124265861109256282",
-            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
-            "ref": "8bb66a82-cfa7-4ee0-aa1a-3a5842c3a5a7",
-            "status": "PENDING",
-            "quantity": 1,
-            "createdAt": "2023-07-09T03:06:18.544Z"
+            "createdAt": "2023-07-09T03:51:22.895Z"
         }
     },
     "payment": {
         "paymentManagement": {
-            "1127409595229409310": {
-                "checkoutId": "1127409595229409310",
-                "dateTimeCreated": "2023-07-09T02:28:45.512Z",
+            "1127446873108648038": {
+                "checkoutId": "1127446873108648038",
+                "dateTimeCreated": "2023-07-09T03:51:28.134Z",
                 "status": "PENDING",
                 "paymentProvider": "mercadopago",
-                "paymentProviderId": "60383055993"
+                "paymentProviderId": "60487609962"
             }
         },
         "mercadopago": {
-            "ref-60485506816": {
-                "paymentId": "60485506816",
+            "ref-60487609962": {
+                "paymentId": "60487609962",
                 "amount": 25,
-                "paymentManagementId": "1127409595229409310",
+                "paymentManagementId": "1127446873108648038",
                 "status": "PENDING",
-                "expirationDate": "2023-07-09T02:31:47.174Z"
-            },
-            "ref-60485590546": {
-                "paymentId": "60485590546",
-                "amount": 25,
-                "paymentManagementId": "1127409595229409310",
-                "status": "PENDING",
-                "expirationDate": "2023-07-09T02:33:56.818Z"
-            },
-            "ref-60485591148": {
-                "paymentId": "60485591148",
-                "amount": 25,
-                "paymentManagementId": "1127409595229409310",
-                "status": "PENDING",
-                "expirationDate": "2023-07-09T02:34:59.104Z"
-            },
-            "ref-60383100309": {
-                "paymentId": "60383100309",
-                "amount": 25,
-                "paymentManagementId": "1127409595229409310",
-                "status": "PENDING",
-                "expirationDate": "2023-07-09T02:37:07.905Z"
-            },
-            "ref-60383055441": {
-                "paymentId": "60383055441",
-                "amount": 25,
-                "paymentManagementId": "1127409595229409310",
-                "status": "PENDING",
-                "expirationDate": "2023-07-09T02:37:41.717Z"
-            },
-            "ref-60383100681": {
-                "paymentId": "60383100681",
-                "amount": 25,
-                "paymentManagementId": "1127409595229409310",
-                "status": "PENDING",
-                "expirationDate": "2023-07-09T02:37:51.033Z"
-            },
-            "ref-60485710434": {
-                "paymentId": "60485710434",
-                "amount": 25,
-                "paymentManagementId": "1127409595229409310",
-                "status": "PENDING",
-                "expirationDate": "2023-07-09T02:38:37.413Z"
-            },
-            "ref-60383055993": {
-                "paymentId": "60383055993",
-                "amount": 25,
-                "paymentManagementId": "1127409595229409310",
-                "status": "PENDING",
-                "expirationDate": "2023-07-09T02:38:45.515Z"
+                "expirationDate": "2023-07-09T04:01:28.136Z"
             }
         }
     }

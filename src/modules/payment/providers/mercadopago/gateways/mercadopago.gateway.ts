@@ -41,6 +41,8 @@ export class MercadopagoGateway {
         } catch (err) {
             return null
         }
-
     }
+
+    
+
 }
