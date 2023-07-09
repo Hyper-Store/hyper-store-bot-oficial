@@ -47,6 +47,6 @@ export class RabbitmqServerProvider {
             await callback(message!, this.channel!);
             await this.start()
             this.channel!.ack(message!);
-        }, { noAck: true });
+        }, { noAck: false,  });
     }
 }
