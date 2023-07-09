@@ -32,8 +32,6 @@ const client = new Client({
     partials: [Partials.Channel, Partials.GuildMember, Partials.User, Partials.ThreadMember]
 })
 
-client.guilds.cache.get('1126875321682104341')?.members.cache.get('')
-
 client.commands = new Collection()
 client.setMaxListeners(0)
 
