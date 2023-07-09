@@ -7,7 +7,7 @@ export class ApprovePaymentUsecase {
     static async execute({ paymentManagementId }: ApprovePaymentUsecase.Input): Promise<void> {
 
         const paymentManagementEntity = await PaymentManagementRepository.findById(paymentManagementId)
-        if(!paymentManagementEntity) return
+        if (!paymentManagementEntity) return
 
         paymentManagementEntity.approve()
 
@@ -17,7 +17,7 @@ export class ApprovePaymentUsecase {
         await rabbitmq.publishInExchange(
             "paymentManagement",
             "paymentManagement.approved",
-            JSON.stringify(rabbitmq)
+            JSON.stringify({ ...paymentManagementEntity.toJSON() })
         )
     }
 }
