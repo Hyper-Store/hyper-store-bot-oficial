@@ -20,6 +20,7 @@ const client = new Client({
         Discord.GatewayIntentBits.GuildMessages,
         Discord.IntentsBitField.Flags.GuildMessages,
         Discord.IntentsBitField.Flags.MessageContent,
+        Discord.IntentsBitField.Flags.GuildMembers
     ],
     partials: [Partials.Channel]
 })
