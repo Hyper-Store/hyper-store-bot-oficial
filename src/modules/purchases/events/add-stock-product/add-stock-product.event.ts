@@ -3,12 +3,13 @@ import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-pe
 import { Interaction, Message } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { Database } from "@/infra/app/setup-database";
-import { ProductType } from "../../@types/Product.type";
 import { ProductNotExistError } from "../../@shared/errors/product-not-exist";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { randomUUID } from "crypto";
 import { UpdateMessageProduct } from "../../@shared/workers/update-message-product";
+import { ProductRepository } from "../../repositories/product.repository";
+import { ProductStockRepository } from "../../repositories/product-stock.repository";
 
 
 class AddStockProductPurchasesEvent extends BaseEvent {
@@ -27,7 +28,7 @@ class AddStockProductPurchasesEvent extends BaseEvent {
         }
 
         const product_id = interaction.values[0];
-        const product = await new Database().get(`purchases.products.${product_id}`) as ProductType
+        const product = await ProductRepository.findById(product_id)
 
         if (!product) {
             interaction.reply({ ...ProductNotExistError })
@@ -59,7 +60,7 @@ class AddStockProductPurchasesEvent extends BaseEvent {
 
         collector?.on('end', (message) => {
             stock_collector.forEach(async (item) => {
-                await new Database().push(`purchases.products.${product_id}.stock`, {
+                await ProductStockRepository.add(product_id, {
                     id: randomUUID(),
                     content: item
                 })

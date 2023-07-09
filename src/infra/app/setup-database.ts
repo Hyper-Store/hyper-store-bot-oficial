@@ -12,7 +12,6 @@ export class Database {
     }
 
     public set(key: string, value: Object) {
-        console.log(key)
         return this.db.set(key, value);
     }
 
