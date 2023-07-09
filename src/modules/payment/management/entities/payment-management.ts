@@ -5,7 +5,7 @@ export class PaymentManagementEntity {
     }
 
     hasPaymentProvider(): boolean {
-        console.log( this.props.paymentProvider, this.props.paymentProviderId)
+        console.log(this.props.paymentProvider, this.props.paymentProviderId)
         return !!this.props.paymentProvider && !!this.props.paymentProviderId;
     }
 
@@ -26,13 +26,17 @@ export class PaymentManagementEntity {
     refund(): void {
         this.props.status = "REFUNDED"
     }
-    
+
     cancel(): void {
         this.props.status = "CANCELLED"
     }
 
     approve(): void {
         this.props.status = "APPROVED"
+    }
+
+    get paymentProviderId(): string | undefined {
+        return this.props.paymentProviderId
     }
 
     toJSON(): PaymentManagementEntity.JSON {
