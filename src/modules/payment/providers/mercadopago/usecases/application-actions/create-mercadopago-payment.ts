@@ -8,19 +8,19 @@ export class CreateMercadopagoPaymentUsecase {
 
     static async execute({ mercadopagoPaymentId }: CreateMercadopagoPaymentUsecase.Input) {
 
-        const mercadoPagoPayment = await MercadopagoGateway.findById(mercadopagoPaymentId)
-        if (!mercadoPagoPayment) return
+        const mercadopagoPayment = await MercadopagoGateway.findById(mercadopagoPaymentId)
+        if (!mercadopagoPayment) return
 
         const paymentAlreadyExists = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
         if (paymentAlreadyExists) return
 
-        await MercadopagoRepository.create(mercadoPagoPayment)
+        await MercadopagoRepository.create(mercadopagoPayment)
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         await rabbitmq.publishInExchange(
             "mercadopagoPayment",
             "mercadopagoPayment.created",
-            JSON.stringify(mercadoPagoPayment)
+            JSON.stringify(mercadopagoPayment)
         )
     }
 }
