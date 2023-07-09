@@ -21,9 +21,9 @@ const client = new Client({
         Discord.GatewayIntentBits.GuildMembers,
         Discord.IntentsBitField.Flags.GuildMessages,
         Discord.IntentsBitField.Flags.MessageContent,
-        Discord.IntentsBitField.Flags.GuildMembers
+        Discord.IntentsBitField.Flags.GuildMembers,
     ],
-    partials: [Partials.Channel]
+    partials: [Partials.Channel, Partials.GuildMember, Partials.User, Partials.ThreadMember]
 })
 
 
