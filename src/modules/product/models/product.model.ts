@@ -6,7 +6,7 @@ export type ProductModel = {
     description: string,
     image?: string
     price: number,
-    stock: ProductStockModel[],
+    stock?: ProductStockModel[],
     createdAt?: Date,
     channelId?: string,
     messageId?: string

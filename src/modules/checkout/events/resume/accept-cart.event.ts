@@ -1,10 +1,8 @@
 import { BaseEvent } from "@/modules/@shared/domain";
-import { Interaction, Message } from "discord.js";
+import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { Database } from "@/infra/app/setup-database";
-import { ProductType } from "@/modules/purchases/@types/Product.type";
-import { CheckoutType } from "../@shared/_types/Checkout.type";
 import { ResumeMessage } from "./@shared/_messages/Resume.message";
+import { CheckoutRepository } from "../../repositories/Checkout.repository";
 
 class StartCheckoutPurchasesEvent extends BaseEvent {
     constructor() {
@@ -17,10 +15,9 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== 'accept-cart') return;
 
-        const checkout = await new Database().get(`purchases.checkouts.${interaction.channelId}`) as CheckoutType;
-        const product: ProductType | undefined = await new Database().get(`purchases.products.${checkout.productId}`) as ProductType;
+        const checkout = await CheckoutRepository.findById(interaction.channelId);
 
-        if (interaction.user.id !== checkout.ownerId) return;
+        if (interaction.user.id !== checkout?.ownerId) return;
 
         interaction.update({ ...await ResumeMessage(interaction) })
     }

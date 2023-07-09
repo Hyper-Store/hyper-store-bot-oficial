@@ -6,6 +6,7 @@ import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
+import { ProductRepository } from "../../repositories/product.repository";
 
 class AddStockProductCommand extends BaseSlashCommand {
 
@@ -23,9 +24,9 @@ class AddStockProductCommand extends BaseSlashCommand {
             return;
         }
 
-        const products: any = await new Database().get(`purchases.products`);
+        const products = await ProductRepository.getAll();
 
-        if (!products) {
+        if (products.length < 1) {
             interaction.reply({
                 embeds: [
                     new Discord.EmbedBuilder()
@@ -38,11 +39,11 @@ class AddStockProductCommand extends BaseSlashCommand {
 
         const list_product: any = [];
 
-        Object.keys(products).forEach((product) => {
+        Object.keys(products).forEach((product: any) => {
             list_product.push({
                 emoji: "📦",
-                label: `${products[product].title} - ID: (${products[product].id.slice(0, 8)})`,
-                description: `💸 R$${products[product].price.toFixed(2)} - 🎁 ${products[product].stock.length} Estoque`,
+                label: `${products[product].title} - ID: (${products[product].id?.slice(0, 8)})`,
+                description: `💸 R$${products[product].price.toFixed(2)} - 🎁 ${products[product].stock?.length} Estoque`,
                 value: products[product].id,
             })
         })

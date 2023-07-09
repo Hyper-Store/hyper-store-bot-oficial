@@ -1,15 +1,40 @@
 {
     "products": {
-        "7f358338-b524-4c99-b25f-5168913308cd": {
-            "title": "teste",
-            "description": "testetete",
+        "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca": {
+            "title": "Teste",
+            "description": "testete",
             "price": 25,
-            "stock": [],
+            "stock": [
+                {
+                    "id": "e545fd26-3f6f-4571-83e4-48bda8ace064",
+                    "content": "a"
+                }
+            ],
             "image": "",
-            "id": "7f358338-b524-4c99-b25f-5168913308cd",
-            "createdAt": "2023-07-09T00:15:15.472Z",
+            "id": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "createdAt": "2023-07-09T01:06:29.499Z",
             "channelId": "1126886459484422205",
-            "messageId": "1127392533178224731"
+            "messageId": "1127405475923775488"
+        }
+    },
+    "checkouts": {
+        "1127407486719238164": {
+            "id": "1127407486719238164",
+            "ownerId": "1124265861109256282",
+            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "ref": "056b8527-62f6-434c-90a2-1dbbcab794a5",
+            "status": "PENDING",
+            "quantity": 1,
+            "createdAt": "2023-07-09T01:14:48.369Z"
+        }
+    },
+    "payment": {
+        "paymentManagement": {
+            "1127407486719238164": {
+                "checkoutId": "1127407486719238164",
+                "dateTimeCreated": "2023-07-09T01:18:00.771Z",
+                "status": "PENDING"
+            }
         }
     }
 }

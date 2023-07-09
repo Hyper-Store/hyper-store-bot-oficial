@@ -45,7 +45,6 @@ class ModalSubmitedAddProductEvent extends BaseEvent {
             title,
             description,
             price,
-            stock: [],
             image: image || ""
         })
 

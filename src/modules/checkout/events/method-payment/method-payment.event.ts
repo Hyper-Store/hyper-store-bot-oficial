@@ -2,11 +2,11 @@ import { BaseEvent } from "@/modules/@shared/domain";
 import { Interaction, Message } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { Database } from "@/infra/app/setup-database";
-import { ProductType } from "@/modules/purchases/@types/Product.type";
-import { CheckoutType } from "../@shared/_types/Checkout.type";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { DatabaseConfig } from "@/infra/app/setup-config";
+import { CheckoutRepository } from "../../repositories/Checkout.repository";
+import { ProductRepository } from "@/modules/product/repositories/product.repository";
 
 class MethodPaymentCheckoutPurchasesPurchasesEvent extends BaseEvent {
     constructor() {
@@ -19,10 +19,10 @@ class MethodPaymentCheckoutPurchasesPurchasesEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== 'go-method-payment') return;
 
-        const checkout = await new Database().get(`purchases.checkouts.${interaction.channelId}`) as CheckoutType;
-        const product: ProductType | undefined = await new Database().get(`purchases.products.${checkout.productId}`) as ProductType;
+        const checkout = await CheckoutRepository.findById(interaction.channelId);
+        const product = ProductRepository.findById(checkout?.productId!);
 
-        if (interaction.user.id !== checkout.ownerId) return;
+        if (interaction.user.id !== checkout?.ownerId) return;
 
         interaction.update({
             embeds: [

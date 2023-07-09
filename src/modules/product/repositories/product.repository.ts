@@ -5,6 +5,7 @@ import { randomUUID } from "crypto"
 export class ProductRepository {
     static async create(product: ProductModel): Promise<ProductModel> {
         product.id = randomUUID()
+        product.stock = []
         product.createdAt = new Date()
 
         const result = await new Database().set(`products.${product.id}`, product)

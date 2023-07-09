@@ -2,12 +2,12 @@ import { BaseEvent } from "@/modules/@shared/domain";
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { Database } from "@/infra/app/setup-database";
-import { ProductType } from "@/modules/purchases/@types/Product.type";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
-import { CheckoutType } from "../../@shared/_types/Checkout.type";
 import { CreatePaymentManagementUsecase } from "@/modules/payment/management/usecases";
 import { GenerateMercadopagoPaymentUsecase } from "@/modules/payment/providers/mercadopago/usecases/mercadopago-actions";
+import { CheckoutRepository } from "@/modules/checkout/repositories/Checkout.repository";
+import { ProductRepository } from "@/modules/product/repositories/product.repository";
 
 class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
     constructor() {
@@ -21,17 +21,17 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
         if (interaction.customId !== 'method-payment') return;
         if (interaction.values[0] !== "mercadopago") return;
 
-        const checkout = await new Database().get(`purchases.checkouts.${interaction.channelId}`) as CheckoutType;
-        const product: ProductType | undefined = await new Database().get(`purchases.products.${checkout.productId}`) as ProductType;
+        const checkout = await CheckoutRepository.findById(interaction.channelId)
+        const product = await ProductRepository.findById(checkout?.productId!);
 
-        if (interaction.user.id !== checkout.ownerId) return;
+        if (interaction.user.id !== checkout?.ownerId) return;
 
         new CreatePaymentManagementUsecase().execute({ checkoutId: checkout.id });
 
         const payment_data = await new GenerateMercadopagoPaymentUsecase().execute({
             product: {
-                title: product.title,
-                price: product.price * checkout.quantity
+                title: product?.title!,
+                price: product?.price! * checkout?.quantity!
             },
             customer: {
                 email: 'contato@gmail.com'

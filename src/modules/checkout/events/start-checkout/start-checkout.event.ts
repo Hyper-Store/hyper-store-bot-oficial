@@ -1,19 +1,17 @@
 import { BaseEvent } from "@/modules/@shared/domain";
-import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
-import { Interaction, Message } from "discord.js";
+import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { Database } from "@/infra/app/setup-database";
-import { ProductNotExist } from "../@shared/_error/ProductNotExist.error";
-import { ProductType } from "@/modules/purchases/@types/Product.type";
-import { NoStockProduct } from "../@shared/_error/NoStockProduct.error";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { DatabaseConfig } from "@/infra/app/setup-config";
-import { CheckoutType } from "../@shared/_types/Checkout.type";
 import { randomUUID } from "crypto";
+import { ProductRepository } from "@/modules/product/repositories/product.repository";
+import { ProductNotExist } from "../../@shared/_error/ProductNotExist.error";
+import { NoStockProduct } from "../../@shared/_error/NoStockProduct.error";
+import { CheckoutRepository } from "../../repositories/Checkout.repository";
 
 
-class StartCheckoutPurchasesEvent extends BaseEvent {
+class StartCheckoutEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -26,14 +24,14 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
 
         const [, product_id] = interaction.customId.split("_");
 
-        const product: ProductType | undefined = await new Database().get(`purchases.products.${product_id}`) as ProductType;
+        const product = await ProductRepository.findById(product_id);
 
         if (!product) {
             interaction.reply({ ...ProductNotExist(interaction) })
             return;
         }
 
-        if (product.stock.length < 1) {
+        if ((product.stock ?? []).length < 1) {
             interaction.reply({ ...await NoStockProduct(interaction) })
             return;
         }
@@ -123,14 +121,11 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
             ]
         })
 
-        await new Database().set(`purchases.checkouts.${channel_created?.id}`, {
-            id: randomUUID(),
+        await CheckoutRepository.create({
+            id: channel_created?.id!,
             ownerId: interaction.user.id,
-            productId: product.id,
-            quantity: 1,
-            status: "pending",
-            createdAt: new Date(),
-        } as CheckoutType)
+            productId: product.id!
+        })
 
         interaction.editReply({
             embeds: [
@@ -155,6 +150,6 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new StartCheckoutPurchasesEvent()
+    const buttonClickedEvent = new StartCheckoutEvent()
     buttonClickedEvent.setupConsumer(client)
 }

@@ -1,17 +1,12 @@
 import { BaseEvent } from "@/modules/@shared/domain";
-import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
-import { Interaction, Message } from "discord.js";
+import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { Database } from "@/infra/app/setup-database";
-import { ProductNotExist } from "../@shared/_error/ProductNotExist.error";
-import { ProductType } from "@/modules/purchases/@types/Product.type";
-import { NoStockProduct } from "../@shared/_error/NoStockProduct.error";
 import { DatabaseConfig } from "@/infra/app/setup-config";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 
 
-class AllowNotifyPurchasesEvent extends BaseEvent {
+class AllowNotifyEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -51,6 +46,6 @@ class AllowNotifyPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new AllowNotifyPurchasesEvent()
+    const buttonClickedEvent = new AllowNotifyEvent()
     buttonClickedEvent.setupConsumer(client)
 }

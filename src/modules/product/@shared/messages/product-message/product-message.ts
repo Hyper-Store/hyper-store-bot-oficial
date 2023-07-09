@@ -12,7 +12,7 @@ export const ProductMessage = async (interaction: Interaction, product: ProductM
     const embed = new Discord.EmbedBuilder()
         .setColor(colors.invisible!)
         .setTitle(`${interaction.guild?.name} | Produto`)
-        .setDescription(`\`\`\`${product.description}\`\`\`\n**${emojis.info} | Nome:** \`${product.title}\`\n**${emojis.money} | Preço:** \`R$${product.price.toFixed(2)}\`\n**${emojis.box} | Estoque:** \`${product.stock.length}\``)
+        .setDescription(`\`\`\`${product.description}\`\`\`\n**${emojis.info} | Nome:** \`${product.title}\`\n**${emojis.money} | Preço:** \`R$${product.price.toFixed(2)}\`\n**${emojis.box} | Estoque:** \`${product.stock?.length}\``)
         .setImage(product_image)
         .setFooter({ text: 'Para comprar clique no botão comprar' })
 
