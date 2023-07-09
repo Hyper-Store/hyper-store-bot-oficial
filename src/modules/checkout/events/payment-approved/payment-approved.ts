@@ -13,16 +13,7 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
     }
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
-        const rabbitmq = await RabbitmqSingletonService.getInstance()
-
-        const queueName = "approveCheckoutQueue"
-        rabbitmq.assertQueue(queueName, { durable: true })
-        rabbitmq.bindQueue(queueName, "paymentManagement", "paymentManagement.approved")
-        rabbitmq.consume(queueName, async (message, channel) => {
-            const msg = JSON.parse(message.content.toString())
-            channel.ack(message)
-            await ApproveCartUsecase.execute(client, msg.checkoutId);
-        })
+        
     }
 }
 
