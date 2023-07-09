@@ -8,7 +8,7 @@ import Discord, { Client } from 'discord.js';
 
 type Props = {
     client: Client,
-    user: Discord.User,
+    user: Discord.GuildMember,
     product: ProductModel,
     checkout: CheckoutModel,
     stock: ProductStockModel[]
@@ -23,7 +23,7 @@ export const CheckoutProductMessagePrivate = async (props: Props) => {
         embeds: [
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
-                .setTitle(`${props.user.username} | Compra aprovada`)
+                .setTitle(`${props.user.user.username} | Compra aprovada`)
                 .setDescription(`> ${emojis.notifiy} Caso queira você pode avaliar o produto ou a loja, deixe sua avaliação em: ${channel_avaibles}`)
                 .addFields(
                     {

@@ -12,13 +12,11 @@ export class ApproveCartUsecase {
         console.log("ApproveCartUsecases")
         const checkout = await CheckoutRepository.findById(checkoutId);
         const product = await ProductRepository.findById(checkout?.productId!);
-        const owner = client.users.cache.get(checkout?.ownerId!);
+        const guild = await client.guilds.cache.get(process.env.GUILD_ID!)
+        const owner = guild?.members.cache.get(checkout?.ownerId!);
 
-        // const channel = client.channels.cache.get(checkout?.id!);
-        // if (!channel || !channel.isTextBased()) return false;
-        console.log(owner, checkout?.ownerId)
-        if(!owner) return false;
-        
+        if (!owner) return false;
+
         owner?.send({
             ...await CheckoutProductMessagePrivate({
                 client,
