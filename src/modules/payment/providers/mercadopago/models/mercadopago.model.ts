@@ -1,7 +1,7 @@
 
 export type MercadopagoModel = {
     paymentId: string
-    paymentProviderId: string
+    paymentManagementId: string
     amount: number
     expirationDate: Date
     status: "PENDING" | "CANCELLED" | "REFUNDED" | "APPROVED"

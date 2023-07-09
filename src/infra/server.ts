@@ -1,6 +1,15 @@
 import client from "./app/app";
 import Discord from 'discord.js'
 import "dotenv/config"
+import fg from "fast-glob"
+
+const setupConsumers = () => {
+    fg.sync("**/src/modules/**/**.consumer.ts")
+    .map(async file => { (await import(`../../${file}`))})
+
+}
+
+setupConsumers()
 
 type ActivitiesProps = {
     content: string,
@@ -11,6 +20,9 @@ type ActivitiesProps = {
 const sleep = (ms: number): Promise<void> => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
+
+
+
 
 client.on("ready", async () => {
     console.log("✅ Bot is ready!")

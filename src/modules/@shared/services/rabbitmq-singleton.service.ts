@@ -1,5 +1,5 @@
 import { RabbitmqServerProvider } from "../providers"
-
+import "dotenv/config"
 
 export class RabbitmqSingletonService {
 

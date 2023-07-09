@@ -26,14 +26,32 @@
             "status": "PENDING",
             "quantity": 1,
             "createdAt": "2023-07-09T01:14:48.369Z"
+        },
+        "1127409595229409310": {
+            "id": "1127409595229409310",
+            "ownerId": "1035695838707585044",
+            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "ref": "9208081d-126a-454e-8590-f46d8625b7b3",
+            "status": "PENDING",
+            "quantity": 1,
+            "createdAt": "2023-07-09T01:23:13.320Z"
         }
     },
     "payment": {
         "paymentManagement": {
-            "1127407486719238164": {
-                "checkoutId": "1127407486719238164",
-                "dateTimeCreated": "2023-07-09T01:18:00.771Z",
+            "1127409595229409310": {
+                "checkoutId": "1127409595229409310",
+                "dateTimeCreated": "2023-07-09T01:55:37.976Z",
                 "status": "PENDING"
+            }
+        },
+        "mercadopago": {
+            "ref-60484520446": {
+                "paymentId": "60484520446",
+                "amount": 25,
+                "paymentManagementId": "1127409595229409310",
+                "status": "PENDING",
+                "expirationDate": "2023-07-09T02:05:37.978Z"
             }
         }
     }

@@ -16,6 +16,7 @@ export class CreateMercadopagoPaymentUsecase {
 
         await MercadopagoRepository.create(mercadoPagoPayment)
 
+        
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         await rabbitmq.publishInExchange(
             "mercadopagoPayment",

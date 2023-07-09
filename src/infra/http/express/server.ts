@@ -1,13 +1,16 @@
 import { MercadopagoRedirectorUsecase } from "@/modules/payment/providers/mercadopago/usecases/application-actions"
 import express from "express"
 import "dotenv/config"
+import { bindingRabbitmq } from "./rabbitmq-binding"
+
+
+bindingRabbitmq()
 
 const app = express()
 app.use(express.json())
 
 app.post("/payment/mercadopago/callback", async (req, res) => {
 
-    console.log(req.body)
     await MercadopagoRedirectorUsecase.execute({
         action: req.body.action,
         paymentId: req.body?.data?.id ?? ""

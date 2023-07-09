@@ -34,7 +34,7 @@ export class MercadopagoGateway {
             return {
                 paymentId: `${payment.body.id}`,
                 amount: payment.body.metadata.amount,
-                paymentProviderId: payment.body.metadata.payment_provider_id,
+                paymentManagementId: payment.body.metadata.payment_management_id,
                 status: getStatus(payment.body.status),
                 expirationDate,
             }
