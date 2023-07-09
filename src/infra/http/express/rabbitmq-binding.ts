@@ -5,4 +5,5 @@ export const bindingRabbitmq = async () => {
     const rabbitmq = await RabbitmqSingletonService.getInstance()
 
     rabbitmq.assertExchange("mercadopagoPayment", "direct")
+    rabbitmq.assertExchange("paymentManagement", "direct")
 }
