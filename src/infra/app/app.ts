@@ -21,11 +21,18 @@ const client = new Client({
         Discord.GatewayIntentBits.GuildMembers,
         Discord.IntentsBitField.Flags.GuildMessages,
         Discord.IntentsBitField.Flags.MessageContent,
-        Discord.IntentsBitField.Flags.GuildMembers
+        Discord.IntentsBitField.Flags.GuildMembers,
+        Discord.GatewayIntentBits.Guilds,
+        Discord.GatewayIntentBits.GuildMessages,
+        Discord.GatewayIntentBits.MessageContent,
+        Discord.GatewayIntentBits.GuildMembers,
+        Discord.GatewayIntentBits.GuildMessageReactions,
+        '32767'
     ],
     partials: [Partials.Channel, Partials.GuildMember, Partials.User, Partials.ThreadMember]
 })
 
+client.guilds.cache.get('1126875321682104341')?.members.cache.get('')
 
 client.commands = new Collection()
 client.setMaxListeners(0)
