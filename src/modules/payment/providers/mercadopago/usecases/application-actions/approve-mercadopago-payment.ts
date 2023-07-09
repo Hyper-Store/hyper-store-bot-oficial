@@ -1,4 +1,5 @@
-import { EventEmitterSingleton } from "@/modules/@shared/providers"
+
+
 import { MercadopagoRepository } from "../../repositories"
 import { RabbitmqSingletonService } from "@/modules/@shared/services"
 

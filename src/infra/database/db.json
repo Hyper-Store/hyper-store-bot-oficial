@@ -35,6 +35,15 @@
             "status": "PENDING",
             "quantity": 1,
             "createdAt": "2023-07-09T01:23:13.320Z"
+        },
+        "1127435533124128768": {
+            "id": "1127435533124128768",
+            "ownerId": "1124265861109256282",
+            "productId": "8fb6f5bc-fd3a-4e79-9ac4-10d75fb934ca",
+            "ref": "8bb66a82-cfa7-4ee0-aa1a-3a5842c3a5a7",
+            "status": "PENDING",
+            "quantity": 1,
+            "createdAt": "2023-07-09T03:06:18.544Z"
         }
     },
     "payment": {
@@ -45,6 +54,20 @@
                 "status": "PENDING",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "60383055993"
+            },
+            "1127407486719238164": {
+                "checkoutId": "1127407486719238164",
+                "dateTimeCreated": "2023-07-09T03:05:38.515Z",
+                "status": "PENDING",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60486511220"
+            },
+            "1127435533124128768": {
+                "checkoutId": "1127435533124128768",
+                "dateTimeCreated": "2023-07-09T03:06:59.980Z",
+                "status": "PENDING",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60384243357"
             }
         },
         "mercadopago": {
@@ -103,6 +126,34 @@
                 "paymentManagementId": "1127409595229409310",
                 "status": "PENDING",
                 "expirationDate": "2023-07-09T02:38:45.515Z"
+            },
+            "ref-60486485274": {
+                "paymentId": "60486485274",
+                "amount": 25,
+                "paymentManagementId": "1127407486719238164",
+                "status": "PENDING",
+                "expirationDate": "2023-07-09T03:14:43.615Z"
+            },
+            "ref-60486511220": {
+                "paymentId": "60486511220",
+                "amount": 25,
+                "paymentManagementId": "1127407486719238164",
+                "status": "PENDING",
+                "expirationDate": "2023-07-09T03:15:38.516Z"
+            },
+            "ref-60384243165": {
+                "paymentId": "60384243165",
+                "amount": 25,
+                "paymentManagementId": "1127435533124128768",
+                "status": "PENDING",
+                "expirationDate": "2023-07-09T03:16:26.398Z"
+            },
+            "ref-60384243357": {
+                "paymentId": "60384243357",
+                "amount": 25,
+                "paymentManagementId": "1127435533124128768",
+                "status": "PENDING",
+                "expirationDate": "2023-07-09T03:16:59.982Z"
             }
         }
     }
