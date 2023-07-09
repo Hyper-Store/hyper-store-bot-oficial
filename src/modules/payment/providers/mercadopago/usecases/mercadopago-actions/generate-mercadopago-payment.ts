@@ -12,9 +12,6 @@ export class GenerateMercadopagoPaymentUsecase {
 
     async execute({ product, customer, paymentManagementId }: GenerateMercadopagoPaymentUsecase.Input) {
 
-        const paymentManagementEntity = await PaymentManagementRepository.findById(paymentManagementId)
-        if (paymentManagementEntity?.hasPaymentProvider()) return
-
         const totalPrice = product.price
         const minutes = 10  // 1 hour
 

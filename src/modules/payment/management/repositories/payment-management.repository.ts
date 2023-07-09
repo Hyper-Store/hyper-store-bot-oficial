@@ -29,9 +29,9 @@ export class PaymentManagementRepository {
             `payment.paymentManagement.${checkoutId}`
         ) as PaymentManagementEntity.Props
         if (!paymentManagement) return null
-
-        const paymentManagementEntity =  PaymentManagementEntity.create({
-            checkoutId: paymentManagement.checkoutId,
+        console.log(paymentManagement)
+        const paymentManagementEntity = PaymentManagementEntity.create({
+            ...paymentManagement
         })
         if(paymentManagement.status === "APPROVED") paymentManagementEntity.approve()
         if(paymentManagement.status === "CANCELLED") paymentManagementEntity.cancel()
