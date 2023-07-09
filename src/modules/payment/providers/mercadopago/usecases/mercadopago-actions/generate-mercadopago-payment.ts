@@ -1,5 +1,6 @@
 import * as mercadopago from 'mercadopago';
 import "dotenv/config"
+import { PaymentManagementRepository } from '@/modules/payment/management/repositories';
 
 mercadopago.configure({
     access_token: process.env.MERCADOPAGO_ACCESS_TOKEN!,
@@ -11,8 +12,10 @@ export class GenerateMercadopagoPaymentUsecase {
 
     async execute({ product, customer, paymentManagementId }: GenerateMercadopagoPaymentUsecase.Input) {
 
-        const totalPrice = product.price
+        const paymentManagementEntity = await PaymentManagementRepository.findById(paymentManagementId)
+        if (paymentManagementEntity?.hasPaymentProvider()) return
 
+        const totalPrice = product.price
         const minutes = 10  // 1 hour
 
         const expirationDate = new Date()

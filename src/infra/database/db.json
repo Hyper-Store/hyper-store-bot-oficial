@@ -41,10 +41,10 @@
         "paymentManagement": {
             "1127409595229409310": {
                 "checkoutId": "1127409595229409310",
-                "dateTimeCreated": "2023-07-09T02:05:47.618Z",
+                "dateTimeCreated": "2023-07-09T02:15:02.332Z",
                 "status": "PENDING",
                 "paymentProvider": "mercadopago",
-                "paymentProviderId": "60484895356"
+                "paymentProviderId": "60382726909"
             }
         },
         "mercadopago": {
@@ -54,6 +54,13 @@
                 "paymentManagementId": "1127409595229409310",
                 "status": "PENDING",
                 "expirationDate": "2023-07-09T02:15:45.877Z"
+            },
+            "ref-60382726909": {
+                "paymentId": "60382726909",
+                "amount": 25,
+                "paymentManagementId": "1127409595229409310",
+                "status": "PENDING",
+                "expirationDate": "2023-07-09T02:25:00.239Z"
             }
         }
     }
