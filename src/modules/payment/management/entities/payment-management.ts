@@ -35,6 +35,10 @@ export class PaymentManagementEntity {
         this.props.status = "APPROVED"
     }
 
+    isApproved(): boolean {
+        return this.props.status === "APPROVED"
+    }
+
     get paymentProviderId(): string | undefined {
         return this.props.paymentProviderId
     }

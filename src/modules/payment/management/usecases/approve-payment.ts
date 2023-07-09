@@ -9,6 +9,8 @@ export class ApprovePaymentUsecase {
         const paymentManagementEntity = await PaymentManagementRepository.findById(paymentManagementId)
         if (!paymentManagementEntity) return
 
+        if(paymentManagementEntity.isApproved()) return
+
         paymentManagementEntity.approve()
 
         await PaymentManagementRepository.update(paymentManagementEntity)
