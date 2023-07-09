@@ -16,7 +16,7 @@ export class ApproveCartUsecase {
 
         // const channel = client.channels.cache.get(checkout?.id!);
         // if (!channel || !channel.isTextBased()) return false;
-        console.log(owner, checkout?.ownerId)
+        console.log(owner, checkout?.ownerId, client.users.cache)
         if(!owner) return false;
         
         owner?.send({
