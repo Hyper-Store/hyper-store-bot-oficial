@@ -1,5 +1,6 @@
 import { EventEmitterSingleton } from "@/modules/@shared/providers"
 import { MercadopagoRepository } from "../../repositories"
+import { RabbitmqSingletonService } from "@/modules/@shared/services"
 
 
 export class RefundMercadopagoPaymentUsecase {
@@ -14,8 +15,12 @@ export class RefundMercadopagoPaymentUsecase {
 
         await MercadopagoRepository.update(mercadopagoPayment)
 
-        const eventEmitter = EventEmitterSingleton.getInstance()
-        eventEmitter.emit("mercadopago.paymentRefundedEvent", mercadopagoPayment)
+        const rabbitmq = await RabbitmqSingletonService.getInstance()
+        await rabbitmq.publishInExchange(
+            "mercadopagoPayment",
+            "mercadopagoPayment.refunded",
+            JSON.stringify(mercadopagoPayment)
+        )
     }
 }
 
