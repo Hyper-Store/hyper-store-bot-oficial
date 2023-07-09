@@ -21,7 +21,7 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
             const msg = JSON.parse(message.content.toString())
             return await ApproveCartUsecase.execute(client, { ...msg })
         })
-
+        
     }
 }
 
