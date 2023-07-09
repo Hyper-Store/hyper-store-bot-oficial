@@ -12,7 +12,7 @@ import { ProductRepository } from "../../repositories/product.repository";
 import { ProductStockRepository } from "../../repositories/product-stock.repository";
 
 
-class AddStockProductPurchasesEvent extends BaseEvent {
+class AddStockProductEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -66,7 +66,7 @@ class AddStockProductPurchasesEvent extends BaseEvent {
                 })
             })
 
-            UpdateMessageProduct(interaction, product.id);
+            UpdateMessageProduct(interaction, product.id!);
 
             interaction.editReply({
                 embeds: [
@@ -84,6 +84,6 @@ class AddStockProductPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new AddStockProductPurchasesEvent()
+    const buttonClickedEvent = new AddStockProductEvent()
     buttonClickedEvent.setupConsumer(client)
 }

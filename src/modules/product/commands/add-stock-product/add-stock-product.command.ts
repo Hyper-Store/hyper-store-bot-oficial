@@ -6,14 +6,13 @@ import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
-import { ProductType } from "../../@types/Product.type";
 
-class SetProductPurchasesCommand extends BaseSlashCommand {
+class AddStockProductCommand extends BaseSlashCommand {
 
     constructor() {
         super({
-            name: "setproduct",
-            description: "Setar algum produto a este canal",
+            name: "addstockproduct",
+            description: "Adicionar estoque a algum produto",
             type: Discord.ApplicationCommandType.ChatInput
         })
     }
@@ -37,7 +36,7 @@ class SetProductPurchasesCommand extends BaseSlashCommand {
             return;
         }
 
-        const list_product: Discord.SelectMenuComponentOptionData[] = [];
+        const list_product: any = [];
 
         Object.keys(products).forEach((product) => {
             list_product.push({
@@ -52,13 +51,13 @@ class SetProductPurchasesCommand extends BaseSlashCommand {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Para adicionar um novo produto clique ao botão abaixo para continuar!`)
+                    .setDescription(`> ${emojis.success} Para adicionar o estoque escolha um produto logo abaixo!`)
             ],
             components: [
                 new Discord.ActionRowBuilder<any>()
                     .addComponents(
                         new Discord.StringSelectMenuBuilder()
-                            .setCustomId('set_product')
+                            .setCustomId('add_stock_product')
                             .setPlaceholder('⏩ Escolha uma opção')
                             .setOptions(list_product)
                     ),
@@ -89,6 +88,6 @@ class SetProductPurchasesCommand extends BaseSlashCommand {
 
 
 export default (commandContainer: CommandContainer): void => {
-    const command = new SetProductPurchasesCommand()
+    const command = new AddStockProductCommand()
     commandContainer.addCommand(command)
 }

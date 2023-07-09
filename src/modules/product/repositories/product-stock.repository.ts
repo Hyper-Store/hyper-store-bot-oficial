@@ -1,8 +1,11 @@
 import { Database } from "@/infra/app/setup-database"
 import { ProductStockModel } from "../models/product-stock.model"
+import { randomUUID } from "crypto"
 
 export class ProductStockRepository {
     static async add(productId: string, stock: ProductStockModel): Promise<void> {
+        stock.id = randomUUID()
+
         new Database().push(`products.${productId}.stock`, stock)
     }
 

@@ -1,1 +1,15 @@
-{}
+{
+    "products": {
+        "7f358338-b524-4c99-b25f-5168913308cd": {
+            "title": "teste",
+            "description": "testetete",
+            "price": 25,
+            "stock": [],
+            "image": "",
+            "id": "7f358338-b524-4c99-b25f-5168913308cd",
+            "createdAt": "2023-07-09T00:15:15.472Z",
+            "channelId": "1126886459484422205",
+            "messageId": "1127392533178224731"
+        }
+    }
+}

@@ -1,17 +1,13 @@
-import { DatabaseConfig } from "@/infra/app/setup-config";
-import { Database } from "@/infra/app/setup-database";
 import { BaseEvent } from "@/modules/@shared/domain";
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
-import { randomUUID } from "crypto";
-import { Interaction, Message, } from "discord.js";
+import { Interaction, } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { ProductType } from "../../@types/Product.type";
 import { ProductRepository } from "../../repositories/product.repository";
 
 
-class ModalSubmitedAddProductPurchasesEvent extends BaseEvent {
+class ModalSubmitedAddProductEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -45,16 +41,12 @@ class ModalSubmitedAddProductPurchasesEvent extends BaseEvent {
             return;
         }
 
-        const uuid_generated = randomUUID();
-
-        await ProductRepository.create({
-            id: uuid_generated,
+        const product = await ProductRepository.create({
             title,
             description,
             price,
             stock: [],
-            image: image || "",
-            createdAt: new Date()
+            image: image || ""
         })
 
         await interaction.deferUpdate();
@@ -63,7 +55,7 @@ class ModalSubmitedAddProductPurchasesEvent extends BaseEvent {
             embeds: [
                 new Discord.EmbedBuilder()
                     .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Seu produto \`${title}\` foi criado com sucesso, o **ID° Protocolo** é \`${uuid_generated}\``)
+                    .setDescription(`> ${emojis.success} Seu produto \`${title}\` foi criado com sucesso, o **ID° Protocolo** é \`${product.id}\``)
             ],
             components: []
         })
@@ -73,6 +65,6 @@ class ModalSubmitedAddProductPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new ModalSubmitedAddProductPurchasesEvent()
+    const buttonClickedEvent = new ModalSubmitedAddProductEvent()
     buttonClickedEvent.setupConsumer(client)
 }

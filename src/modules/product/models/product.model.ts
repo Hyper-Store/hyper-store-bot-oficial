@@ -1,7 +1,7 @@
 import { ProductStockModel } from "./product-stock.model"
 
 export type ProductModel = {
-    id: string,
+    id?: string,
     title: string,
     description: string,
     image?: string

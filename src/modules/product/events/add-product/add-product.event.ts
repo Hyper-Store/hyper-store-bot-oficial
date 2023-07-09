@@ -7,7 +7,7 @@ import { Interaction, Message, } from "discord.js";
 import Discord, { Client } from "discord.js"
 
 
-class AddProductPurchasesEvent extends BaseEvent {
+class AddProductEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -71,6 +71,6 @@ class AddProductPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new AddProductPurchasesEvent()
+    const buttonClickedEvent = new AddProductEvent()
     buttonClickedEvent.setupConsumer(client)
 }

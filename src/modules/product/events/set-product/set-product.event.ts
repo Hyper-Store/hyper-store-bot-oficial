@@ -3,14 +3,13 @@ import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-pe
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { ProductMessage } from "../../@shared/messages/product-message/product-message";
-import { Database } from "@/infra/app/setup-database";
-import { ProductType } from "../../@types/Product.type";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { ProductNotExistError } from "../../@shared/errors/product-not-exist";
+import { ProductRepository } from "../../repositories/product.repository";
 
 
-class SetProductPurchasesEvent extends BaseEvent {
+class SetProductEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -26,16 +25,16 @@ class SetProductPurchasesEvent extends BaseEvent {
         }
 
         const product_id = interaction.values[0];
-        const product = await new Database().get(`purchases.products.${product_id}`) as ProductType
+        const product = await ProductRepository.findById(product_id);
 
         if (!product) {
             interaction.reply({ ...ProductNotExistError })
             return;
         }
 
-        const message_created = await interaction.channel?.send(await ProductMessage(interaction, product as ProductType))
+        const message_created = await interaction.channel?.send(await ProductMessage(interaction, product))
 
-        await new Database().set(`purchases.products.${product_id}`, { ...product, channelId: message_created?.channelId, messageId: message_created?.id })
+        await ProductRepository.update({ ...product, channelId: message_created?.channelId, messageId: message_created?.id })
 
         interaction.update({
             embeds: [
@@ -51,6 +50,6 @@ class SetProductPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new SetProductPurchasesEvent()
+    const buttonClickedEvent = new SetProductEvent()
     buttonClickedEvent.setupConsumer(client)
 }

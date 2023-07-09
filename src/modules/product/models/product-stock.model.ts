@@ -1,4 +1,4 @@
 export type ProductStockModel = {
-    id: string,
+    id?: string,
     content: string
 }

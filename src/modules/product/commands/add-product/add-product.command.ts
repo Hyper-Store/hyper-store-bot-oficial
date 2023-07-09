@@ -6,7 +6,7 @@ import { emojis } from "@/modules/@shared/utils/emojis";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
 
-class AddProductPurchasesCommand extends BaseSlashCommand {
+class AddProductCommand extends BaseSlashCommand {
 
     constructor() {
         super({
@@ -37,7 +37,8 @@ class AddProductPurchasesCommand extends BaseSlashCommand {
                             .setEmoji('➕')
                             .setStyle(2)
                     )
-            ]
+            ],
+            ephemeral: true
         })
 
         return;
@@ -46,6 +47,6 @@ class AddProductPurchasesCommand extends BaseSlashCommand {
 
 
 export default (commandContainer: CommandContainer): void => {
-    const command = new AddProductPurchasesCommand()
+    const command = new AddProductCommand()
     commandContainer.addCommand(command)
 }
