@@ -45,7 +45,7 @@ class ModalSubmitedAddProductEvent extends BaseEvent {
             title,
             description,
             price,
-            image: image || ""
+            image: image
         })
 
         await interaction.deferUpdate();

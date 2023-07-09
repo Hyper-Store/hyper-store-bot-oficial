@@ -1,3 +1,4 @@
+import { DatabaseConfig } from '@/infra/app/setup-config';
 import { colors } from '@/modules/@shared/utils/colors';
 import { emojis } from '@/modules/@shared/utils/emojis';
 import { ProductModel } from '@/modules/product/models/product.model';
@@ -20,7 +21,9 @@ export const FinishPaymentMercadoPagoMessage = (props: Props) => {
         embeds: [
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
-                .setDescription(`\`\`\`Selecione uma opção abaixo de pagamento para pareceber o produto.\`\`\`\n\n**${emojis.box} | Produto:** \`${props.product.title}\`\n**${emojis.money} | Valor:** \`R$${props.totalValue.toFixed(2)}\`\n**${emojis.date} | Expira em:** <t:${Math.floor(expire_in.getTime() / 1000)}:f> \`(\`<t:${Math.floor(expire_in.getTime() / 1000)}:R>\`)\``)
+                .setDescription(`\`\`\`Selecione uma opção abaixo de pagamento para pareceber o produto.\`\`\`\n**${emojis.box} | Produto:** \`${props.product.title}\`\n**${emojis.money} | Valor:** \`R$${props.totalValue.toFixed(2)}\`\n**${emojis.date} | Expira em:** <t:${Math.floor(expire_in.getTime() / 1000)}:f> \`(\`<t:${Math.floor(expire_in.getTime() / 1000)}:R>\`)\``)
+                .setImage(new DatabaseConfig().get('purchases.products.banner') as string)
+                .setFooter({ text: 'Agora realize o pagamento para receber seu produto' })
         ],
         components: [
             new Discord.ActionRowBuilder<any>()
@@ -28,7 +31,7 @@ export const FinishPaymentMercadoPagoMessage = (props: Props) => {
                     new Discord.ButtonBuilder()
                         .setCustomId('pix')
                         .setEmoji(emojis.pix)
-                        .setLabel('Pagar com PIX')
+                        .setLabel('Pix Copia e Cola')
                         .setDisabled(props.pix)
                         .setStyle(1)
                 )
@@ -36,9 +39,9 @@ export const FinishPaymentMercadoPagoMessage = (props: Props) => {
                     new Discord.ButtonBuilder()
                         .setCustomId('qrcode')
                         .setEmoji(emojis.qrcode)
-                        .setLabel('Pagar com QRCODE')
+                        .setLabel('QR CODE')
                         .setDisabled(props.qrcode)
-                        .setStyle(2)
+                        .setStyle(1)
                 )
                 .addComponents(
                     new Discord.ButtonBuilder()

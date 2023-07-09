@@ -6,6 +6,7 @@ import { emojis } from "@/modules/@shared/utils/emojis";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
 import { ProductRepository } from "../../repositories/product.repository";
+import { ProductStockRepository } from "../../repositories/product-stock.repository";
 
 class SetProductPurchasesCommand extends BaseSlashCommand {
 
@@ -39,14 +40,17 @@ class SetProductPurchasesCommand extends BaseSlashCommand {
 
         const list_product: Discord.SelectMenuComponentOptionData[] = [];
 
-        Object.keys(products).forEach((product: any) => {
+        for (const product of Object.keys(products)) {
+            const product_index = product as any
+            const stockCount = await ProductStockRepository.stockCount(products[product_index].id!);
+
             list_product.push({
                 emoji: "📦",
-                label: `${products[product].title} - ID: (${products[product].id?.slice(0, 8)})`,
-                description: `💸 R$${products[product].price.toFixed(2)} - 🎁 ${products[product].stock?.length} Estoque`,
-                value: products[product].id!,
+                label: `${products[product_index].title} - ID: (${products[product_index].id?.slice(0, 8)})`,
+                description: `💸 R$${products[product_index].price.toFixed(2)} - 🎁 ${stockCount} Estoque`,
+                value: products[product_index].id!,
             })
-        })
+        }
 
         interaction.reply({
             embeds: [

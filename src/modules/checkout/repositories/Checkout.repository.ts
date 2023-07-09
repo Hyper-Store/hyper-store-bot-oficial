@@ -7,6 +7,7 @@ export class CheckoutRepository {
         checkout.ref = randomUUID()
         checkout.status = "PENDING"
         checkout.quantity = 1
+        checkout.price = 0;
         checkout.createdAt = new Date()
 
         const result = await new Database().set(`checkouts.${checkout.id}`, checkout)

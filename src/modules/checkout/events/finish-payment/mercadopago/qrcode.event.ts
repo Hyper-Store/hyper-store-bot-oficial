@@ -13,7 +13,7 @@ import mercadopago from "mercadopago";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 
-class PixMercadoPagoCheckoutEvent extends BaseEvent {
+class QrCodeMercadoPagoCheckoutEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -22,7 +22,7 @@ class PixMercadoPagoCheckoutEvent extends BaseEvent {
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
         if (!interaction.isButton()) return;
-        if (interaction.customId !== 'pix') return;
+        if (interaction.customId !== 'qrcode') return;
 
         const checkout = await CheckoutRepository.findById(interaction.channelId)
         const product = await ProductRepository.findById(checkout?.productId!);
@@ -32,7 +32,7 @@ class PixMercadoPagoCheckoutEvent extends BaseEvent {
         const paymentManagementEntity = await PaymentManagementRepository.findById(checkout.id)
         const payment_data = await mercadopago.payment.findById(parseInt(paymentManagementEntity?.paymentProviderId!))
 
-        ButtonPixQrCode.pix = true;
+        ButtonPixQrCode.qrcode = true;
 
         await interaction.update({
             ...FinishPaymentMercadoPagoMessage({
@@ -43,13 +43,18 @@ class PixMercadoPagoCheckoutEvent extends BaseEvent {
             })
         })
 
+        const base64_img = payment_data.body.point_of_interaction.transaction_data.qr_code_base64;
+        const buf = Buffer.from(base64_img, 'base64');
+        const attachment = new Discord.AttachmentBuilder(buf, { name: 'qrcode.png' });
+
         interaction.followUp({
             embeds: [
                 new Discord.EmbedBuilder()
                     .setColor(colors.invisible!)
-                    .setDescription(`**${emojis.pix} | PIX (COPIA E COLA):**\`\`\`${payment_data.body.point_of_interaction.transaction_data.qr_code}\`\`\``)
-                    .setFooter({ text: '🔗 Copie agora e cole em seu banco para realizar o pagamento' })
-            ]
+                    .setDescription(`> 📱 Abra seu banco selecione a opção QRCODE e aponte a câmera de seu celular para o qrcode abaixo e realize o pagamento!`)
+                    .setImage("attachment://qrcode.png")
+            ],
+            files: [attachment]
         })
 
         return;
@@ -57,6 +62,6 @@ class PixMercadoPagoCheckoutEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new PixMercadoPagoCheckoutEvent()
+    const buttonClickedEvent = new QrCodeMercadoPagoCheckoutEvent()
     buttonClickedEvent.setupConsumer(client)
 }

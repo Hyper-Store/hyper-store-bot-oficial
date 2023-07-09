@@ -7,6 +7,7 @@ import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
+import { ProductStockRepository } from "@/modules/product/repositories/product-stock.repository";
 
 class AddQuantityCheckoutEvent extends BaseEvent {
     constructor() {
@@ -21,16 +22,17 @@ class AddQuantityCheckoutEvent extends BaseEvent {
 
         const checkout = await CheckoutRepository.findById(interaction.channelId);
         const product = await ProductRepository.findById(checkout?.productId!);
+        const stockCount = await ProductStockRepository.stockCount(product?.id!);
 
         if (interaction.user.id !== checkout?.ownerId) return;
 
-        if (checkout?.quantity ?? 0 >= (product?.stock ?? []).length) {
+        if (checkout?.quantity! >= stockCount) {
             interaction.reply({
                 embeds: [
                     new Discord.EmbedBuilder()
                         .setColor(colors.error!)
                         .setDescription(`> ${emojis.error} Você não pode adicionar mais estoque do que o disponível no produto!`)
-                        .setFooter({ text: `Este produto tem 📦 ${product?.stock?.length} estoque disponível!` })
+                        .setFooter({ text: `Este produto tem 📦 ${stockCount} estoque disponível!` })
                 ],
                 ephemeral: true
             })

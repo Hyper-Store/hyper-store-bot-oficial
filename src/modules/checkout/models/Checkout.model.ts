@@ -4,6 +4,7 @@ export type CheckoutModel = {
     ownerId: string
     productId: string
     quantity?: number,
+    price?: number,
     status?: CheckoutModel.Status
     createdAt?: Date,
 }

@@ -22,4 +22,8 @@ export class Database {
     public push(key: string, value: Object) {
         return this.db.push(key, value);
     }
+
+    public delete(key: string) {
+        return this.db.delete(key);
+    }
 }

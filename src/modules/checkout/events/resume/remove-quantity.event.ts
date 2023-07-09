@@ -27,13 +27,12 @@ class RemoveQuantityCheckoutEvent extends BaseEvent {
 
         if (interaction.user.id !== checkout?.ownerId) return;
 
-        if (checkout?.quantity! >= product?.stock?.length!) {
+        if (checkout.quantity! <= 1) {
             interaction.reply({
                 embeds: [
                     new Discord.EmbedBuilder()
                         .setColor(colors.error!)
-                        .setDescription(`> ${emojis.error} Você não pode adicionar mais estoque do que o disponível no produto!`)
-                        .setFooter({ text: `Este produto tem 📦 ${product?.stock?.length} estoque disponível!` })
+                        .setDescription(`> ${emojis.error} Você não pode comprar menos quantidade que 1 para este produto!`)
                 ],
                 ephemeral: true
             })

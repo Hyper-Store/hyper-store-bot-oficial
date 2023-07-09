@@ -8,14 +8,8 @@ import { ProductRepository } from "@/modules/product/repositories/product.reposi
 import { FinishPaymentMercadoPagoMessage } from "./@shared/messages/finish-payment-mercado-pago.message";
 import { ButtonPixQrCode } from "./@shared/singletons/button-pix-qrcode.singleton";
 
-class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
-    constructor() {
-        super({
-            event: "interactionCreate"
-        })
-    }
-
-    async exec(interaction: Interaction, client: Client): Promise<void> {
+export class FinishPaymentMercadoPagoCheckoutEvent {
+    static async execute(interaction: Interaction, client: Client): Promise<void> {
         if (!interaction.isStringSelectMenu()) return;
         if (interaction.customId !== 'method-payment') return;
         if (interaction.values[0] !== "mercadopago") return;
@@ -38,21 +32,15 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
             paymentManagementId: checkout.id
         })
 
-        interaction.update({
+        interaction.editReply({
             ...FinishPaymentMercadoPagoMessage({
                 product: product!,
                 totalValue: product?.price! * checkout.quantity!,
                 linkPayment: payment_data.data.paymentLink,
-                pix: ButtonPixQrCode.pix,
-                qrcode: ButtonPixQrCode.qrcode,
+                ...ButtonPixQrCode
             })
         })
 
         return;
     }
-}
-
-export default (client: Client): void => {
-    const buttonClickedEvent = new FinishPaymentMercadoPagoPurchasesEvent()
-    buttonClickedEvent.setupConsumer(client)
 }
