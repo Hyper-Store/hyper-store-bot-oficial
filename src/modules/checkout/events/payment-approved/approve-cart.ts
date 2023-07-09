@@ -11,9 +11,12 @@ export class ApproveCartUsecase {
         const checkout = await CheckoutRepository.findById(checkoutId);
         const product = await ProductRepository.findById(checkout?.productId!);
         const owner = client.users.cache.get(checkout?.ownerId!);
+        const stockCount = await ProductStockRepository.stockCount(product?.id!);
 
         const channel = client.channels.cache.get(checkout?.id!);
         if (!channel || !channel.isTextBased()) return;
+
+        if (stockCount < checkout?.quantity!) return;
 
         const stockProduct: ProductStockModel[] = []
 
