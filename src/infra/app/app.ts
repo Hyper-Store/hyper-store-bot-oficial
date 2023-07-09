@@ -18,6 +18,7 @@ const client = new Client({
         Discord.GatewayIntentBits.DirectMessages,
         Discord.GatewayIntentBits.Guilds,
         Discord.GatewayIntentBits.GuildMessages,
+        Discord.GatewayIntentBits.GuildMembers,
         Discord.IntentsBitField.Flags.GuildMessages,
         Discord.IntentsBitField.Flags.MessageContent,
     ],
