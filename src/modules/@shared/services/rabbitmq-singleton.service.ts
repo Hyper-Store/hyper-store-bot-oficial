@@ -7,7 +7,7 @@ export class RabbitmqSingletonService {
 
 
     static async getInstance(): Promise<RabbitmqServerProvider> {
-        if(!RabbitmqSingletonService.rabbitmqServerProvider) {
+        if (!RabbitmqSingletonService.rabbitmqServerProvider) {
             RabbitmqSingletonService.rabbitmqServerProvider = new RabbitmqServerProvider(process.env.RABBITMQ_LOGIN_CREDENTIALS!)
             await RabbitmqSingletonService.rabbitmqServerProvider.start()
         }

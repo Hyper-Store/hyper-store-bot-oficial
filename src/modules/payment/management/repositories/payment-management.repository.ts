@@ -33,9 +33,9 @@ export class PaymentManagementRepository {
         const paymentManagementEntity = PaymentManagementEntity.create({
             ...paymentManagement
         })
-        if(paymentManagement.status === "APPROVED") paymentManagementEntity.approve()
-        if(paymentManagement.status === "CANCELLED") paymentManagementEntity.cancel()
-        if(paymentManagement.status === "REFUNDED") paymentManagementEntity.refund()
+        if (paymentManagement.status === "APPROVED") paymentManagementEntity.approve()
+        if (paymentManagement.status === "CANCELLED") paymentManagementEntity.cancel()
+        if (paymentManagement.status === "REFUNDED") paymentManagementEntity.refund()
 
         return paymentManagementEntity
     }

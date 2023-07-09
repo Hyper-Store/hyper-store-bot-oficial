@@ -26,7 +26,9 @@ const emojis = {
     add: "<:add:1127273062384013432>",
     remove: "<:remove:1127273255049367552>",
     mercadopago: "<:mercadopago:1127291259443236954>",
-    paypal: "<:paypal:1127294331305340969>"
+    paypal: "<:paypal:1127294331305340969>",
+    pix: "<:pix:1127431370990424114>",
+    qrcode: "<:qrcode:1127431347812712528>"
 }
 
 export { emojis }

@@ -7,8 +7,11 @@ import { CheckoutRepository } from "@/modules/checkout/repositories/Checkout.rep
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { FinishPaymentMercadoPagoMessage } from "./@shared/messages/finish-payment-mercado-pago.message";
 import { ButtonPixQrCode } from "./@shared/singletons/button-pix-qrcode.singleton";
+import { MercadopagoRepository } from "@/modules/payment/providers/mercadopago/repositories";
+import { PaymentManagementRepository } from "@/modules/payment/management/repositories";
+import mercadopago from "mercadopago";
 
-class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
+class PixMercadoPagoCheckoutEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
@@ -16,43 +19,23 @@ class FinishPaymentMercadoPagoPurchasesEvent extends BaseEvent {
     }
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
-        if (!interaction.isStringSelectMenu()) return;
-        if (interaction.customId !== 'method-payment') return;
-        if (interaction.values[0] !== "mercadopago") return;
+        if (!interaction.isButton()) return;
+        if (interaction.customId !== 'pix') return;
 
         const checkout = await CheckoutRepository.findById(interaction.channelId)
         const product = await ProductRepository.findById(checkout?.productId!);
 
         if (interaction.user.id !== checkout?.ownerId) return;
 
-        new CreatePaymentManagementUsecase().execute({ checkoutId: checkout.id });
+        const paymentManagementEntity = await PaymentManagementRepository.findById(checkout.id)
+        console.log(paymentManagementEntity?.paymentProviderId)
+        // const payment_data = mercadopago.payment.findById(parseInt(paymentManagementEntity?.paymentProviderId!))
+        // if (!payment_data) return;
 
-        const payment_data = await new GenerateMercadopagoPaymentUsecase().execute({
-            product: {
-                title: product?.title!,
-                price: product?.price! * checkout?.quantity!
-            },
-            customer: {
-                email: 'contato@gmail.com'
-            },
-            paymentManagementId: checkout.id
-        })
-
-        interaction.update({
-            ...FinishPaymentMercadoPagoMessage({
-                product: product!,
-                totalValue: product?.price! * checkout.quantity!,
-                linkPayment: payment_data.data.paymentLink,
-                pix: ButtonPixQrCode.pix,
-                qrcode: ButtonPixQrCode.qrcode,
-            })
-        })
-
-        return;
     }
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new FinishPaymentMercadoPagoPurchasesEvent()
+    const buttonClickedEvent = new PixMercadoPagoCheckoutEvent()
     buttonClickedEvent.setupConsumer(client)
 }
