@@ -11,5 +11,38 @@
             "messageId": "1127662879001288824",
             "stock": {}
         }
+    },
+    "checkouts": {
+        "1127798473262112818": {
+            "id": "1127798473262112818",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "f4703341-ed59-44b9-832d-1c0aa2ff1e99",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-10T03:08:29.479Z"
+        }
+    },
+    "payment": {
+        "paymentManagement": {
+            "1127798473262112818": {
+                "checkoutId": "1127798473262112818",
+                "dateTimeCreated": "2023-07-10T03:08:38.968Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60523893706"
+            }
+        },
+        "mercadopago": {
+            "ref-60523893706": {
+                "paymentId": "60523893706",
+                "amount": 0.01,
+                "paymentManagementId": "1127798473262112818",
+                "status": "REFUNDED",
+                "expirationDate": "2023-07-10T03:18:38.969Z"
+            }
+        }
     }
 }
