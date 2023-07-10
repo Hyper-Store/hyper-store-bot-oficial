@@ -13,49 +13,169 @@
         }
     },
     "checkouts": {
-        "1127844903683096686": {
-            "id": "1127844903683096686",
-            "ownerId": "1124265861109256282",
+        "1128032207051694120": {
+            "id": "1128032207051694120",
+            "ownerId": "1035695838707585044",
             "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "61e496fb-8b1f-46eb-8de1-cac6ffcc9641",
+            "ref": "77ae5c80-5a5a-459c-8adb-5b62f5ddeb7f",
             "status": "CANCELLED",
             "quantity": 1,
-            "price": 0,
+            "price": 0.011,
             "review": null,
-            "createdAt": "2023-07-10T06:07:16.862Z"
+            "createdAt": "2023-07-10T18:37:15.664Z"
         },
-        "1127844430423019591": {
-            "id": "1127844430423019591",
-            "ownerId": "1124265861109256282",
+        "1128032404477595750": {
+            "id": "1128032404477595750",
+            "ownerId": "1035695838707585044",
             "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "0f11e3a4-5de4-491d-9381-9aeb8641ebb3",
-            "status": "PENDING",
+            "ref": "601ddd4e-58ce-4399-abad-7179e3f3b512",
+            "status": "CANCELLED",
             "quantity": 1,
-            "price": 0,
+            "price": 0.011,
             "review": null,
-            "createdAt": "2023-07-10T06:11:06.963Z"
+            "createdAt": "2023-07-10T18:38:02.721Z"
+        },
+        "1128032629736882236": {
+            "id": "1128032629736882236",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "9ef64fdf-e0c9-495a-99a0-4aa49108fb3b",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:38:56.267Z"
+        },
+        "1128033193350664304": {
+            "id": "1128033193350664304",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "a473358e-8871-4d13-873f-8f2330ed499f",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:41:10.896Z"
+        },
+        "1128034392372158474": {
+            "id": "1128034392372158474",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "724cc40a-d11d-4287-8daa-efb8bf9a0cc0",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:45:56.772Z"
+        },
+        "1128035236534558720": {
+            "id": "1128035236534558720",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "1261a2cd-ef47-4e00-8621-47fad33be744",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:49:17.805Z"
+        },
+        "1128035370534183084": {
+            "id": "1128035370534183084",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "91eff279-4163-43d3-ad58-12b0e61a2767",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:49:49.841Z"
+        },
+        "1128035975193440329": {
+            "id": "1128035975193440329",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "ead01560-12ae-4d61-a211-73cd2fa73bcd",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:52:14.279Z"
+        },
+        "1128036150657941524": {
+            "id": "1128036150657941524",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "d7396519-aadb-4367-b4e6-a66bfed01063",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:52:55.769Z"
+        },
+        "1128036284322037850": {
+            "id": "1128036284322037850",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "f894124f-228e-4f92-b248-52771b58895a",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.011,
+            "review": null,
+            "createdAt": "2023-07-10T18:53:27.485Z"
         }
     },
     "payment": {
         "paymentManagement": {
-            "1127843465544355911": {
-                "checkoutId": "1127843465544355911",
-                "dateTimeCreated": "2023-07-10T06:07:25.981Z",
-                "status": "PENDING",
-                "paymentProvider": "mercadopago",
-                "paymentProviderId": "60525806438"
+            "1128032207051694120": {
+                "checkoutId": "1128032207051694120",
+                "dateTimeCreated": "2023-07-10T18:37:22.604Z",
+                "status": "PENDING"
+            },
+            "1128032404477595750": {
+                "checkoutId": "1128032404477595750",
+                "dateTimeCreated": "2023-07-10T18:38:11.147Z",
+                "status": "PENDING"
+            },
+            "1128032629736882236": {
+                "checkoutId": "1128032629736882236",
+                "dateTimeCreated": "2023-07-10T18:39:07.122Z",
+                "status": "PENDING"
+            },
+            "1128033193350664304": {
+                "checkoutId": "1128033193350664304",
+                "dateTimeCreated": "2023-07-10T18:41:17.293Z",
+                "status": "PENDING"
+            },
+            "1128034392372158474": {
+                "checkoutId": "1128034392372158474",
+                "dateTimeCreated": "2023-07-10T18:46:04.836Z",
+                "status": "PENDING"
+            },
+            "1128035236534558720": {
+                "checkoutId": "1128035236534558720",
+                "dateTimeCreated": "2023-07-10T18:49:27.656Z",
+                "status": "PENDING"
+            },
+            "1128035370534183084": {
+                "checkoutId": "1128035370534183084",
+                "dateTimeCreated": "2023-07-10T18:49:57.754Z",
+                "status": "PENDING"
+            },
+            "1128035975193440329": {
+                "checkoutId": "1128035975193440329",
+                "dateTimeCreated": "2023-07-10T18:52:21.217Z",
+                "status": "PENDING"
+            },
+            "1128036150657941524": {
+                "checkoutId": "1128036150657941524",
+                "dateTimeCreated": "2023-07-10T18:53:04.677Z",
+                "status": "PENDING"
+            },
+            "1128036284322037850": {
+                "checkoutId": "1128036284322037850",
+                "dateTimeCreated": "2023-07-10T18:53:34.054Z",
+                "status": "PENDING"
             }
-        },
-        "1127845689762791424": {
-            "id": "1127845689762791424",
-            "ownerId": "1124265861109256282",
-            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "bbe3309b-ddc2-4fc0-92ba-c1a68743602b",
-            "status": "CANCELLED",
-            "quantity": 1,
-            "price": 0,
-            "review": null,
-            "createdAt": "2023-07-10T06:15:58.784Z"
         }
     }
 }
