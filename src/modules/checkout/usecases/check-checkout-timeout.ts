@@ -1,5 +1,6 @@
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
 import { CheckoutRepository } from "../repositories/Checkout.repository"
+import { PaymentManagementRepository } from "@/modules/payment/management/repositories";
 
 export class CheckCheckoutTimeoutUsecase {
 
@@ -9,16 +10,20 @@ export class CheckCheckoutTimeoutUsecase {
         const checkout = await CheckoutRepository.findById(checkoutId)
         if (!checkout) return;
 
-        if (checkout.status === "PENDING") {
-            const rabbitmq = await RabbitmqSingletonService.getInstance()
-            await rabbitmq.publishInExchange(
-                "checkout",
-                "checkout.checkout_timeout_reached",
-                JSON.stringify({
-                    checkoutId: checkout?.id
-                })
-            )
-        }
+        const paymentManagement = await PaymentManagementRepository.findById(checkout.id)
+
+        if(checkout.status !== "PENDING") return
+        if(paymentManagement?.hasPaymentProvider()) return
+
+        const rabbitmq = await RabbitmqSingletonService.getInstance()
+        await rabbitmq.publishInExchange(
+            "checkout",
+            "checkout.checkout_timeout_reached",
+            JSON.stringify({ 
+                checkoutId: checkout?.id
+            })
+        )
+        
 
     }
 }
