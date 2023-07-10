@@ -5,7 +5,6 @@ export class PaymentManagementEntity {
     }
 
     hasPaymentProvider(): boolean {
-        console.log(this.props.paymentProvider, this.props.paymentProviderId)
         return !!this.props.paymentProvider && !!this.props.paymentProviderId;
     }
 
