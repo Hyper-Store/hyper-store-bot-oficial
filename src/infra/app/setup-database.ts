@@ -7,6 +7,8 @@ export class Database {
         })
     ) { }
 
+    
+
     public get(key: string) {
         return this.db.get(key)
     }

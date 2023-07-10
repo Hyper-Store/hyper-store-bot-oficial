@@ -38,6 +38,12 @@ export class PaymentManagementEntity {
     isApproved(): boolean {
         return this.props.status === "APPROVED"
     }
+    isCancelled(): boolean {
+        return this.props.status === "CANCELLED"
+    }
+    isRefunded(): boolean {
+        return this.props.status === "REFUNDED"
+    }
 
     get paymentProviderId(): string | undefined {
         return this.props.paymentProviderId

@@ -15,7 +15,6 @@ export class ApproveCartUsecase {
         const guild = await client.guilds.cache.get(process.env.GUILD_ID!)
         const owner = guild?.members.cache.get(checkout?.ownerId!);
 
-        console.log(client.guilds.cache.map(user => user.name).join(", "))
         if (!owner) return;
 
         owner?.send({
