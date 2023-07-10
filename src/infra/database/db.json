@@ -9,52 +9,7 @@
             "createdAt": "2023-07-09T18:04:37.737Z",
             "channelId": "1126886459484422205",
             "messageId": "1127662879001288824",
-            "stock": {
-                "1127702739489673263": {
-                    "id": "1127702739489673263",
-                    "content": "any_content"
-                },
-                "112770273948967326723": {
-                    "id": "112770273948967326723",
-                    "content": "any_content"
-                },
-                "112770273948967326732": {
-                    "id": "112770273948967326732",
-                    "content": "any_content"
-                }
-            }
-        }
-    },
-    "checkouts": {
-        "1127718137786273863": {
-            "id": "1127718137786273863",
-            "ownerId": "1035695838707585044",
-            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "8f035140-1d4f-40bf-92fa-444e9249dfb3",
-            "status": "APPROVED",
-            "quantity": 1,
-            "price": 0.01,
-            "createdAt": "2023-07-09T21:49:15.967Z"
-        }
-    },
-    "payment": {
-        "paymentManagement": {
-            "1127718137786273863": {
-                "checkoutId": "1127718137786273863",
-                "dateTimeCreated": "2023-07-09T21:49:21.552Z",
-                "status": "APPROVED",
-                "paymentProvider": "mercadopago",
-                "paymentProviderId": "60512866418"
-            }
-        },
-        "mercadopago": {
-            "ref-60512866418": {
-                "paymentId": "60512866418",
-                "amount": 0.01,
-                "paymentManagementId": "1127718137786273863",
-                "status": "APPROVED",
-                "expirationDate": "2023-07-09T21:59:21.555Z"
-            }
+            "stock": {}
         }
     }
 }
