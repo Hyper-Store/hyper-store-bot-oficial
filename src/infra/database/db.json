@@ -34,6 +34,17 @@
             "price": 0.01,
             "review": null,
             "createdAt": "2023-07-10T04:01:48.112Z"
+        },
+        "1127812599887712326": {
+            "id": "1127812599887712326",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "c04abf0b-e9a9-47ff-bd62-a345f5d819f8",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-10T04:04:29.389Z"
         }
     },
     "payment": {
@@ -51,6 +62,13 @@
                 "status": "APPROVED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "60524795080"
+            },
+            "1127812599887712326": {
+                "checkoutId": "1127812599887712326",
+                "dateTimeCreated": "2023-07-10T04:04:35.611Z",
+                "status": "REFUNDED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60524839012"
             }
         },
         "mercadopago": {
@@ -67,6 +85,13 @@
                 "paymentManagementId": "1127811922570522725",
                 "status": "APPROVED",
                 "expirationDate": "2023-07-10T04:11:54.318Z"
+            },
+            "ref-60524839012": {
+                "paymentId": "60524839012",
+                "amount": 0.01,
+                "paymentManagementId": "1127812599887712326",
+                "status": "REFUNDED",
+                "expirationDate": "2023-07-10T04:14:35.613Z"
             }
         }
     }
