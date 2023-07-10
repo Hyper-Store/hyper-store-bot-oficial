@@ -13,7 +13,7 @@ export class CancelCheckoutUseCase {
         const owner = guild?.members.cache.get(checkout?.ownerId!);
 
         if (!owner) return;
-        await CloseChannelCheckoutRabbitMq.execute({ checkoutId, time: 10000 })
+        await CloseChannelCheckoutRabbitMq.execute({ checkoutId })
 
         owner.send({
             ...await CancelCheckoutByInativityMessageChannel({
