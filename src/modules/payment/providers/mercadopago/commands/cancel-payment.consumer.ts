@@ -1,5 +1,5 @@
 import { RabbitmqSingletonService } from "@/modules/@shared/services"
-import { CancelMercadopagoPaymentUsecase } from "../usecases/application-actions"
+import { CancelMercadopagoPaymentUsecase } from "../usecases/mercadopago-actions"
 
 const cancelPaymentConsumer = async () => {
     const rabbitmq = await RabbitmqSingletonService.getInstance()
@@ -12,7 +12,7 @@ const cancelPaymentConsumer = async () => {
         const msg = JSON.parse(message.content.toString())
 
         await CancelMercadopagoPaymentUsecase.execute({
-            mercadopagoPaymentId: msg.checkoutId
+            paymentId: msg.paymentProviderId
         })
     })
 }

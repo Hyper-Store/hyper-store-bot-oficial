@@ -18,7 +18,7 @@ export class CancelMercadopagoPaymentUsecase {
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         await rabbitmq.publishInExchange(
             "mercadopagoPayment",
-            "mercadopagoPayment.canceled",
+            "mercadopagoPayment.cancelled",
             JSON.stringify(mercadopagoPayment)
         )
     }
