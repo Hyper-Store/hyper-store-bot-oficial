@@ -13,14 +13,14 @@
         }
     },
     "checkouts": {
-        "1127843465544355911": {
-            "id": "1127843465544355911",
-            "ownerId": "1035695838707585044",
+        "1127844903683096686": {
+            "id": "1127844903683096686",
+            "ownerId": "1124265861109256282",
             "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "2aba64bf-0f92-4a70-b61a-a0f9ac9859da",
-            "status": "PENDING",
+            "ref": "61e496fb-8b1f-46eb-8de1-cac6ffcc9641",
+            "status": "CANCELLED",
             "quantity": 1,
-            "price": 0.01,
+            "price": 0,
             "review": null,
             "createdAt": "2023-07-10T06:07:16.862Z"
         },
@@ -46,14 +46,16 @@
                 "paymentProviderId": "60525806438"
             }
         },
-        "mercadopago": {
-            "ref-60525806438": {
-                "paymentId": "60525806438",
-                "amount": 0.01,
-                "paymentManagementId": "1127843465544355911",
-                "status": "PENDING",
-                "expirationDate": "2023-07-10T06:17:25.983Z"
-            }
+        "1127845689762791424": {
+            "id": "1127845689762791424",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "bbe3309b-ddc2-4fc0-92ba-c1a68743602b",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0,
+            "review": null,
+            "createdAt": "2023-07-10T06:15:58.784Z"
         }
     }
 }
