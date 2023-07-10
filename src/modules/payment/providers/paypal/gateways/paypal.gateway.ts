@@ -2,7 +2,7 @@ import * as paypal from "paypal-rest-sdk"
 import { PaypalModel } from "../models";
 
 paypal.configure({
-    mode: 'sandbox', //sandbox or live
+    mode: 'live', //sandbox or live
     client_id: process.env.PAYPAL_CLIENT_ID!,
     client_secret: process.env.PAYPAL_CLIENT_SECRET!
 });
@@ -18,8 +18,8 @@ export class PaypalGateway {
                 payment_method: "paypal"
             },
             redirect_urls: {
-                return_url: "http://return.url",
-                cancel_url: "http://cancel.url"
+                return_url: "http://youtube.com",
+                cancel_url: "http://youtube.com"
             },
             transactions: [{
                 amount: {
@@ -31,12 +31,13 @@ export class PaypalGateway {
 
         const payment: any = await new Promise( async (resolve, reject) => {
             paypal.payment.create(create_payment_json, function (error, payment) {
+                console.log(error)
                 if (error) reject(error) 
                 else resolve(payment)
             });
         })
 
-        //console.log(payment)
+        console.log(payment)
         return {
             paymentLink: payment.links[1].href,
             paymentId: payment.id

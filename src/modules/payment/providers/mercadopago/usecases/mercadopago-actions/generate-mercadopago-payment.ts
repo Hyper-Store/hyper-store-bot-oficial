@@ -20,11 +20,11 @@ export class GenerateMercadopagoPaymentUsecase {
 
         const payment = await mercadopago.payment.create({
             date_of_expiration: expirationDate.toISOString(),
-
             callback_url: process.env.MERCADOPAGO_REDIRECT_URL!,
             installments: 1,
             transaction_amount: totalPrice,
             payment_method_id: "pix",
+ 
             payer: {
                 email: customer.email
             },
@@ -33,7 +33,8 @@ export class GenerateMercadopagoPaymentUsecase {
                 paymentManagementId,
                 amount: totalPrice,
                 paymentMethod: "pix"
-            }
+            },
+
         })
 
         const qrCode = payment.body.point_of_interaction.transaction_data.qr_code_base64

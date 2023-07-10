@@ -50,12 +50,6 @@ class MethodPaymentCheckoutPurchasesPurchasesEvent extends BaseEvent {
                                     label: "Mercado Pago (PIX E QR CODE)",
                                     description: "Taxa 0% | Entrega automática",
                                     value: "mercadopago"
-                                },
-                                {
-                                    emoji: emojis.paypal,
-                                    label: "Paypal",
-                                    description: "Taxa 10% | Entrega automática",
-                                    value: "paypal"
                                 }
                             )
                     )

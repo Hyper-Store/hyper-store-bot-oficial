@@ -8,7 +8,7 @@ import { ProductRepository } from "@/modules/product/repositories/product.reposi
 import { GeneratePaypalPaymentUsecase } from "@/modules/payment/providers/paypal/usecases/paypal-actions";
 
 
-export class FinishPaypalPagoCheckoutEvent {
+export class FinishPaypalCheckoutEvent {
     static async execute(interaction: Interaction, client: Client): Promise<void> {
         if (!interaction.isStringSelectMenu()) return;
         if (interaction.customId !== 'method-payment') return;
