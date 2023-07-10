@@ -15,7 +15,8 @@ export class CancelPaymentProviderUsecase {
             "paymentManagement",
             "paymentManagement.cancel_payment",
             JSON.stringify({ 
-                paymentManagementId: paymentManagementEntity.checkoutId
+                paymentManagementId: paymentManagementEntity.checkoutId,
+                paymentProviderId: paymentManagementEntity.paymentProviderId
             })
         )
 

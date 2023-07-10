@@ -53,4 +53,13 @@ export class MercadopagoGateway {
         }
     }
 
+    static async cancel(paymentId: string): Promise<boolean> {
+        try {
+            await mercadopago.payment.cancel( parseInt(paymentId))
+            return true
+        }catch(err){
+            return false
+        }
+    }
+
 }

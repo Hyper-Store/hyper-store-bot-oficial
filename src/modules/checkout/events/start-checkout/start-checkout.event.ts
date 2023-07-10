@@ -9,6 +9,7 @@ import { ProductRepository } from "@/modules/product/repositories/product.reposi
 import { ProductNotExist } from "../../@shared/_error/ProductNotExist.error";
 import { NoStockProduct } from "../../@shared/_error/NoStockProduct.error";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
+import { RabbitmqSingletonService } from "@/modules/@shared/services";
 
 
 class StartCheckoutEvent extends BaseEvent {
@@ -126,6 +127,10 @@ class StartCheckoutEvent extends BaseEvent {
             ownerId: interaction.user.id,
             productId: product.id!
         })
+
+        const rabbitmq = await RabbitmqSingletonService.getInstance()
+        rabbitmq.publishInQueue("checkoutTimeoutQueue", JSON.stringify({ checkoutId: channel_created?.id! }))
+        
 
         interaction.editReply({
             embeds: [
