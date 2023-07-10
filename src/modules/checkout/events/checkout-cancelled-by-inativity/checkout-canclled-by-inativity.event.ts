@@ -15,7 +15,7 @@ class CloseChannelCheckoutEvent extends BaseEvent {
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         const queueName = "checkoutCancelByInativityQueue"
         rabbitmq.assertQueue(queueName, { durable: true, })
-        rabbitmq.bindQueue(queueName, '')
+        rabbitmq.bindQueue(queueName, 'checkout', 'checkout.checkout_timeout_reached')
         rabbitmq.consume(queueName, async (message, channel) => {
             const msg = JSON.parse(message.content.toString())
             return await CancelCheckoutUseCase.execute(client, { ...msg })

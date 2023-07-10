@@ -1,6 +1,7 @@
 import { Client } from "discord.js";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
+import { RabbitmqSingletonService } from "@/modules/@shared/services";
 
 export class CancelCheckoutUseCase {
     static async execute(client: Client, { checkoutId }: CancelCheckoutUseCase.Input): Promise<void | boolean> {
@@ -11,7 +12,11 @@ export class CancelCheckoutUseCase {
         const owner = guild?.members.cache.get(checkout?.ownerId!);
 
         if (!owner || !channel || !channel.isTextBased()) return;
-        console.log('cancelado por inatividade')
+        const rabbitmq = await RabbitmqSingletonService.getInstance()
+        rabbitmq.publishInQueue('closeChannelCheckoutCommandQueue', {
+            checkoutId,
+            time: 10000
+        })
 
         return true
     }
