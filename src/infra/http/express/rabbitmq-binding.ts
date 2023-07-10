@@ -12,7 +12,7 @@ export const bindingRabbitmq = async () => {
     rabbitmq.assertQueue("checkoutTimeoutQueue", { 
         durable: true,
         arguments: {
-            'x-message-ttl': 20000, // delay in ms
+            'x-message-ttl': parseInt(process.env.CHECKOUT_TIMEOUT_IN_MS!), // delay in ms
             'x-dead-letter-exchange': "checkoutTimeout" // when message expires, send to this exchange
         } 
     })
