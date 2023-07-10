@@ -18,8 +18,9 @@ export const CheckoutMessageCancelledByStockNotAvaiblePrivate = async (props: Pr
         embeds: [
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
-                .setAuthor({ name: `${props.user.user.username} | Compra reembolsada`, iconURL: `${props.user.avatarURL()}` })
-                .setDescription(`> ${emojis.notifiy} Lamentamos informar que o produto que você deseja está fora de estoque devido a uma compra anterior. Pedimos desculpas pelo inconveniente causado, oferecemos alternativa ou aguardar reposição.\nQuanto ao seu dinheiro, pode ficar tranquilo, nosso sistema já devolveu de volta ao seu banco!`)
+                .setAuthor({ name: `${props.user.guild.name}`, iconURL: props.user.guild.iconURL()! })
+                .setTitle(`${props.user.guild.name} | Compra reembolsada`)
+                .setDescription(`> ${emojis.notifiy} Lamentamos informar que o produto que você deseja está fora de estoque devido a uma compra anterior. Pedimos desculpas pelo inconveniente causado, oferecemos alternativa ou aguardar reposição.\n\n> Quanto ao seu dinheiro, pode ficar tranquilo, nosso sistema já devolveu de volta ao seu banco!`)
                 .addFields(
                     {
                         name: `**${emojis.box} | Produto:**`,
@@ -43,7 +44,7 @@ export const CheckoutMessageCancelledByStockNotAvaiblePrivate = async (props: Pr
                     }
                 )
                 .setImage(await new DatabaseConfig().get('purchases.products.banner') as string)
-                .setFooter({ text: `😢 Pedimos desculpas pelo ocorrido, atenciosamente ${props.client.guilds.cache.get(process.env.GUILD_ID!)?.name}` })
+                .setFooter({ text: `😢 Pedimos desculpas pelo ocorrido` })
         ]
     }
 }

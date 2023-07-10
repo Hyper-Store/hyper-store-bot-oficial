@@ -6,7 +6,7 @@ import { CheckoutMessageCancelledByStockNotAvaibleChannel } from "./messages/Che
 import { CheckoutMessageCancelledByStockNotAvaiblePrivate } from "./messages/CheckoutMessageCancelledByStockNotAvaiblePrivate";
 
 export class CancelCartUsecase {
-    static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<void | boolean> {
+    static async execute(client: Client, { checkoutId }: ApproveCartUsecase.Input): Promise<void | boolean> {
         const checkout = await CheckoutRepository.findById(checkoutId);
         const product = await ProductRepository.findById(checkout?.productId!);
         const guild = await client.guilds.cache.get(process.env.GUILD_ID!);
@@ -43,6 +43,5 @@ export namespace ApproveCartUsecase {
 
     export type Input = {
         checkoutId: string
-        stocks: ProductStockModel[]
     }
 }
