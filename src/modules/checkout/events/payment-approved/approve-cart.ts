@@ -21,7 +21,6 @@ export class ApproveCartUsecase {
                 client,
                 user: owner,
                 product: product!,
-                stock: stocks,
                 checkout: checkout!
             })
         })

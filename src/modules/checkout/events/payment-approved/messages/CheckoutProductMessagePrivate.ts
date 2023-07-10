@@ -23,7 +23,7 @@ export const CheckoutProductMessagePrivate = async (props: Props) => {
         embeds: [
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
-                .setTitle(`${props.user.user.username} | Compra aprovada`)
+                .setAuthor({ name: `${props.user.user.username} | Compra aprovada`, iconURL: `${props.user.avatarURL()}` })
                 .setDescription(`> ${emojis.notifiy} Caso queira você pode avaliar o produto ou a loja, deixe sua avaliação em: ${channel_avaibles}`)
                 .addFields(
                     {

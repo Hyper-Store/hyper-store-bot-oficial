@@ -1,8 +1,6 @@
-import { DatabaseConfig } from '@/infra/app/setup-config';
 import { colors } from '@/modules/@shared/utils/colors';
 import { emojis } from '@/modules/@shared/utils/emojis';
 import { CheckoutModel } from '@/modules/checkout/models/Checkout.model';
-import { ProductStockModel } from '@/modules/product/models/product-stock.model';
 import { ProductModel } from '@/modules/product/models/product.model';
 import Discord, { Client } from 'discord.js';
 
@@ -10,15 +8,14 @@ type Props = {
     client: Client,
     user: Discord.GuildMember,
     product: ProductModel,
-    checkout: CheckoutModel,
-    stock: ProductStockModel[]
+    checkout: CheckoutModel
 }
 
 export const CheckoutProductMessageChannel = async (props: Props) => {
 
     const buttons = new Discord.ActionRowBuilder<any>();
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 4; i++) {
         buttons.addComponents(
             new Discord.ButtonBuilder()
                 .setCustomId(`review_${i + 1}`)
