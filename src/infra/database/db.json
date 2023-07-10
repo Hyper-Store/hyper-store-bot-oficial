@@ -13,42 +13,35 @@
         }
     },
     "checkouts": {
-        "1127830258079518750": {
-            "id": "1127830258079518750",
+        "1127843465544355911": {
+            "id": "1127843465544355911",
             "ownerId": "1035695838707585044",
             "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "51cc7794-e424-4974-b13b-4e25eda86e0d",
-            "status": "APPROVED",
+            "ref": "2aba64bf-0f92-4a70-b61a-a0f9ac9859da",
+            "status": "PENDING",
             "quantity": 1,
             "price": 0.01,
             "review": null,
-            "createdAt": "2023-07-10T05:14:47.632Z"
+            "createdAt": "2023-07-10T06:07:16.862Z"
         }
     },
     "payment": {
         "paymentManagement": {
-            "1127830258079518750": {
-                "checkoutId": "1127830258079518750",
-                "dateTimeCreated": "2023-07-10T05:14:53.347Z",
-                "status": "APPROVED",
+            "1127843465544355911": {
+                "checkoutId": "1127843465544355911",
+                "dateTimeCreated": "2023-07-10T06:07:25.981Z",
+                "status": "PENDING",
                 "paymentProvider": "mercadopago",
-                "paymentProviderId": "60525455684"
+                "paymentProviderId": "60525806438"
             }
         },
         "mercadopago": {
-            "ref-60525455684": {
-                "paymentId": "60525455684",
+            "ref-60525806438": {
+                "paymentId": "60525806438",
                 "amount": 0.01,
-                "paymentManagementId": "1127830258079518750",
-                "status": "APPROVED",
-                "expirationDate": "2023-07-10T05:24:53.348Z"
-            },
-            "ref-60422882907": {
-                "paymentId": "60422882907",
-                "amount": 0.01,
-                "paymentManagementId": "1127839270275657789",
-                "status": "CANCELLED",
-                "expirationDate": "2023-07-10T06:00:37.381Z"
+                "paymentManagementId": "1127843465544355911",
+                "status": "PENDING",
+                "expirationDate": "2023-07-10T06:17:25.983Z"
             }
         }
     }

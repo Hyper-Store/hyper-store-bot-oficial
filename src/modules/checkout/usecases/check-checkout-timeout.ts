@@ -9,10 +9,10 @@ export class CheckCheckoutTimeoutUsecase {
 
         const checkout = await CheckoutRepository.findById(checkoutId)
         if (!checkout) return;
+        if(checkout.status !== "PENDING") return
 
         const paymentManagement = await PaymentManagementRepository.findById(checkout.id)
 
-        if(checkout.status !== "PENDING") return
         if(paymentManagement?.hasPaymentProvider()) return
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()
