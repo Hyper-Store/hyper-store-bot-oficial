@@ -1,8 +1,6 @@
 import { BaseEvent } from "@/modules/@shared/domain";
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { RabbitmqSingletonService } from "@/modules/@shared/services";
-import { ApproveCartUsecase } from "./approve-cart";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
@@ -30,7 +28,8 @@ class ReviewCheckoutEvent extends BaseEvent {
                 new Discord.EmbedBuilder()
                     .setColor(colors.invisible!)
                     .setDescription(`> ${emojis.success} Sua avaliação foi enviada com sucesso, muito obrigado(a)!`)
-            ]
+            ],
+            components: []
         })
 
         return;

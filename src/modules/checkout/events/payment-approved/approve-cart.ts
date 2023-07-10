@@ -3,8 +3,6 @@ import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { CheckoutProductMessagePrivate } from "./messages/CheckoutProductMessagePrivate";
 import { ProductStockModel } from "@/modules/product/models/product-stock.model";
-import { ProductStockRepository } from "@/modules/product/repositories/product-stock.repository";
-import { ProductModel } from "@/modules/product/models/product.model";
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
 import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel";
 
