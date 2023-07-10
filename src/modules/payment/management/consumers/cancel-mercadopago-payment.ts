@@ -7,6 +7,7 @@ const cancelMercadopagoPaymentConsumer = async () => {
     const queueName = "cancelMercadopagoPaymentQueue"
     rabbitmq.assertQueue(queueName, { durable: true })
     rabbitmq.bindQueue(queueName, "mercadopagoPayment", "mercadopagoPayment.cancelled")
+    rabbitmq.bindQueue(queueName, "mercadopagoPayment", "mercadopagoPayment.refunded")
     rabbitmq.consume(queueName, async (message, channel) => {
 
         const msg = JSON.parse(message.content.toString())

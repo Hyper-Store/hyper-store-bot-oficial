@@ -43,6 +43,15 @@ export class MercadopagoGateway {
         }
     }
 
-    
+    static async refund(paymentId: string): Promise<boolean> {
+
+        try {
+            await mercadopago.payment.refund( parseInt(paymentId) )
+            return true
+        }catch(err){
+            console.log(err)
+            return false
+        }
+    }
 
 }
