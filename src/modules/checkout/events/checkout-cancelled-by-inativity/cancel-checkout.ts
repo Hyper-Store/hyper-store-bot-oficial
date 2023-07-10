@@ -13,10 +13,10 @@ export class CancelCheckoutUseCase {
 
         if (!owner || !channel || !channel.isTextBased()) return;
         const rabbitmq = await RabbitmqSingletonService.getInstance()
-        rabbitmq.publishInQueue('closeChannelCheckoutCommandQueue', {
+        rabbitmq.publishInQueue('closeChannelCheckoutCommandQueue', JSON.stringify({
             checkoutId,
             time: 10000
-        })
+        }))
 
         return true
     }
