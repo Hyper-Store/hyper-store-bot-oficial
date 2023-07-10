@@ -43,6 +43,10 @@ export const CheckoutProductMessagePrivate = async (props: Props) => {
                         value: `\`\`\`${props.stock.map(s => s.content).join(',\n')}\`\`\``
                     },
                     {
+                        name: `**${emojis.id} | Protocolo (ID DA COMPRA):**`,
+                        value: `\`${props.checkout.id}\``
+                    },
+                    {
                         name: `**${emojis.date} | Data de entrega:**`,
                         value: `<t:${Math.floor(new Date().getTime() / 1000)}:f> \`(\`<t:${Math.floor(new Date().getTime() / 1000)}:R>\`)\``
                     }
