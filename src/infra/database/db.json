@@ -13,36 +13,83 @@
         }
     },
     "checkouts": {
-        "1127800912350552114": {
-            "id": "1127800912350552114",
-            "ownerId": "1035695838707585044",
+        "1127810418765725736": {
+            "id": "1127810418765725736",
+            "ownerId": "1124265861109256282",
             "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "1a06dd84-1da1-407f-8856-689e8a008725",
+            "ref": "958c68b3-af88-4089-acf9-8965e0fba6db",
             "status": "CANCELLED",
             "quantity": 1,
             "price": 0.01,
             "review": null,
-            "createdAt": "2023-07-10T03:18:11.310Z"
+            "createdAt": "2023-07-10T03:55:49.481Z"
+        },
+        "1127811922570522725": {
+            "id": "1127811922570522725",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "1e140ad1-e643-4505-b04e-ea03282003db",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-10T04:01:48.112Z"
+        },
+        "1127812599887712326": {
+            "id": "1127812599887712326",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "c04abf0b-e9a9-47ff-bd62-a345f5d819f8",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-10T04:04:29.389Z"
+        },
+        "1127813008651993088": {
+            "id": "1127813008651993088",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "4b5d9ec7-024b-43bf-8c74-a7a7ddf7b140",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-10T04:06:06.920Z"
         }
     },
     "payment": {
         "paymentManagement": {
-            "1127800912350552114": {
-                "checkoutId": "1127800912350552114",
-                "dateTimeCreated": "2023-07-10T03:18:21.458Z",
+            "1127810418765725736": {
+                "checkoutId": "1127810418765725736",
+                "dateTimeCreated": "2023-07-10T03:55:55.693Z",
                 "status": "REFUNDED",
                 "paymentProvider": "mercadopago",
-                "paymentProviderId": "60524059070"
+                "paymentProviderId": "60524595936"
+            },
+            "1127811922570522725": {
+                "checkoutId": "1127811922570522725",
+                "dateTimeCreated": "2023-07-10T04:01:54.316Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60524795080"
+            },
+            "1127812599887712326": {
+                "checkoutId": "1127812599887712326",
+                "dateTimeCreated": "2023-07-10T04:04:35.611Z",
+                "status": "REFUNDED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60524839012"
+            },
+            "1127813008651993088": {
+                "checkoutId": "1127813008651993088",
+                "dateTimeCreated": "2023-07-10T04:06:13.246Z",
+                "status": "REFUNDED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60422022223"
             }
         },
         "mercadopago": {
-            "ref-60524059070": {
-                "paymentId": "60524059070",
-                "amount": 0.01,
-                "paymentManagementId": "1127800912350552114",
-                "status": "REFUNDED",
-                "expirationDate": "2023-07-10T03:28:21.460Z"
-            },
             "ref-60524595936": {
                 "paymentId": "60524595936",
                 "amount": 0.01,
