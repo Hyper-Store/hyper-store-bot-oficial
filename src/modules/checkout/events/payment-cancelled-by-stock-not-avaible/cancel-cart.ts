@@ -2,7 +2,8 @@ import { Client } from "discord.js";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { ProductStockModel } from "@/modules/product/models/product-stock.model";
-import { RabbitmqSingletonService } from "@/modules/@shared/services";
+import { CheckoutMessageCancelledByStockNotAvaibleChannel } from "./messages/CheckoutMessageCancelledByStockNotAvaibleChannel";
+import { CheckoutMessageCancelledByStockNotAvaiblePrivate } from "./messages/CheckoutMessageCancelledByStockNotAvaiblePrivate";
 
 export class CancelCartUsecase {
     static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<void | boolean> {
@@ -14,14 +15,26 @@ export class CancelCartUsecase {
 
         if (!owner || !channel || !channel.isTextBased()) return;
 
-        const rabbitmq = await RabbitmqSingletonService.getInstance()
-        await rabbitmq.publishInExchange(
-            "checkout",
-            "checkout.delivered",
-            JSON.stringify({
-                checkoutId: checkout?.id
+        await owner.send({
+            ...await CheckoutMessageCancelledByStockNotAvaiblePrivate({
+                user: owner!,
+                client,
+                checkout: checkout!,
+                product: product!
             })
-        )
+        })
+
+        await channel.send({
+            ...await CheckoutMessageCancelledByStockNotAvaibleChannel({
+                user: owner!,
+                client
+            })
+        })
+
+        setTimeout(() => {
+            channel.delete();
+        }, 10000);
+
         return true
     }
 }

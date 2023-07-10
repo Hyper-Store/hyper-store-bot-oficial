@@ -19,7 +19,7 @@ export const CheckoutProductMessagePrivate = async (props: Props) => {
     const channel_avaibles = props.client.channels.cache.get(await new DatabaseConfig().get('purchases.channel_avaibles') as string)
 
     return {
-        content: `${props.user} - Compra aprovada`,
+        content: `||${props.user}||`,
         embeds: [
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
