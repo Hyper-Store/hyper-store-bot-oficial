@@ -6,8 +6,8 @@ const cancelCheckoutConsumer = async () => {
 
     const queueName = "cancelCheckoutQueue"
     rabbitmq.assertQueue(queueName, { durable: true })
+    rabbitmq.bindQueue(queueName, "paymentManagement", "paymentManagement.refunded")
     rabbitmq.bindQueue(queueName, "paymentManagement", "paymentManagement.cancelled")
-
     rabbitmq.consume(queueName, async (message, channel) => {
         const msg = JSON.parse(message.content.toString())
         await CancelCheckoutUsecase.execute({
