@@ -19,8 +19,8 @@ export const CheckoutMessageCancelledByStockNotAvaiblePrivate = async (props: Pr
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
                 .setAuthor({ name: `${props.user.guild.name}`, iconURL: props.user.guild.iconURL()! })
-                .setTitle(`${props.user.guild.name} | Compra reembolsada`)
-                .setDescription(`> ${emojis.notifiy} Lamentamos informar que o produto que você deseja está fora de estoque devido a uma compra anterior. Pedimos desculpas pelo inconveniente causado, oferecemos alternativa ou aguardar reposição.\n\n> Quanto ao seu dinheiro, pode ficar tranquilo, nosso sistema já devolveu de volta ao seu banco!`)
+                .setTitle('Compra reembolsada')
+                .setDescription(`> ${emojis.notifiy} Lamentamos informar que o produto que você deseja está fora de estoque devido a uma compra anterior. Pedimos desculpas pelo inconveniente causado, oferecemos alternativa ou aguardar reposição.\n\n> ${emojis.money} Quanto ao seu dinheiro, pode ficar tranquilo, nosso sistema já devolveu de volta ao seu banco!`)
                 .addFields(
                     {
                         name: `**${emojis.box} | Produto:**`,
@@ -39,7 +39,7 @@ export const CheckoutMessageCancelledByStockNotAvaiblePrivate = async (props: Pr
                         value: `\`${props.checkout.id}\``
                     },
                     {
-                        name: `**${emojis.date} | Data da compra:**`,
+                        name: `**${emojis.date} | Data do reembolso:**`,
                         value: `<t:${Math.floor(new Date().getTime() / 1000)}:f> \`(\`<t:${Math.floor(new Date().getTime() / 1000)}:R>\`)\``
                     }
                 )

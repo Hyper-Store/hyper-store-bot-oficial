@@ -24,7 +24,7 @@ export const CheckoutProductMessagePrivate = async (props: Props) => {
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
                 .setAuthor({ name: `${props.user.guild.name}`, iconURL: props.user.guild.iconURL()! })
-                .setTitle(`${props.user.guild.name} | Compra aprovada`)
+                .setTitle('Compra aprovada')
                 .setDescription(`> ${emojis.notifiy} Caso queira você pode avaliar o produto ou a loja, deixe sua avaliação em: ${channel_avaibles}`)
                 .addFields(
                     {
@@ -48,7 +48,7 @@ export const CheckoutProductMessagePrivate = async (props: Props) => {
                         value: `\`${props.checkout.id}\``
                     },
                     {
-                        name: `**${emojis.date} | Data do reembolso:**`,
+                        name: `**${emojis.date} | Data da compra:**`,
                         value: `<t:${Math.floor(new Date().getTime() / 1000)}:f> \`(\`<t:${Math.floor(new Date().getTime() / 1000)}:R>\`)\``
                     }
                 )
