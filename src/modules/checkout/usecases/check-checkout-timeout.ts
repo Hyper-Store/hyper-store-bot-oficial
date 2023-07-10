@@ -8,7 +8,7 @@ export class CheckCheckoutTimeoutUsecase {
     static async execute({ checkoutId }: CheckCheckoutTimeoutUsecase.Input): Promise<void> {
 
         const checkout = await CheckoutRepository.findById(checkoutId)
-        if(!checkout) return;
+        if (!checkout) return;
 
         const paymentManagement = await PaymentManagementRepository.findById(checkout.id)
 
