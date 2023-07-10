@@ -5,7 +5,8 @@ export type CheckoutModel = {
     productId: string
     quantity?: number,
     price?: number,
-    status?: CheckoutModel.Status
+    status?: CheckoutModel.Status,
+    review?: number | null,
     createdAt?: Date,
 }
 

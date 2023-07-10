@@ -10,7 +10,6 @@ import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessage
 
 export class ApproveCartUsecase {
     static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<void | boolean> {
-        console.log("ApproveCartUsecases")
         const checkout = await CheckoutRepository.findById(checkoutId);
         const product = await ProductRepository.findById(checkout?.productId!);
         const guild = await client.guilds.cache.get(process.env.GUILD_ID!);

@@ -16,6 +16,18 @@ type Props = {
 
 export const CheckoutProductMessageChannel = async (props: Props) => {
 
+    const buttons = new Discord.ActionRowBuilder<any>();
+
+    for (let i = 0; i < 4; i++) {
+        buttons.addComponents(
+            new Discord.ButtonBuilder()
+                .setCustomId(`review_${i + 1}`)
+                .setEmoji('⭐')
+                .setLabel(`${i + 1}`)
+                .setStyle(2)
+        )
+    }
+
     return {
         content: `${props.user}`,
         embeds: [
@@ -28,43 +40,6 @@ export const CheckoutProductMessageChannel = async (props: Props) => {
                 .setDescription(`> ${emojis.notifiy} Deixe sua avaliação sobre a compra, assim ajudando o servidor!`)
                 .setFooter({ text: '⭐ Você tem apenas um minuto para deixar sua avaliação!' })
         ],
-        components: [
-            new Discord.ActionRowBuilder<any>()
-                .addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId('avaible_1')
-                        .setEmoji('⭐')
-                        .setLabel("1")
-                        .setStyle(2)
-                )
-                .addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId('avaible_2')
-                        .setEmoji('⭐')
-                        .setLabel("2")
-                        .setStyle(2)
-                )
-                .addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId('avaible_3')
-                        .setEmoji('⭐')
-                        .setLabel("3")
-                        .setStyle(2)
-                )
-                .addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId('avaible_4')
-                        .setEmoji('⭐')
-                        .setLabel("4")
-                        .setStyle(2)
-                )
-                .addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId('avaible_5')
-                        .setEmoji('⭐')
-                        .setLabel("5")
-                        .setStyle(2)
-                )
-        ]
+        components: [buttons]
     }
 }

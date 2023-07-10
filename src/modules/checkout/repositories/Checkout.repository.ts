@@ -8,6 +8,7 @@ export class CheckoutRepository {
         checkout.status = "PENDING"
         checkout.quantity = 1
         checkout.price = 0;
+        checkout.review = null;
         checkout.createdAt = new Date()
 
         const result = await new Database().set(`checkouts.${checkout.id}`, checkout)

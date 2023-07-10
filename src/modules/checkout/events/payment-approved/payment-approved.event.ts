@@ -4,7 +4,7 @@ import Discord, { Client } from "discord.js"
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
 import { ApproveCartUsecase } from "./approve-cart";
 
-class StartCheckoutPurchasesEvent extends BaseEvent {
+class PaymentApprovedCheckoutEvent extends BaseEvent {
     constructor() {
         super({
             event: "ready"
@@ -26,6 +26,6 @@ class StartCheckoutPurchasesEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new StartCheckoutPurchasesEvent()
+    const buttonClickedEvent = new PaymentApprovedCheckoutEvent()
     buttonClickedEvent.setupConsumer(client)
 }
