@@ -13,12 +13,12 @@
         }
     },
     "checkouts": {
-        "1127830258079518750": {
-            "id": "1127830258079518750",
+        "1127843465544355911": {
+            "id": "1127843465544355911",
             "ownerId": "1035695838707585044",
             "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "51cc7794-e424-4974-b13b-4e25eda86e0d",
-            "status": "APPROVED",
+            "ref": "2aba64bf-0f92-4a70-b61a-a0f9ac9859da",
+            "status": "PENDING",
             "quantity": 1,
             "price": 0.01,
             "review": null,
