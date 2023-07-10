@@ -29,7 +29,6 @@ export class PaymentManagementRepository {
             `payment.paymentManagement.${checkoutId}`
         ) as PaymentManagementEntity.Props
         if (!paymentManagement) return null
-        console.log(paymentManagement)
         const paymentManagementEntity = PaymentManagementEntity.create({
             ...paymentManagement
         })

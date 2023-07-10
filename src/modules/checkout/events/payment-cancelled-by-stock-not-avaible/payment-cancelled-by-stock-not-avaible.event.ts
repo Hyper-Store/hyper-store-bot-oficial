@@ -14,9 +14,9 @@ class PaymentCancelledByStockNotAvaibleEvent extends BaseEvent {
     async exec(interaction: Interaction, client: Client): Promise<void> {
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()
-        const queueName = "deliveryStockQueue"
+        const queueName = "paymentCancelledByStockNotAvailableQueue"
         rabbitmq.assertQueue(queueName, { durable: true, })
-        rabbitmq.bindQueue(queueName, "checkout", "checkout.stock_reserved")
+        rabbitmq.bindQueue(queueName, "checkout", "checkout.failed_reserve_stock")
         rabbitmq.consume(queueName, async (message, channel) => {
             const msg = JSON.parse(message.content.toString())
             return await CancelCartUsecase.execute(client, { ...msg })

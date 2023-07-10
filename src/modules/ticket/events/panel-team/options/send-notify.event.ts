@@ -18,7 +18,6 @@ class PainelTeamSendNotifyTicketEvent extends BaseEvent {
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
         if (!interaction.isStringSelectMenu()) return;
-        console.log('data')
         if (interaction.customId !== "panel-team-options") return;
         if (interaction.values[0] !== "send-notify") return;
         if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;

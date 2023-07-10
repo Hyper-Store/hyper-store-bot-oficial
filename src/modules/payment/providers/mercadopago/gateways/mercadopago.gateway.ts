@@ -49,7 +49,6 @@ export class MercadopagoGateway {
             await mercadopago.payment.refund( parseInt(paymentId) )
             return true
         }catch(err){
-            console.log(err)
             return false
         }
     }

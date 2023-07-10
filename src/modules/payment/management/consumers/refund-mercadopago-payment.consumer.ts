@@ -1,21 +1,21 @@
 import { RabbitmqSingletonService } from "@/modules/@shared/services"
-import { CancelPaymentUsecase } from "../usecases"
+import { RefundPaymentUsecase } from "../usecases"
 
-const cancelMercadopagoPaymentConsumer = async () => {
+const refundMercadopagoPaymentConsumer = async () => {
     const rabbitmq = await RabbitmqSingletonService.getInstance()
 
-    const queueName = "cancelMercadopagoPaymentQueue"
+    const queueName = "refimdMercadopagoPaymentQueue"
     rabbitmq.assertQueue(queueName, { durable: true })
-    rabbitmq.bindQueue(queueName, "mercadopagoPayment", "mercadopagoPayment.cancelled")
+    rabbitmq.bindQueue(queueName, "mercadopagoPayment", "mercadopagoPayment.refunded")
     rabbitmq.consume(queueName, async (message, channel) => {
 
         const msg = JSON.parse(message.content.toString())
 
-        await CancelPaymentUsecase.execute({
+        await RefundPaymentUsecase.execute({
             paymentManagementId: msg.paymentManagementId
         })
     })
 }
 
-cancelMercadopagoPaymentConsumer()
+refundMercadopagoPaymentConsumer()
 
