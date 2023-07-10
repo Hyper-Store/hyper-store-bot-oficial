@@ -23,6 +23,62 @@
             "price": 0,
             "review": null,
             "createdAt": "2023-07-10T05:04:38.876Z"
+        },
+        "1127839270275657789": {
+            "id": "1127839270275657789",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "7cd426a9-0ed0-4ae8-993a-4eb6a250cb85",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-10T05:50:28.670Z"
+        },
+        "1127842584224604210": {
+            "id": "1127842584224604210",
+            "ownerId": "1035695838707585044",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "e0131094-94b9-42f3-a716-38f880ffd46b",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0,
+            "review": null,
+            "createdAt": "2023-07-10T06:03:38.684Z"
+        }
+    },
+    "payment": {
+        "paymentManagement": {
+            "1127839270275657789": {
+                "checkoutId": "1127839270275657789",
+                "dateTimeCreated": "2023-07-10T05:50:37.378Z",
+                "status": "CANCELLED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60422882907"
+            }
+        },
+        "mercadopago": {
+            "ref-60422882907": {
+                "paymentId": "60422882907",
+                "amount": 0.01,
+                "paymentManagementId": "1127839270275657789",
+                "status": "CANCELLED",
+                "expirationDate": "2023-07-10T06:00:37.381Z"
+            },
+            "ref-60525745500": {
+                "paymentId": "60525745500",
+                "amount": 0.01,
+                "paymentManagementId": "1127842099518259240",
+                "status": "PENDING",
+                "expirationDate": "2023-07-10T06:12:01.576Z"
+            },
+            "ref-60525806438": {
+                "paymentId": "60525806438",
+                "amount": 0.01,
+                "paymentManagementId": "1127843465544355911",
+                "status": "PENDING",
+                "expirationDate": "2023-07-10T06:17:25.983Z"
+            }
         }
     }
 }
