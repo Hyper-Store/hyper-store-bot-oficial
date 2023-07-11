@@ -19,6 +19,13 @@ app.post("/payment/mercadopago/callback", async (req, res) => {
     res.status(200).json({ ok: true })
 })
 
+app.post("/payment/paypal/callback", async (req, res) => {
+
+    console.log(req.body)
+
+    res.status(200).json({ ok: true })
+})
+
 
 const PORT = 5000
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))

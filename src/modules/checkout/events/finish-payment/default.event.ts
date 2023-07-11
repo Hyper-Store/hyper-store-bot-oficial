@@ -6,6 +6,7 @@ import Discord, { Client } from "discord.js"
 import { FinishPaymentMercadoPagoCheckoutEvent } from "./mercadopago/finish-payment-mercado-pago";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
+import { FinishPaypalCheckoutEvent } from "./paypal/finish-payment-paypal";
 
 class DefaultFinishPaymentCheckoutEvent extends BaseEvent {
     constructor() {
@@ -42,7 +43,7 @@ class DefaultFinishPaymentCheckoutEvent extends BaseEvent {
         }
 
         if (interaction.values[0] === "paypal") {
-            FinishPaymentMercadoPagoCheckoutEvent.execute(interaction, client);
+            FinishPaypalCheckoutEvent.execute(interaction, client);
             return;
         }
 
