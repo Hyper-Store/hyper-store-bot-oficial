@@ -9,7 +9,12 @@
             "createdAt": "2023-07-09T18:04:37.737Z",
             "channelId": "1126886459484422205",
             "messageId": "1127662879001288824",
-            "stock": {}
+            "stock": {
+                "123123": {
+                    "id": "123123",
+                    "content": "123123"
+                }
+            }
         }
     },
     "ticket": {
@@ -22,6 +27,62 @@
                 "messageId": "1128154704711532544",
                 "sessionId": "992c2ad9-c812-4ed6-8d5c-29a4644aa04e",
                 "createdAt": "2023-07-11T02:43:47.322Z"
+            }
+        }
+    },
+    "checkouts": {
+        "1128433434306564258": {
+            "id": "1128433434306564258",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "55e416c9-9f12-4821-8cd7-051403d36ca8",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-11T21:11:23.246Z"
+        },
+        "1128433742109741138": {
+            "id": "1128433742109741138",
+            "ownerId": "1124265861109256282",
+            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
+            "ref": "ac2b3ecd-3483-4fd1-9d13-c295ef34c28b",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-11T21:12:36.303Z"
+        }
+    },
+    "payment": {
+        "paymentManagement": {
+            "1128433434306564258": {
+                "checkoutId": "1128433434306564258",
+                "dateTimeCreated": "2023-07-11T21:11:29.894Z",
+                "status": "PENDING"
+            },
+            "1128433742109741138": {
+                "checkoutId": "1128433742109741138",
+                "dateTimeCreated": "2023-07-11T21:12:42.429Z",
+                "status": "CANCELLED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60606222468"
+            }
+        },
+        "mercadopago": {
+            "ref-60606222468": {
+                "paymentId": "60606222468",
+                "amount": 0.01,
+                "paymentManagementId": "1128433742109741138",
+                "status": "CANCELLED",
+                "expirationDate": "2023-07-11T21:22:42.430Z"
+            },
+            "ref-60605864636": {
+                "paymentId": "60605864636",
+                "amount": 0.01,
+                "paymentManagementId": "1128431944716271766",
+                "status": "CANCELLED",
+                "expirationDate": "2023-07-11T21:15:35.175Z"
             }
         }
     }

@@ -1,8 +1,8 @@
 import { Client } from "discord.js";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
-import { CheckoutMessageCancelledByStockNotAvaibleChannel } from "./messages/CheckoutMessageCancelledByStockNotAvaibleChannel";
-import { CheckoutMessageCancelledByStockNotAvaiblePrivate } from "./messages/CheckoutMessageCancelledByStockNotAvaiblePrivate";
+import { CloseChannelCheckoutRabbitMq } from "../../@shared/rabbitmq/close-channel-checkout.rabbitmq";
+import { CheckoutMessageCancelledPrivate } from "./messages/CheckoutMessageCancelledPrivate";
 
 export class CancelCartUsecase {
     static async execute(client: Client, { checkoutId }: CancelCartUsecase.Input): Promise<void | boolean> {
@@ -14,25 +14,16 @@ export class CancelCartUsecase {
 
         if (!owner || !channel || !channel.isTextBased()) return;
 
+        await CloseChannelCheckoutRabbitMq.execute({ checkoutId });
+
         await owner.send({
-            ...await CheckoutMessageCancelledByStockNotAvaiblePrivate({
+            ...await CheckoutMessageCancelledPrivate({
                 user: owner!,
                 client,
                 checkout: checkout!,
                 product: product!
             })
         })
-
-        await channel.send({
-            ...await CheckoutMessageCancelledByStockNotAvaibleChannel({
-                user: owner!,
-                client
-            })
-        })
-
-        setTimeout(() => {
-            channel.delete();
-        }, 10000);
 
         return true
     }
