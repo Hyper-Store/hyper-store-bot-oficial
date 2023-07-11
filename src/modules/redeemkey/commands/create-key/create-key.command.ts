@@ -7,6 +7,8 @@ import { emojis } from "@/modules/@shared/utils/emojis";
 import { generateKey } from "@/modules/@shared/utils/generate-key";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
+import { KeyRepository } from "../../repositories/Keys.repository";
+import { KeyModel } from "../../models/Key.model";
 
 class CreateKeyCommand extends BaseSlashCommand {
 
@@ -57,8 +59,8 @@ class CreateKeyCommand extends BaseSlashCommand {
             return;
         }
 
-        const type = interaction.options.getString("type");
-        const content = interaction.options.getString("content");
+        const type = interaction.options.getString("type") as KeyModel["type"];
+        const content = interaction.options.getString("content") as string;
         const quantity = interaction.options.getNumber("quantity") as number;
 
         if (type === "role" && !interaction.guild?.roles.cache.get(content!)) {
@@ -74,16 +76,16 @@ class CreateKeyCommand extends BaseSlashCommand {
         }
 
 
-        const keys_generated: string[] = []
+        const keys_generated: KeyModel[] = []
 
         for (let i = 0; i < quantity; i++) {
-            const key_generated = generateKey('XXXX-XXXX-XXXX');
-            keys_generated.push(key_generated)
-            await new Database().set(`reedemkey.${key_generated}`, {
+            const key_result = await KeyRepository.create({
                 type,
                 content,
-                status: true
+                createdAt: new Date()
             })
+
+            keys_generated.push(key_result)
         }
 
         await interaction.user.send({
@@ -95,7 +97,7 @@ class CreateKeyCommand extends BaseSlashCommand {
                     .addFields(
                         {
                             name: `🔑 Key gerada, value:`,
-                            value: `\`\`\`${keys_generated.join('\n')}\`\`\``
+                            value: `\`\`\`${keys_generated.map(key => key.id).join('\n')}\`\`\``
                         },
                         {
                             name: `${emojis.date} Data de criação`,
@@ -110,7 +112,8 @@ class CreateKeyCommand extends BaseSlashCommand {
                 new Discord.EmbedBuilder()
                     .setColor(colors.invisible!)
                     .setDescription(`> ${emojis.success} Parabens, sua key foi gerada com sucesso e já foi enviada em seu privado!`)
-            ]
+            ],
+            ephemeral: true
         })
 
         return;

@@ -130,7 +130,7 @@ class StartCheckoutEvent extends BaseEvent {
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         rabbitmq.publishInQueue("checkoutTimeoutQueue", JSON.stringify({ checkoutId: channel_created?.id! }))
-        
+
 
         interaction.editReply({
             embeds: [

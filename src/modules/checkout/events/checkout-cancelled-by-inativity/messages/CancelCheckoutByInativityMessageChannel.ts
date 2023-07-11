@@ -35,7 +35,7 @@ export const CancelCheckoutByInativityMessageChannel = async (props: Props) => {
                     }
                 )
                 .setImage(await new DatabaseConfig().get('purchases.products.banner') as string)
-                .setFooter({ text: `📦 ${props.client.guilds.cache.get(process.env.GUILD_ID!)?.name} - Todos os direitos reservados` })
+                .setFooter({ text: `📦 ${props.user.guild.name} - Todos os direitos reservados` })
         ],
     }
 }

@@ -1,10 +1,15 @@
-import { Database } from "@/infra/app/setup-database";
 import { BaseEvent } from "@/modules/@shared/domain";
-import { colors } from "@/modules/@shared/utils/colors";
-import { emojis } from "@/modules/@shared/utils/emojis";
-import { CacheType, Interaction, ClientEvents } from "discord.js";
-import Discord, { Client } from "discord.js"
+import { Interaction } from "discord.js";
+import { Client } from "discord.js"
 import { DisableKey } from "../../@shared/disable-key/disable-key";
+import { KeyRepository } from "../../repositories/Keys.repository";
+import { KeyInvalidMessage } from "./messages/key-invalid.message";
+import { KeyAlreadyRescuedMessage } from "./messages/key-already-rescued.message";
+import { KeyRescueErrorMessage } from "./messages/key-rescue-error.message";
+import { KeyRescueMessageSuccessChannelMessage } from "./messages/key-rescue-message-channel.message";
+import { KeyRescueMessageSuccessPrivateMessage } from "./messages/key-rescue-message-private.message";
+import { KeyRescueRoleSuccessMessage } from "./messages/key-rescue-role-success.message";
+import { KeyErrorInRescue } from "./messages/key-error-in-rescue";
 
 
 class ModalSubmitedReedemKeyEvent extends BaseEvent {
@@ -18,32 +23,18 @@ class ModalSubmitedReedemKeyEvent extends BaseEvent {
         if (!interaction.isModalSubmit()) return;
         if (interaction.customId !== "reedem_key") return;
 
-        const key = interaction.fields.getTextInputValue("key");
+        const keyId = interaction.fields.getTextInputValue("key");
 
-        const key_db: any = await new Database().get(`reedemkey.${key}`);
+        const key_db = await KeyRepository.findById(keyId);
+
         if (!key_db) {
-            interaction.reply({
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setColor(colors.error!)
-                        .setDescription(`> ${emojis.error} A key \`${key}\` pode estar inválida, ou não existe mais!`)
-                ],
-                ephemeral: true
-            })
+            interaction.reply({ ...KeyInvalidMessage({ interaction, keyId }) })
 
             return;
         }
 
-        if (!key_db.status) {
-            interaction.reply({
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setColor(colors.error!)
-                        .setDescription(`> ${emojis.error} A key \`${key}\` já foi resgatada por outro usuário!`)
-                ],
-                ephemeral: true
-            })
-
+        if (key_db.recued) {
+            interaction.reply({ ...KeyAlreadyRescuedMessage({ interaction, keyId }) })
             return;
         }
 
@@ -53,62 +44,24 @@ class ModalSubmitedReedemKeyEvent extends BaseEvent {
                     if (Array.isArray(interaction.member?.roles)) return;
                     interaction.member?.roles.add(key_db.content);
                 } catch (error) {
-                    interaction.reply({
-                        embeds: [
-                            new Discord.EmbedBuilder()
-                                .setColor(colors.error!)
-                                .setDescription(`> ${emojis.error} Infelizmente não foi possível te entregar o cargo, houve um erro!\nEntre em contato com a administração para mais informações.`)
-                        ],
-                        ephemeral: true
-                    })
-
+                    interaction.reply({ ...KeyRescueErrorMessage({ interaction }) })
                     return;
                 }
 
-                await DisableKey(key, interaction.user.id);
+                await DisableKey(key_db, interaction.user.id);
 
-                interaction.reply({
-                    embeds: [
-                        new Discord.EmbedBuilder()
-                            .setColor(colors.invisible!)
-                            .setDescription(`> ${emojis.success} Você resgatou a key com sucesso, e recebeu o cargo: \`${interaction.guild?.roles.cache.get(key_db.content)?.name}\`!`)
-                    ],
-                    ephemeral: true
-                })
-
+                interaction.reply({ ...KeyRescueRoleSuccessMessage({ interaction, key: key_db }) })
                 break;
 
             case "message":
-                await interaction.user.send({
-                    embeds: [
-                        new Discord.EmbedBuilder()
-                            .setColor(colors.invisible!)
-                            .setDescription(`> 🔑 Aqui está o conteúdo do produto resgatado pela key:\n\`\`\`${key_db.content}\`\`\``)
-                    ]
-                })
+                await interaction.user.send({ ...KeyRescueMessageSuccessPrivateMessage({ interaction, key: key_db }) })
 
-                await DisableKey(key, interaction.user.id);
+                await DisableKey(key_db, interaction.user.id);
 
-                interaction.reply({
-                    embeds: [
-                        new Discord.EmbedBuilder()
-                            .setColor(colors.invisible!)
-                            .setDescription(`> ${emojis.success} Você resgatou a key com sucesso, e foi enviado o conteúdo em seu privado!`)
-                    ],
-                    ephemeral: true
-                })
-
+                interaction.reply({ ...KeyRescueMessageSuccessChannelMessage({ interaction }) })
                 break
             default:
-                interaction.reply({
-                    embeds: [
-                        new Discord.EmbedBuilder()
-                            .setColor(colors.error!)
-                            .setDescription(`> ${emojis.error} Não foi possível encontrar o tipo de conteúdo a ser entregue, entre em contato com a administração para mais informações!!`)
-                    ],
-                    ephemeral: true
-                })
-
+                interaction.reply({ ...KeyErrorInRescue({ interaction }) })
                 break;
         }
     }

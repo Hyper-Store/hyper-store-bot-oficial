@@ -6,7 +6,7 @@ export class CancelCheckoutUsecase {
     static async execute({ checkoutId }: CancelCheckoutUsecase.Input): Promise<void> {
 
         const checkout = await CheckoutRepository.findById(checkoutId)
-        if(!checkout) return
+        if (!checkout) return
 
         checkout.status = "CANCELLED"
 
@@ -16,7 +16,7 @@ export class CancelCheckoutUsecase {
         await rabbitmq.publishInExchange(
             "checkout",
             "checkout.cancelled",
-            JSON.stringify({ 
+            JSON.stringify({
                 checkoutId: checkout?.id
             })
         )

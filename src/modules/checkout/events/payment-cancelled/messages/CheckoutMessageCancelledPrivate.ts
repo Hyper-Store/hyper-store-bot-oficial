@@ -19,7 +19,7 @@ export const CheckoutMessageCancelledPrivate = async (props: Props) => {
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
                 .setAuthor({ name: `${props.user.guild.name}`, iconURL: props.user.guild.iconURL()! })
-                .setTitle('Compra reembolsada')
+                .setTitle('Compra cancelada')
                 .setDescription(`> ${emojis.notifiy} Sua compra foi cancelada por não realizar o pagamento, o produto foi devolvido de volta ao estoque, caso queira continuar, você pode comprar novamente!`)
                 .addFields(
                     {
