@@ -12,28 +12,17 @@
             "stock": {}
         }
     },
-    "checkouts": {
-        "1127844903683096686": {
-            "id": "1127844903683096686",
-            "ownerId": "1124265861109256282",
-            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "61e496fb-8b1f-46eb-8de1-cac6ffcc9641",
-            "status": "CANCELLED",
-            "quantity": 1,
-            "price": 0,
-            "review": null,
-            "createdAt": "2023-07-10T06:12:51.757Z"
-        },
-        "1127845689762791424": {
-            "id": "1127845689762791424",
-            "ownerId": "1124265861109256282",
-            "productId": "3ada358b-74a7-4365-89fe-48b59215c826",
-            "ref": "bbe3309b-ddc2-4fc0-92ba-c1a68743602b",
-            "status": "CANCELLED",
-            "quantity": 1,
-            "price": 0,
-            "review": null,
-            "createdAt": "2023-07-10T06:15:58.784Z"
+    "ticket": {
+        "sessions": {
+            "1128154703096713226": {
+                "id": "1128154703096713226",
+                "ownerId": "1124265861109256282",
+                "reason": "testeeeeeee",
+                "type": "doubt",
+                "messageId": "1128154704711532544",
+                "sessionId": "992c2ad9-c812-4ed6-8d5c-29a4644aa04e",
+                "createdAt": "2023-07-11T02:43:47.322Z"
+            }
         }
     }
 }

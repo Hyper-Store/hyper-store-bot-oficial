@@ -26,7 +26,6 @@ export class ProductRepository {
     static async getAll(): Promise<ProductModel[] | []> {
         const result = new Database().get(`products`)
 
-
         return result as ProductModel[] ?? []
     }
 }

@@ -19,27 +19,29 @@ const sleep = (ms: number): Promise<void> => {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-
-
-
 client.on("ready", async () => {
-    
+
     setupConsumers()
     console.log("✅ Bot is ready!")
 
     const activities: ActivitiesProps[] = [
         {
-            content: 'Jogando Minecraft',
+            content: '🛒 Hyper Store',
             type: Discord.ActivityType.Playing,
             time: 3000
         },
         {
-            content: 'Assistindo X videos in youtube',
-            type: Discord.ActivityType.Playing,
+            content: '💻 Qualidade e segurança',
+            type: Discord.ActivityType.Watching,
             time: 5000
         },
         {
-            content: 'Motivando a não desistir',
+            content: '😍 Adquira ja o seu bot, site ou aplicativo',
+            type: Discord.ActivityType.Watching,
+            time: 5000
+        },
+        {
+            content: '💸 Compre agora com a Hyper Store',
             type: Discord.ActivityType.Playing,
             time: 5000
         }

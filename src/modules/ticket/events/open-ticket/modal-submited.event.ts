@@ -10,12 +10,13 @@ import { GetUserNameLowerCase } from "@/modules/@shared/utils/get-user-name-lowe
 import { OpenTicketMessage } from "../../@shared/ticket-messages/open-ticket.message";
 import { DatabaseConfig } from "@/infra/app/setup-config";
 import { TypeTicket } from "../../@shared/type-tickets/type-tickets";
+import { TicketRepository } from "../../repositories/Ticket.repository";
 
 export const ticketData = {
+    id: "",
+    sessionId: randomUUID(),
     ownerId: "",
     reason: "",
-    channelId: "",
-    sessionId: randomUUID(),
     messageId: "",
     createdAt: new Date()
 }
@@ -60,7 +61,7 @@ class ButtonClickedEvent extends BaseEvent {
             ]
         })
 
-        ticketData.channelId = channel_created?.id!
+        ticketData.id = channel_created?.id!
 
         const message_created = await channel_created?.send({
             ...OpenTicketMessage({
@@ -74,11 +75,11 @@ class ButtonClickedEvent extends BaseEvent {
 
         ticketData.messageId = message_created?.id!!
 
-        new Database().set(`ticket.sessions.${ticketData.channelId}`, {
+        await TicketRepository.create({
+            id: ticketData.id,
             ownerId: interaction.user.id,
             reason: ticketData.reason,
             type: formData.typeTicket,
-            channelId: ticketData.channelId,
             messageId: ticketData.messageId,
             sessionId: ticketData.sessionId,
             createdAt: ticketData.createdAt
