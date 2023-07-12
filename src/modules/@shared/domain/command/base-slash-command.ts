@@ -20,7 +20,6 @@ export abstract class BaseSlashCommand {
     get name(): string {
         return this.props.name
     }
-
 }
 
 export namespace BaseSlashCommand {
