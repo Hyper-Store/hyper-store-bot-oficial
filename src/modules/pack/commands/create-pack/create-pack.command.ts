@@ -3,6 +3,8 @@ import { BaseSlashCommand } from "@/modules/@shared/domain/command/base-slash-co
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
+import { PackRepository } from "../../repositories/Pack.repository";
+import { PackCreatedSuccessfully } from "./messages/pack-created-successfully.message";
 
 class CreatePackCommand extends BaseSlashCommand {
 
@@ -33,7 +35,7 @@ class CreatePackCommand extends BaseSlashCommand {
                 {
                     name: 'image',
                     description: 'Adicione uma imagem ao pack',
-                    type: 11,
+                    type: 11
                 },
             ]
         })
@@ -45,9 +47,19 @@ class CreatePackCommand extends BaseSlashCommand {
             return;
         }
 
+        const title = interaction.options.getString('title');
+        const description = interaction.options.getString('description');
         const role = interaction.options.getRole('role');
+        const image = interaction.options.getAttachment('image')
 
+        const pack = await PackRepository.create({
+            title: title!,
+            description: description!,
+            role: role?.id!,
+            image: image?.url
+        })
 
+        interaction.reply({ ...PackCreatedSuccessfully({ interaction, pack }) })
     }
 }
 

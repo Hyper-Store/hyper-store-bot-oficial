@@ -28,7 +28,10 @@ const emojis = {
     mercadopago: "<:mercadopago:1127291259443236954>",
     paypal: "<:paypal:1127294331305340969>",
     pix: "<:pix:1127431370990424114>",
-    qrcode: "<:qrcode:1127431347812712528>"
+    qrcode: "<:qrcode:1127431347812712528>",
+    oficial: "💚",
+    youtube: "<:youtube:1128558266025263124>",
+    download: "📋"
 }
 
 export { emojis }

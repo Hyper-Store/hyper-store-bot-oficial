@@ -7,7 +7,7 @@ type CustomColors = {
 };
 
 const colors: Partial<CustomColors> = {
-    primary: "#00ffff",
+    primary: "#00ff00",
     invisible: "#000000",
     error: "#ff0000"
 }
