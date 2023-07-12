@@ -52,7 +52,7 @@ export const FinishPaymentMercadoPagoMessage = (props: Props) => {
                 )
                 .addComponents(
                     new Discord.ButtonBuilder()
-                        .setCustomId('cancel-cart')
+                        .setCustomId('cancel-checkout')
                         .setEmoji(emojis.notaccept)
                         .setLabel('Cancelar')
                         .setStyle(4)

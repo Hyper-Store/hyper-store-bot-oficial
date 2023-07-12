@@ -3,7 +3,7 @@ import { CheckoutRepository } from "../repositories/Checkout.repository"
 
 export class CancelCheckoutUsecase {
 
-    static async execute({ checkoutId }: CancelCheckoutUsecase.Input): Promise<void> {
+    static async execute({ checkoutId, emmitEvent = true }: CancelCheckoutUsecase.Input): Promise<void> {
 
         const checkout = await CheckoutRepository.findById(checkoutId)
         if (!checkout) return
@@ -11,6 +11,8 @@ export class CancelCheckoutUsecase {
         checkout.status = "CANCELLED"
 
         await CheckoutRepository.update(checkout)
+
+        if (!emmitEvent) return;
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         await rabbitmq.publishInExchange(
@@ -26,6 +28,7 @@ export class CancelCheckoutUsecase {
 export namespace CancelCheckoutUsecase {
 
     export type Input = {
-        checkoutId: string
+        checkoutId: string,
+        emmitEvent?: boolean
     }
 }

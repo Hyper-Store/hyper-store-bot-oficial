@@ -11,7 +11,7 @@ type Props = {
     product: ProductModel
 }
 
-export const CloseCheckoutMessage = async (props: Props) => {
+export const CancelCheckoutMessage = async (props: Props) => {
     return {
         embeds: [
             new Discord.EmbedBuilder()

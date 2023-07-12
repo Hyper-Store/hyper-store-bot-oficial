@@ -107,7 +107,7 @@ class StartCheckoutEvent extends BaseEvent {
                     )
                     .addComponents(
                         new Discord.ButtonBuilder()
-                            .setCustomId('cancel-cart')
+                            .setCustomId('cancel-checkout')
                             .setLabel('Cancelar')
                             .setEmoji(emojis.notaccept)
                             .setStyle(4)

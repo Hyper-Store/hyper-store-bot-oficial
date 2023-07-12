@@ -1,17 +1,18 @@
 import { BaseEvent } from "@/modules/@shared/domain";
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { RabbitmqSingletonService } from "@/modules/@shared/services";
-import { CloseCheckoutMessage } from "./messages/close-checkout.message";
+import { CancelCheckoutMessage } from "./messages/cancel-checkout.message";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { CancelCheckoutUsecase } from "../../usecases";
+import { CloseChannelCheckoutRabbitMq } from "../../@shared/rabbitmq/close-channel-checkout.rabbitmq";
 
-class CloseChannelCheckoutEvent extends BaseEvent {
+class CancelChannelCheckoutEvent extends BaseEvent {
     constructor() {
         super({
             event: "interactionCreate"
         })
+
     }
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
@@ -23,10 +24,11 @@ class CloseChannelCheckoutEvent extends BaseEvent {
 
         if (interaction.user.id !== checkout?.ownerId) return;
 
-        CancelCheckoutUsecase.execute({ checkoutId: checkout.id })
+        CancelCheckoutUsecase.execute({ checkoutId: checkout.id, emmitEvent: false })
+        CloseChannelCheckoutRabbitMq.execute({ checkoutId: checkout.id })
 
         interaction.user.send({
-            ...await CloseCheckoutMessage({
+            ...await CancelCheckoutMessage({
                 interaction,
                 checkout: checkout!,
                 product: product!
@@ -36,6 +38,6 @@ class CloseChannelCheckoutEvent extends BaseEvent {
 }
 
 export default (client: Client): void => {
-    const buttonClickedEvent = new CloseChannelCheckoutEvent()
+    const buttonClickedEvent = new CancelChannelCheckoutEvent()
     buttonClickedEvent.setupConsumer(client)
 }

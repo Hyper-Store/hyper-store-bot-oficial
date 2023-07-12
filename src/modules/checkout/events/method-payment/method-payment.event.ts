@@ -53,6 +53,13 @@ class MethodPaymentCheckoutPurchasesPurchasesEvent extends BaseEvent {
                                 }
                             )
                     )
+                    .addComponents(
+                        new Discord.ButtonBuilder()
+                            .setCustomId('cancel-checkout')
+                            .setEmoji(emojis.notaccept)
+                            .setLabel('Cancelar')
+                            .setStyle(4)
+                    )
             ]
         })
     }

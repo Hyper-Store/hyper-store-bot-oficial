@@ -11,38 +11,5 @@
             "channelId": "1126886459484422205",
             "messageId": "1128475252335313016"
         }
-    },
-    "checkouts": {
-        "1128475350834348156": {
-            "id": "1128475350834348156",
-            "ownerId": "1124265861109256282",
-            "productId": "7f11dcf3-678c-41f9-b24d-7ddf460eeaac",
-            "ref": "f02fdf03-6d67-4720-abd0-ec30dc015645",
-            "status": "PENDING",
-            "quantity": 1,
-            "price": 25,
-            "review": null,
-            "createdAt": "2023-07-11T23:57:56.869Z"
-        }
-    },
-    "payment": {
-        "paymentManagement": {
-            "1128475350834348156": {
-                "checkoutId": "1128475350834348156",
-                "dateTimeCreated": "2023-07-11T23:58:03.211Z",
-                "status": "PENDING",
-                "paymentProvider": "mercadopago",
-                "paymentProviderId": "60510175865"
-            }
-        },
-        "mercadopago": {
-            "ref-60510175865": {
-                "paymentId": "60510175865",
-                "amount": 25,
-                "paymentManagementId": "1128475350834348156",
-                "status": "PENDING",
-                "expirationDate": "2023-07-12T00:08:03.214Z"
-            }
-        }
     }
 }
