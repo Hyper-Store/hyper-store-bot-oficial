@@ -4,7 +4,6 @@ import { CheckoutRepository } from "../repositories/Checkout.repository"
 export class CancelCheckoutUsecase {
 
     static async execute({ checkoutId, emmitEvent = true }: CancelCheckoutUsecase.Input): Promise<void> {
-
         const checkout = await CheckoutRepository.findById(checkoutId)
         if (!checkout) return
 

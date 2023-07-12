@@ -6,6 +6,8 @@ import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { CancelCheckoutUsecase } from "../../usecases";
 import { CloseChannelCheckoutRabbitMq } from "../../@shared/rabbitmq/close-channel-checkout.rabbitmq";
+import { PaymentManagementRepository } from "@/modules/payment/management/repositories";
+import { RabbitmqSingletonService } from "@/modules/@shared/services";
 
 class CancelChannelCheckoutEvent extends BaseEvent {
     constructor() {
@@ -21,11 +23,19 @@ class CancelChannelCheckoutEvent extends BaseEvent {
 
         const checkout = await CheckoutRepository.findById(interaction.channelId);
         const product = await ProductRepository.findById(checkout?.productId!);
+        const paymentManagment = await PaymentManagementRepository.findById(checkout?.id!);
 
         if (interaction.user.id !== checkout?.ownerId) return;
 
-        CancelCheckoutUsecase.execute({ checkoutId: checkout.id, emmitEvent: false })
-        CloseChannelCheckoutRabbitMq.execute({ checkoutId: checkout.id })
+
+        if (paymentManagment?.hasPaymentProvider()) {
+            const rabbitmq = await RabbitmqSingletonService.getInstance()
+            await rabbitmq.publishInQueue('cancelPaymentProviderQueue', JSON.stringify({ checkoutId: checkout?.id! }))
+        } else {
+            await CancelCheckoutUsecase.execute({ checkoutId: checkout.id, emmitEvent: false })
+        }
+
+        await CloseChannelCheckoutRabbitMq.execute({ checkoutId: checkout.id })
 
         interaction.user.send({
             ...await CancelCheckoutMessage({

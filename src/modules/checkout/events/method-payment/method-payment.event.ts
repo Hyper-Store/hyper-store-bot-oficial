@@ -40,25 +40,12 @@ class MethodPaymentCheckoutPurchasesPurchasesEvent extends BaseEvent {
                             .setPlaceholder('🏦 Escolha o método de pagamento')
                             .setOptions(
                                 {
-                                    emoji: "💰",
-                                    label: "Saldo na conta",
-                                    description: "Taxa 0% | Entrega automática",
-                                    value: "saldo",
-                                },
-                                {
                                     emoji: emojis.mercadopago,
                                     label: "Mercado Pago (PIX E QR CODE)",
                                     description: "Taxa 0% | Entrega automática",
                                     value: "mercadopago"
                                 }
                             )
-                    )
-                    .addComponents(
-                        new Discord.ButtonBuilder()
-                            .setCustomId('cancel-checkout')
-                            .setEmoji(emojis.notaccept)
-                            .setLabel('Cancelar')
-                            .setStyle(4)
                     )
             ]
         })
