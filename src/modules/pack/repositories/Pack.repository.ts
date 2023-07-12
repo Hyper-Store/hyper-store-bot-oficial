@@ -30,8 +30,13 @@ export class PackRepository {
         return null;
     }
 
-    static async update(pack: PackModel): Promise<void> {
-        new Database().set(`packs.${pack.id}`, pack)
+    static async update(pack: PackModel): Promise<PackModel> {
+        const result = new Database().set(`packs.${pack.id}`, pack)
+        return result as PackModel
+    }
+
+    static async delete(packId: string): Promise<void> {
+        new Database().delete(`packs.${packId}`)
     }
 
     static async getAll(): Promise<{ [key: string]: PackModel }> {

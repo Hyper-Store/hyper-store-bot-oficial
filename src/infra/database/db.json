@@ -6,31 +6,49 @@
             "price": 25,
             "image": "",
             "id": "7f11dcf3-678c-41f9-b24d-7ddf460eeaac",
-            "stock": {},
+            "stock": {
+                "93009c66-5964-4eee-b3a8-a81dec4c2744": {
+                    "content": "teste",
+                    "id": "93009c66-5964-4eee-b3a8-a81dec4c2744"
+                }
+            },
             "createdAt": "2023-07-11T23:57:27.397Z",
             "channelId": "1126886459484422205",
             "messageId": "1128475252335313016"
         }
     },
-    "packs": {
-        "8e708498-402b-49d8-b7c1-b785f030bbd2": {
-            "title": "Pack Free",
-            "description": "<a:notify:1126891624606220400> Pack free para todos usarem oficialmente criado pela Hyper Store",
-            "role": "1126875321682104341",
-            "image": "https://cdn.discordapp.com/ephemeral-attachments/1128507185756909609/1128550130304417802/Banner.png",
-            "id": "8e708498-402b-49d8-b7c1-b785f030bbd2",
-            "options": {
-                "5fab9d0d-ee8f-4dc3-961f-1b526f01da23": {
-                    "title": "Bot Ticket v2",
-                    "content": "💚 Ticket v2 Discord v14\n💚 Criado pelo: Daniel\n💚 Postado por: Hyper Store",
-                    "url": "https://yotubue.com",
-                    "youtubeURL": "https://yotubue.com",
-                    "emoji": "🎫",
-                    "id": "5fab9d0d-ee8f-4dc3-961f-1b526f01da23",
-                    "createdAt": "2023-07-12T04:56:09.976Z"
-                }
-            },
-            "createdAt": "2023-07-12T04:55:05.790Z"
+    "packs": {},
+    "checkouts": {
+        "1128565694443835472": {
+            "id": "1128565694443835472",
+            "ownerId": "1124265861109256282",
+            "productId": "7f11dcf3-678c-41f9-b24d-7ddf460eeaac",
+            "ref": "4f64f836-a3f3-4608-a1a3-9fdf4a8fd4f8",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 25,
+            "review": null,
+            "createdAt": "2023-07-12T05:56:56.647Z"
+        }
+    },
+    "payment": {
+        "paymentManagement": {
+            "1128565694443835472": {
+                "checkoutId": "1128565694443835472",
+                "dateTimeCreated": "2023-07-12T05:57:47.768Z",
+                "status": "CANCELLED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "60518034987"
+            }
+        },
+        "mercadopago": {
+            "ref-60518034987": {
+                "paymentId": "60518034987",
+                "amount": 25,
+                "paymentManagementId": "1128565694443835472",
+                "status": "CANCELLED",
+                "expirationDate": "2023-07-12T06:07:47.771Z"
+            }
         }
     }
 }

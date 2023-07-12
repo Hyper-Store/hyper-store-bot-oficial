@@ -27,12 +27,12 @@ class PackDownloadEvent extends BaseEvent {
         const pack = await PackRepository.findById(packId);
 
         if (!pack) {
-            interaction.update({ ...PackNotExistErrorMessage({ interaction }) })
+            interaction.reply({ ...PackNotExistErrorMessage({ interaction }) as Discord.InteractionReplyOptions })
         }
 
         const pack_role = interaction.guild?.roles.cache.get(pack?.role!);
         if (!interaction.member?.roles.cache.get(pack_role?.id!)) {
-            interaction.reply({ ...NotHavePermissionMessage({ interaction, role: pack_role! }) })
+            interaction.reply({ ...await NotHavePermissionMessage({ interaction, role: pack_role! }) })
             return;
         }
 

@@ -7,7 +7,7 @@ type Props = {
     role: Role
 }
 
-export const NotHavePermissionMessage = (props: Props): Discord.InteractionReplyOptions => {
+export const NotHavePermissionMessage = async (props: Props): Promise<Discord.InteractionReplyOptions> => {
     return {
         embeds: [
             new Discord.EmbedBuilder()
