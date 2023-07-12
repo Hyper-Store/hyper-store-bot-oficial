@@ -10,6 +10,7 @@ import { ProductNotExist } from "../../@shared/_error/ProductNotExist.error";
 import { NoStockProduct } from "../../@shared/_error/NoStockProduct.error";
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
+import { ProductStockRepository } from "@/modules/product/repositories/product-stock.repository";
 
 
 class StartCheckoutEvent extends BaseEvent {
@@ -32,7 +33,8 @@ class StartCheckoutEvent extends BaseEvent {
             return;
         }
 
-        if ((product.stock ?? []).length < 1) {
+        const stockCount = await ProductStockRepository.stockCount(product_id);
+        if (stockCount < 1) {
             interaction.reply({ ...await NoStockProduct(interaction) })
             return;
         }
