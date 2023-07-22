@@ -1,11 +1,10 @@
-import { DatabaseConfig } from "@/infra/app/setup-config";
 import { CommandContainer } from "@/modules/@shared/domain";
 import { BaseSlashCommand } from "@/modules/@shared/domain/command/base-slash-command";
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
-import { colors } from "@/modules/@shared/utils/colors";
-import { emojis } from "@/modules/@shared/utils/emojis";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
+import { PanelKeyMessage } from "./messages/panel.message";
+import { ChannelSetedSuccessfullyMessage } from "./messages/channel-seted-successfully.message";
 
 class SetChannelReedemKeyCommand extends BaseSlashCommand {
 
@@ -24,34 +23,9 @@ class SetChannelReedemKeyCommand extends BaseSlashCommand {
             return;
         }
 
-        await interaction.channel?.send({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setTitle("Como resgatar key?")
-                    .setDescription(`> 🔑 Para resgatar uma key, clique no botão abaixo.`)
-                    .setImage(new DatabaseConfig().get('reedemkey.banner') as string)
-            ],
-            components: [
-                new Discord.ActionRowBuilder<any>()
-                    .addComponents(
-                        new Discord.ButtonBuilder()
-                            .setCustomId('reedem_key')
-                            .setLabel('Resgatar key')
-                            .setEmoji('🎁')
-                            .setStyle(2)
-                    )
-            ]
-        })
+        await interaction.channel?.send({ ...PanelKeyMessage({ client, interaction }) })
 
-        interaction.reply({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Canal setado com sucesso para resgatar key!`)
-            ],
-            ephemeral: true
-        })
+        interaction.reply({ ...ChannelSetedSuccessfullyMessage({ client, interaction }) })
 
         return;
     }
