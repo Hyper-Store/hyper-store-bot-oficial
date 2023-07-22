@@ -7,6 +7,10 @@ import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
 import { TypeTicket } from "../../@shared/type-tickets/type-tickets";
 import { DatabaseConfig } from "@/infra/app/setup-config";
+import { ChannelNotIsOfTypeMessage } from "@/modules/@shared/messages/channel-not-is-of-type/channel-not-is-of-type.message";
+import { TicketConfigRepository } from "../../repositories/TicketConfig.repository";
+import { PanelTicketMessage } from "./messages/panel.message";
+import { ChannelSetedSuccessfullyMessage } from "./messages/channel-seted-successfully.message";
 
 class SetChannelTicketCommand extends BaseSlashCommand {
 
@@ -35,63 +39,15 @@ class SetChannelTicketCommand extends BaseSlashCommand {
         const category_channel = interaction.options.getChannel("category");
 
         if (category_channel?.type !== Discord.ChannelType.GuildCategory) {
-            interaction.reply({
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setColor(colors.error!)
-                        .setDescription(`> ${emojis.error} A categoria informada não é do tipo \`Categoria\`, verifique e tente novamente!`)
-                ]
-            })
+            interaction.reply({ ...ChannelNotIsOfTypeMessage({ client, interaction, channelType: "Categoria" }) })
             return;
         }
 
-        await new DatabaseConfig().set("ticket.category_id", category_channel.id)
+        const ticketConfig = await TicketConfigRepository.getAllOption();
 
-        await interaction.channel?.send({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setAuthor({ name: interaction.guild?.name!, iconURL: interaction.guild?.iconURL()! })
-                    .addFields(
-                        {
-                            name: `${emojis.info} | Informações`,
-                            value: "Se você estiver precisando de ajuda selecione uma opção abaixo"
-                        },
-                        {
-                            name: `${emojis.annoucement} | Horário de atendimento:`,
-                            value: "Segunda a Sabado (14:00 até as 23:00 Horas)"
-                        }
-                    )
-                    .setImage(await new DatabaseConfig().get("ticket.banner") as string)
-            ],
-            components: [
-                new Discord.ActionRowBuilder<any>()
-                    .addComponents(
-                        new Discord.StringSelectMenuBuilder()
-                            .setCustomId("open_ticket")
-                            .setPlaceholder('➡️ Escolha uma opção de ticket')
-                            .addOptions(
-                                TypeTicket.map(type => {
-                                    return {
-                                        emoji: type.emoji_custom,
-                                        label: type.title,
-                                        description: type.description,
-                                        value: type.id
-                                    }
-                                })
-                            )
-                    )
-            ]
-        })
+        await interaction.channel?.send({ ...PanelTicketMessage({ client, interaction, banner: ticketConfig?.banner!, ticketType: TypeTicket }) })
 
-        interaction.reply({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} O canal ${interaction.channel} foi setado com sucesso!`)
-            ],
-            ephemeral: true
-        })
+        interaction.reply({ ...ChannelSetedSuccessfullyMessage({ client, interaction }) })
     }
 }
 
