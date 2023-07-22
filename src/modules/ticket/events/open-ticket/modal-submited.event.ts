@@ -2,15 +2,14 @@ import { BaseEvent } from "@/modules/@shared/domain";
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { formData } from "./open-ticket-select-menu.event";
-import { Database } from "@/infra/app/setup-database";
 import { randomUUID } from "crypto";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { GetUserNameLowerCase } from "@/modules/@shared/utils/get-user-name-lowercase";
 import { OpenTicketMessage } from "../../@shared/ticket-messages/open-ticket.message";
-import { DatabaseConfig } from "@/infra/app/setup-config";
 import { TypeTicket } from "../../@shared/type-tickets/type-tickets";
 import { TicketRepository } from "../../repositories/Ticket.repository";
+import { TicketConfigRepository } from "../../repositories/TicketConfig.repository";
 
 export const ticketData = {
     id: "",
@@ -45,10 +44,11 @@ class ButtonClickedEvent extends BaseEvent {
         })
 
         const typeTicket = TypeTicket.find(type => type.id === formData.typeTicket)
+        const ticketConfig = await TicketConfigRepository.getAllOption()
 
         const channel_created = await interaction.guild?.channels.create({
             name: `${typeTicket?.emoji}・${typeTicket?.title}-${GetUserNameLowerCase(interaction.user.username)}`,
-            parent: (await new DatabaseConfig().db.get('ticket.category_id') as string),
+            parent: ticketConfig?.category_id,
             permissionOverwrites: [
                 {
                     id: interaction.guildId!,

@@ -5,6 +5,7 @@ import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { HasPermissionTeam } from "@/modules/ticket/@shared/has-permission-team/has-permission-team";
 import { NotIsOwnerMessage } from "@/modules/ticket/@shared/not-is-owner/not-is-owner.message";
+import { TicketConfigRepository } from "@/modules/ticket/repositories/TicketConfig.repository";
 import { Collection, Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
 import fs from 'fs';
@@ -22,10 +23,10 @@ class PainelTeamVerifyEmailTicketEvent extends BaseEvent {
         if (interaction.values[0] !== "verify-email") return;
         if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;
 
-        const ticketConfig: any = await new Database().get(`ticket.config.support_role`);
+        const ticketConfig = await TicketConfigRepository.getAllOption()
         const ticketData: any = await new Database().get(`ticket.sessions.${interaction.channelId}`);
 
-        if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig.support_role })) {
+        if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig?.support_role! })) {
             interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: 'Suporte' }) })
             return;
         }

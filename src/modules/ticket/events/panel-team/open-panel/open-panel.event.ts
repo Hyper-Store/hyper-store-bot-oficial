@@ -5,6 +5,7 @@ import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { HasPermissionTeam } from "@/modules/ticket/@shared/has-permission-team/has-permission-team";
 import { NotIsOwnerMessage } from "@/modules/ticket/@shared/not-is-owner/not-is-owner.message";
+import { TicketConfigRepository } from "@/modules/ticket/repositories/TicketConfig.repository";
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
 
@@ -19,9 +20,9 @@ class PainelTeamOpenPanelTicketEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== "panel-team") return;
 
-        const ticketConfig: any = await new Database().get(`ticket.config.support_role`);
+        const ticketConfig = await TicketConfigRepository.getAllOption()
 
-        if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig?.support_role })) {
+        if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig?.support_role! })) {
             interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: 'Suporte' }) })
             return;
         }
