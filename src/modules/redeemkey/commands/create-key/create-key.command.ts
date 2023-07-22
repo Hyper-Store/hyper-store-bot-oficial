@@ -9,6 +9,9 @@ import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
 import { KeyRepository } from "../../repositories/Keys.repository";
 import { KeyModel } from "../../models/Key.model";
+import { RoleNotExistMessage } from "@/modules/@shared/messages/role-not-exist/role-not-exist.message";
+import { KeyCreatedMessage } from "./messages/key-created.message";
+import { KeyCreatedSuccessfullyMessage } from "./messages/key-created-successfully.message";
 
 class CreateKeyCommand extends BaseSlashCommand {
 
@@ -64,14 +67,7 @@ class CreateKeyCommand extends BaseSlashCommand {
         const quantity = interaction.options.getNumber("quantity") as number;
 
         if (type === "role" && !interaction.guild?.roles.cache.get(content!)) {
-            interaction.reply({
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setColor(colors.error!)
-                        .setDescription(`> ${emojis.error} O cargo \`${content}\` não existe no servidor!`)
-                ]
-            })
-
+            interaction.reply({ ...RoleNotExistMessage({ client, interaction, role: content }) })
             return;
         }
 
@@ -88,34 +84,9 @@ class CreateKeyCommand extends BaseSlashCommand {
             keys_generated.push(key_result)
         }
 
-        await interaction.user.send({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setAuthor({ name: `${interaction.guild?.name}`, iconURL: interaction.guild?.iconURL()! })
-                    .setDescription(`> ${emojis.success} Parabens, Sua key foi gerada com sucesso!, agora so basta utilizar o comando para resgata-la.`)
-                    .addFields(
-                        {
-                            name: `🔑 Key gerada, value:`,
-                            value: `\`\`\`${keys_generated.map(key => key.id).join('\n')}\`\`\``
-                        },
-                        {
-                            name: `${emojis.date} Data de criação`,
-                            value: `<t:${Math.floor(new Date().getTime() / 1000)}:f> \`(\`<t:${Math.floor(new Date().getTime() / 1000)}:R>\`)\``
-                        }
-                    )
-            ]
-        })
+        await interaction.user.send({ ...KeyCreatedMessage({ client, interaction, keys_generated }) })
 
-        interaction.reply({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Parabens, sua key foi gerada com sucesso e já foi enviada em seu privado!`)
-            ],
-            ephemeral: true
-        })
-
+        interaction.reply({ ...KeyCreatedSuccessfullyMessage({ client, interaction }) })
         return;
     }
 }
