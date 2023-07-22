@@ -1,5 +1,6 @@
 import { colors } from '@/modules/@shared/utils/colors';
 import { emojis } from '@/modules/@shared/utils/emojis';
+import { Footer } from '@/modules/@shared/utils/footer';
 import { KeyModel } from '@/modules/redeemkey/models/Key.model';
 import Discord, { Client, Interaction } from 'discord.js';
 
@@ -25,6 +26,7 @@ const KeyCreatedMessage = (props: Props) => ({
                     value: `<t:${Math.floor(new Date().getTime() / 1000)}:f> \`(\`<t:${Math.floor(new Date().getTime() / 1000)}:R>\`)\``
                 }
             )
+            .setFooter({ ...Footer({ guild: props.interaction.guild! }) })
     ]
 })
 
