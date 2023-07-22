@@ -22,7 +22,7 @@ class PainelTeamVerifyEmailTicketEvent extends BaseEvent {
         if (interaction.values[0] !== "verify-email") return;
         if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;
 
-        const ticketConfig: any = await new Database().get(`ticket.config`);
+        const ticketConfig: any = await new Database().get(`ticket.config.support_role`);
         const ticketData: any = await new Database().get(`ticket.sessions.${interaction.channelId}`);
 
         if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig.support_role })) {

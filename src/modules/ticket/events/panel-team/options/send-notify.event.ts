@@ -22,7 +22,7 @@ class PainelTeamSendNotifyTicketEvent extends BaseEvent {
         if (interaction.values[0] !== "send-notify") return;
         if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;
 
-        const ticketConfig: any = await new Database().get(`ticket.config`);
+        const ticketConfig: any = await new Database().get(`ticket.config.support_role`);
         const ticketData: any = await new Database().get(`ticket.sessions.${interaction.channelId}`);
         const ownerUser = interaction.guild?.members.cache.get(ticketData.ownerId)
 

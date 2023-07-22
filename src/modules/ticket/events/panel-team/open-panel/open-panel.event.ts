@@ -19,9 +19,9 @@ class PainelTeamOpenPanelTicketEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== "panel-team") return;
 
-        const ticketConfig: any = await new Database().get(`ticket.config`);
+        const ticketConfig: any = await new Database().get(`ticket.config.support_role`);
 
-        if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig.support_role })) {
+        if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig?.support_role })) {
             interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: 'Suporte' }) })
             return;
         }
