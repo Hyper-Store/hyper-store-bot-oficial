@@ -1,8 +1,8 @@
 import { colors } from '@/modules/@shared/utils/colors';
 import { emojis } from '@/modules/@shared/utils/emojis';
 import { Footer } from '@/modules/@shared/utils/footer';
-import { CreateKeyModel } from '@/modules/generator/models/CreateKey.model';
-import { KeyGeneratedModel } from '@/modules/generator/models/KeyGenerated.model';
+import { CreateKeyModel } from '@/modules/generator/keys/models/CreateKey.model';
+import { KeyGeneratedModel } from '@/modules/generator/keys/models/KeyGenerated.model';
 import Discord, { Client, Interaction } from 'discord.js';
 
 type Props = {

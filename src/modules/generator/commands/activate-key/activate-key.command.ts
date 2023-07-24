@@ -1,24 +1,23 @@
 import { CommandContainer } from "@/modules/@shared/domain";
 import { BaseSlashCommand } from "@/modules/@shared/domain/command/base-slash-command";
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
-import { RoleNotExistMessage } from "@/modules/@shared/messages/role-not-exist/role-not-exist.message";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
-import { CreateKeyModel, CreateKeyModelMap } from "../../keys/models/CreateKey.model";
 import { KeyGeneratedModel } from "../../keys/models/KeyGenerated.model";
-import { QueryingTheKeyMessage } from "../../@shared/messages/QueryingTheKey.message";
 import { AxiosGeneratorTemplate } from "../../@shared/utils/axios-template";
 import { KeyNotFoundMessage } from "../../@shared/messages/KeyNotFound.message";
+import { QueryingTheKeyMessage } from "../../@shared/messages/QueryingTheKey.message";
+import { KeyAlreadyActivatedMessage } from "./messages/KeyAlreadyActivated.message";
+import { KeyActivateSuccessfullyMessage } from "./messages/KeyActivateSuccessfully.message";
 
-class CreateKeyGeneratoCommand extends BaseSlashCommand {
+class ActivateKeyGeneratorCommand extends BaseSlashCommand {
 
     constructor() {
         super({
-            name: "generator_getkey",
-            description: "Crie uma key para resgatar",
+            name: "generator_activatekey",
+            description: "Ativar uma key que esteja desativada",
             type: Discord.ApplicationCommandType.ChatInput,
             options: [
-
                 {
                     name: "key",
                     description: "Insira a key que você deseja buscar",
@@ -41,9 +40,16 @@ class CreateKeyGeneratoCommand extends BaseSlashCommand {
         await interaction.reply({ ...QueryingTheKeyMessage({ interaction, client }) });
 
         try {
-            const request = await AxiosGeneratorTemplate.get(`/server/keys/${key}`)
+            const request = await AxiosGeneratorTemplate.post(`/server/keys/activate/${key}`)
 
-            console.log(request.data)
+            if (request.data.error.name === "KeyAlreadyActivatedError") {
+                interaction.editReply({ ...KeyAlreadyActivatedMessage({ interaction, client }) });
+                return;
+            }
+
+            if (request.status !== 201) throw new Error('Error not found');
+
+            await interaction.editReply({ ...KeyActivateSuccessfullyMessage({ interaction, client }) })
         } catch (error) {
             interaction.editReply({ ...KeyNotFoundMessage({ client, interaction }) })
         }
@@ -52,6 +58,6 @@ class CreateKeyGeneratoCommand extends BaseSlashCommand {
 
 
 export default (commandContainer: CommandContainer): void => {
-    const command = new CreateKeyGeneratoCommand()
+    const command = new ActivateKeyGeneratorCommand()
     commandContainer.addCommand(command)
 }

@@ -4,7 +4,7 @@ import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-pe
 import { RoleNotExistMessage } from "@/modules/@shared/messages/role-not-exist/role-not-exist.message";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
-import { CreateKeyModel, CreateKeyModelMap } from "../../models/CreateKey.model";
+import { CreateKeyModel, CreateKeyModelMap } from "../../keys/models/CreateKey.model";
 import { GeneratingKeyMessage } from "./messages/GeneratingKey.message";
 import { AxiosGeneratorTemplate } from "../../@shared/utils/axios-template";
 import { ErrorGenerateKeyMessage } from "./messages/ErrorGenerateKey.message";
@@ -81,9 +81,12 @@ class CreateKeyGeneratoCommand extends BaseSlashCommand {
                 quantityPerDay
             })
 
+            if (request.status !== 201) throw new Error('Error not found');
+
             await interaction.user.send({ ...KeyGeneratedMessage({ client, interaction, keys_generated: request.data, daysToExpire, quantityPerDay, service }) })
 
             interaction.editReply({ ...KeyGeneratedSuccessfully({ client, interaction }) })
+
         } catch (error) {
             const customError = error as Error
             interaction.editReply({ ...ErrorGenerateKeyMessage({ client, interaction, errorMessage: customError.message }) })
