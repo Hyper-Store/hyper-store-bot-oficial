@@ -27,6 +27,15 @@
                     "id": "6e306842-52dd-4193-a36b-d271c9a93cf5"
                 }
             }
+        },
+        "89e6f68c-d4fb-4776-8d80-07035e106448": {
+            "title": "teste",
+            "description": "teste",
+            "price": 25,
+            "image": "",
+            "youtubeURL": "",
+            "id": "89e6f68c-d4fb-4776-8d80-07035e106448",
+            "createdAt": "2023-07-24T20:16:11.196Z"
         }
     },
     "purchases": {

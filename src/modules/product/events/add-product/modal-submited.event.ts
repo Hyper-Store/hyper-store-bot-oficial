@@ -5,6 +5,9 @@ import { emojis } from "@/modules/@shared/utils/emojis";
 import { Interaction, } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { ProductRepository } from "../../repositories/product.repository";
+import { ProductCreatedSucessfullyMessage } from "./messages/ProductCreatedSuccessfully.message";
+import { ProductPriceInvalidMessage } from "./messages/ProductPriceInvalid.message";
+import { FormatPrice } from "@/modules/@shared/utils/format-price";
 
 
 class ModalSubmitedAddProductEvent extends BaseEvent {
@@ -26,19 +29,14 @@ class ModalSubmitedAddProductEvent extends BaseEvent {
         const description = interaction.fields.getTextInputValue('description');
         const image = interaction.fields.getTextInputValue('image');
         const youtubeURL = interaction.fields.getTextInputValue('youtube-url');
-        let price: string | number = interaction.fields.getTextInputValue('price');
+        const price_input = interaction.fields.getTextInputValue('price');
 
-        price = parseFloat(price.replace('R$', '').replace(',', '.'));
+        const price = FormatPrice({ value: price_input, output: 'float' }) as number;
+
+        await interaction.deferUpdate();
 
         if (isNaN(price) || price < 1 || price > 1000) {
-            interaction.reply({
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setColor(colors.error!)
-                        .setDescription(`> ${emojis.error} O valor inserido \`${price}\` deve ser maior que \`R$1,00\` ou menor que \`R$1000,00\`!`)
-                ],
-                ephemeral: true
-            })
+            interaction.editReply({ ...ProductPriceInvalidMessage({ client, interaction, price }) })
             return;
         }
 
@@ -50,17 +48,8 @@ class ModalSubmitedAddProductEvent extends BaseEvent {
             youtubeURL
         })
 
-        await interaction.deferUpdate();
 
-        interaction.editReply({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Seu produto \`${title}\` foi criado com sucesso, o **ID° Protocolo** é \`${product.id}\``)
-            ],
-            components: []
-        })
-
+        interaction.editReply({ ...ProductCreatedSucessfullyMessage({ client, interaction, product: product! }) })
         return;
     }
 }
