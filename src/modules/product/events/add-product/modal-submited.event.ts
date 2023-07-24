@@ -25,6 +25,7 @@ class ModalSubmitedAddProductEvent extends BaseEvent {
         const title = interaction.fields.getTextInputValue('title');
         const description = interaction.fields.getTextInputValue('description');
         const image = interaction.fields.getTextInputValue('image');
+        const youtubeURL = interaction.fields.getTextInputValue('youtube-url');
         let price: string | number = interaction.fields.getTextInputValue('price');
 
         price = parseFloat(price.replace('R$', '').replace(',', '.'));
@@ -45,7 +46,8 @@ class ModalSubmitedAddProductEvent extends BaseEvent {
             title,
             description,
             price,
-            image: image
+            image,
+            youtubeURL
         })
 
         await interaction.deferUpdate();

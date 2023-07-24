@@ -58,11 +58,20 @@ class AddProductEvent extends BaseEvent {
             .setRequired(true)
             .setStyle(1)
 
+        const youtubeURL = new Discord.TextInputBuilder()
+            .setCustomId("youtube-url")
+            .setLabel("Vídeo no youtube")
+            .setPlaceholder('youtube.com/@hyperstore')
+            .setMinLength(1)
+            .setRequired(false)
+            .setStyle(1)
+
         modal.addComponents(
             new Discord.ActionRowBuilder<any>().addComponents(title),
             new Discord.ActionRowBuilder<any>().addComponents(description),
             new Discord.ActionRowBuilder<any>().addComponents(image),
             new Discord.ActionRowBuilder<any>().addComponents(price),
+            new Discord.ActionRowBuilder<any>().addComponents(youtubeURL),
         )
 
         interaction.showModal(modal);

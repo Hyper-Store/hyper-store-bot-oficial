@@ -7,6 +7,9 @@ export type ProductModel = {
     image?: string
     price: number,
     stock?: { [key: string]: ProductStockModel },
+    roleDelivery?: string,
+    youtubeURL?: string,
+    messageDelivery?: string,
     createdAt?: Date,
     channelId?: string,
     messageId?: string
