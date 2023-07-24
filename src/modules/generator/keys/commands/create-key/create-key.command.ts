@@ -20,7 +20,6 @@ class CreateKeyGeneratoCommand extends BaseSlashCommand {
             description: "Crie uma key para resgatar",
             type: Discord.ApplicationCommandType.ChatInput,
             options: [
-
                 {
                     name: "service",
                     description: "Escolha o tipo de coisa que deve ser entregue",

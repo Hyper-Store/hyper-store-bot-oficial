@@ -1,1 +1,15 @@
-{}
+{
+    "products": {
+        "452a6fdf-5300-410c-a6ed-1247297a296f": {
+            "title": "teste",
+            "description": "teste",
+            "price": 2,
+            "image": "",
+            "youtubeURL": "",
+            "id": "452a6fdf-5300-410c-a6ed-1247297a296f",
+            "createdAt": "2023-07-24T21:56:03.133Z",
+            "roleDelivery": "123123123123123123",
+            "messageDelivery": "Video no yotuube para baixar: asdasd"
+        }
+    }
+}
