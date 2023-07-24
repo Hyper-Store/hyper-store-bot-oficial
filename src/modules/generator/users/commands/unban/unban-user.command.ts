@@ -6,20 +6,20 @@ import Discord from "discord.js"
 import { QueryingUserMessage } from "../../@shared/messages/QueryingUser.message";
 import { UserNotFoundMessage } from "../../@shared/messages/UserNotFound.message";
 import { AxiosGeneratorTemplate } from "@/modules/generator/keys/@shared/utils/axios-template";
-import { UserBannedSucessfullyMessage } from "./messages/UserBannedSucessfully.message";
-import { UserAlreadyBannedMessage } from "./messages/UserAlreadyBanned.message";
+import { UserAlreadyUnBannedMessage } from "./messages/UserAlreadyUnBanned.message";
+import { UserUnBannedSucessfullyMessage } from "./messages/UserUnBannedSucessfully.message";
 
-class BanUserCommand extends BaseSlashCommand {
+class UnbanUserCommand extends BaseSlashCommand {
 
     constructor() {
         super({
-            name: "generator_banuser",
-            description: "Banir um usuário do gerador",
+            name: "generator_unbanuser",
+            description: "Desbanir um usuário do gerador",
             type: Discord.ApplicationCommandType.ChatInput,
             options: [
                 {
                     name: "userid",
-                    description: "Insira o id do usuário que você deseja banir",
+                    description: "Insira o id do usuário que você deseja desbanir",
                     type: 3,
                     required: true
                 }
@@ -44,18 +44,18 @@ class BanUserCommand extends BaseSlashCommand {
 
             if (request_user.status !== 200) throw new Error('Error not found');
 
-            const request = await AxiosGeneratorTemplate.post('/server/auth/ban', {
+            const request = await AxiosGeneratorTemplate.post('/server/auth/unban', {
                 userId
             })
 
-            if (request.data && request.data.error && request.data.error.name === "UserAlreadyBannedError") {
-                interaction.editReply({ ...UserAlreadyBannedMessage({ client, interaction, user: request_user.data }) })
+            if (request.data && request.data.error && request.data.error.name === "UserAlreadyUnBannedError") {
+                interaction.editReply({ ...UserAlreadyUnBannedMessage({ client, interaction, user: request_user.data }) })
                 return;
             }
 
             if (request.status !== 200) throw new Error('Error not found');
 
-            await interaction.editReply({ ...UserBannedSucessfullyMessage({ interaction, client, user: request_user.data }) })
+            await interaction.editReply({ ...UserUnBannedSucessfullyMessage({ interaction, client, user: request_user.data }) })
         } catch (error) {
             interaction.editReply({ ...UserNotFoundMessage({ client, interaction, user: userId }) })
         }
@@ -64,6 +64,6 @@ class BanUserCommand extends BaseSlashCommand {
 
 
 export default (commandContainer: CommandContainer): void => {
-    const command = new BanUserCommand()
+    const command = new UnbanUserCommand()
     commandContainer.addCommand(command)
 }
