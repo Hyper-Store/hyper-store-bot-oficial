@@ -5,28 +5,41 @@ import { DatabaseConfig } from '@/infra/app/setup-config';
 import { ProductModel } from '@/modules/product/models/product.model';
 import { ProductStockRepository } from '@/modules/product/repositories/product-stock.repository';
 
-export const ProductMessage = async (interaction: Interaction, product: ProductModel) => {
-    const product_image = product.image || await new DatabaseConfig().get('purchases.products.banner') as string
-    const stockCount = await ProductStockRepository.stockCount(product?.id!);
+type Props = {
+    interaction: Interaction,
+    product: ProductModel
+}
+
+export const ProductMessage = async (props: Props) => {
+    const product_image = props.product.image || await new DatabaseConfig().get('purchases.products.banner') as string
+    const stockCount = await ProductStockRepository.stockCount(props.product?.id!);
 
     const embed = new Discord.EmbedBuilder()
         .setColor(colors.invisible!)
-        .setTitle(`${interaction.guild?.name} | Produto`)
-        .setDescription(`\`\`\`${product.description}\`\`\`\n**${emojis.info} | Nome:** \`${product.title}\`\n**${emojis.money} | Preço:** \`R$${product.price.toFixed(2)}\`\n**${emojis.box} | Estoque:** \`${stockCount}\``)
+        .setTitle(`${props.interaction.guild?.name} | Produto`)
+        .setDescription(`\`\`\`${props.product.description}\`\`\`\n**${emojis.info} | Nome:** \`${props.product.title}\`\n**${emojis.money} | Preço:** \`R$${props.product.price.toFixed(2)}\`\n**${emojis.box} | Estoque:** \`${stockCount}\``)
         .setImage(product_image)
         .setFooter({ text: 'Para comprar clique no botão comprar' })
 
+    const button = new Discord.ActionRowBuilder<any>()
+        .addComponents(
+            new Discord.ButtonBuilder()
+                .setCustomId(`buy_${props.product.id}`)
+                .setLabel('Comprar')
+                .setEmoji(emojis.buy)
+                .setStyle(3)
+        )
+
+    if (props.product.youtubeURL) button.addComponents(
+        new Discord.ButtonBuilder()
+            .setLabel('Ver vídeo')
+            .setStyle(5)
+            .setEmoji(emojis.youtube)
+            .setURL(props.product.youtubeURL!)
+    )
+
     return {
         embeds: [embed],
-        components: [
-            new Discord.ActionRowBuilder<any>()
-                .addComponents(
-                    new Discord.ButtonBuilder()
-                        .setCustomId(`buy_${product.id}`)
-                        .setLabel('Comprar')
-                        .setEmoji(emojis.buy)
-                        .setStyle(3)
-                )
-        ]
+        components: [button]
     }
 }

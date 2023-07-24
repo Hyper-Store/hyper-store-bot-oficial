@@ -9,5 +9,56 @@
             "sessionId": "75c63ae3-8b7e-44a0-b23c-0aad7526d359",
             "createdAt": "2023-07-22T17:25:33.347Z"
         }
+    },
+    "products": {
+        "5b386cc3-7ddf-419a-8525-ae45700a9fd2": {
+            "title": "teste",
+            "description": "testeeeeeee",
+            "price": 2,
+            "image": "",
+            "youtubeURL": "https://youtube.com/ggmax.co.brr",
+            "id": "5b386cc3-7ddf-419a-8525-ae45700a9fd2",
+            "createdAt": "2023-07-24T19:50:18.229Z",
+            "channelId": "1126886459484422205",
+            "messageId": "1133128555451142174",
+            "stock": {
+                "6e306842-52dd-4193-a36b-d271c9a93cf5": {
+                    "content": "ads",
+                    "id": "6e306842-52dd-4193-a36b-d271c9a93cf5"
+                }
+            }
+        }
+    },
+    "purchases": {
+        "products": {
+            "5b386cc3-7ddf-419a-8525-ae45700a9fd2": {
+                "title": "teste",
+                "description": "testeeeeeee",
+                "price": 2,
+                "image": "",
+                "youtubeURL": "https://youtube.com/ggmax.co.brr",
+                "id": "5b386cc3-7ddf-419a-8525-ae45700a9fd2",
+                "createdAt": "2023-07-24T19:50:18.229Z",
+                "stock": {
+                    "6e306842-52dd-4193-a36b-d271c9a93cf5": {
+                        "content": "ads",
+                        "id": "6e306842-52dd-4193-a36b-d271c9a93cf5"
+                    }
+                }
+            }
+        }
+    },
+    "checkouts": {
+        "1133128572110905535": {
+            "id": "1133128572110905535",
+            "ownerId": "1124265861109256282",
+            "productId": "5b386cc3-7ddf-419a-8525-ae45700a9fd2",
+            "ref": "6b769f9d-1871-4ed0-94e3-925e68938ebf",
+            "status": "CANCELLED",
+            "quantity": 1,
+            "price": 0,
+            "review": null,
+            "createdAt": "2023-07-24T20:08:25.538Z"
+        }
     }
 }

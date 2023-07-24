@@ -3,10 +3,9 @@ import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-pe
 import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { ProductMessage } from "../../@shared/messages/product-message/product-message";
-import { colors } from "@/modules/@shared/utils/colors";
-import { emojis } from "@/modules/@shared/utils/emojis";
-import { ProductNotExistError } from "../../@shared/errors/product-not-exist";
 import { ProductRepository } from "../../repositories/product.repository";
+import { ProductNotFoundMessage } from "../../@shared/messages/product-not-found/product-not-found.message";
+import { ProductSetSucessfullyMessage } from "./messages/ProductSetSucessfully.message";
 
 
 class SetProductEvent extends BaseEvent {
@@ -18,32 +17,27 @@ class SetProductEvent extends BaseEvent {
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
         if (!interaction.isStringSelectMenu()) return;
-        if (interaction.customId !== "set_product") return;
+        if (interaction.customId !== "set-product") return;
         if (!interaction.memberPermissions?.has(Discord.PermissionFlagsBits.Administrator)) {
-            interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: "Administrator" }) })
+            interaction.reply({ ...NotHavePermissionMessage({ client, interaction, permission: 'Administrador' }) })
             return;
         }
 
-        const product_id = interaction.values[0];
-        const product = await ProductRepository.findById(product_id);
+        const product = await ProductRepository.findById(interaction.values[0]);
 
         if (!product) {
-            interaction.reply({ ...ProductNotExistError })
-            return;
+            interaction.update({ ...ProductNotFoundMessage({ client, interaction }) })
         }
 
-        const message_created = await interaction.channel?.send(await ProductMessage(interaction, product))
-            
-        await ProductRepository.update({ ...product, channelId: message_created?.channelId, messageId: message_created?.id })
+        const message_created = await interaction.channel?.send(await ProductMessage({ interaction, product: product! }))
 
-        interaction.update({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Produto setado ao canal com sucesso!`)
-            ],
-            components: []
+        await ProductRepository.update({
+            ...product!,
+            channelId: message_created?.channelId,
+            messageId: message_created?.id
         })
+
+        interaction.update({ ...ProductSetSucessfullyMessage({ client, interaction }) });
 
         return;
     }

@@ -10,6 +10,9 @@ import { randomUUID } from "crypto";
 import { UpdateMessageProduct } from "../../@shared/workers/update-message-product";
 import { ProductRepository } from "../../repositories/product.repository";
 import { ProductStockRepository } from "../../repositories/product-stock.repository";
+import { ProductNotFoundMessage } from "../../@shared/messages/product-not-found/product-not-found.message";
+import { AddStockProductMessage } from "./messages/add-stock-product.message";
+import { ProductStockAddedSuccessfullyMessage } from "./messages/stock-added-successfully.message";
 
 
 class AddStockProductEvent extends BaseEvent {
@@ -21,29 +24,20 @@ class AddStockProductEvent extends BaseEvent {
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
         if (!interaction.isStringSelectMenu()) return;
-        if (interaction.customId !== "add_stock_product") return;
+        if (interaction.customId !== "add-stock-product") return;
         if (!interaction.memberPermissions?.has(Discord.PermissionFlagsBits.Administrator)) {
-            interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: "Administrator" }) })
+            interaction.reply({ ...NotHavePermissionMessage({ client, interaction, permission: 'Administrador' }) })
             return;
         }
 
-        const product_id = interaction.values[0];
-        const product = await ProductRepository.findById(product_id)
+        const product = await ProductRepository.findById(interaction.values[0]);
 
         if (!product) {
-            interaction.reply({ ...ProductNotExistError })
-            return;
+            interaction.update({ ...ProductNotFoundMessage({ client, interaction }) })
         }
 
-        interaction.update({
-            content: `${interaction.user}`,
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.notifiy} Agora envie o estoque por linha, cada linha ou mensagem será um estoque, digite finalizar para finalizar!\n\n**${emojis.box} | Produto:** ${product.title} \`(\`${product.id}\`)\``)
-            ],
-            components: []
-        })
+        interaction.update({ ...AddStockProductMessage({ client, interaction, product: product! }) })
+
         const stock_collector: string[] = [];
 
         const collectorFilter = (m: Message) => m.author.id === interaction.user.id
@@ -60,21 +54,14 @@ class AddStockProductEvent extends BaseEvent {
 
         collector?.on('end', (message) => {
             stock_collector.forEach(async (item) => {
-                await ProductStockRepository.add(product_id, {
+                await ProductStockRepository.add(product?.id!, {
                     content: item
                 })
             })
 
-            UpdateMessageProduct(interaction, product.id!);
+            UpdateMessageProduct({ interaction, productId: product?.id! });
 
-            interaction.editReply({
-                embeds: [
-                    new Discord.EmbedBuilder()
-                        .setColor(colors.invisible!)
-                        .setDescription(`> ${emojis.success} Estoque adicionado ao produto com sucesso, veja abaixo o estoque adicionado!\n\`\`\`${stock_collector.join('\n')}\`\`\`\n**${emojis.box} | Produto:** ${product.title} \`(\`${product.id}\`)\``)
-                ]
-            })
-
+            interaction.editReply({ ...ProductStockAddedSuccessfullyMessage({ client, interaction, product: product!, stock_collector }) })
             return;
         })
 
