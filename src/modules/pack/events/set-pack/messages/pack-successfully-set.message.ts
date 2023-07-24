@@ -6,7 +6,7 @@ type Props = {
     interaction: Interaction
 }
 
-export const PackSuccessfullySet = (props: Props): Discord.InteractionUpdateOptions => {
+export const PackSetedSuccessfully = (props: Props): Discord.InteractionUpdateOptions => {
     return {
         embeds: [
             new Discord.EmbedBuilder()

@@ -5,7 +5,7 @@ import Discord, { Client } from "discord.js"
 import { PackRepository } from "../../repositories/Pack.repository";
 import { PackNotExistErrorMessage } from "../../@shared/messages/pack-not-exist-error.message";
 import { PackPanelMessage } from "../../@shared/messages/pack-panel.message";
-import { PackSuccessfullySet } from "./messages/pack-successfully-set.message";
+import { PackSetedSuccessfully } from "./messages/pack-successfully-set.message";
 
 
 class SetPackEvent extends BaseEvent {
@@ -32,7 +32,7 @@ class SetPackEvent extends BaseEvent {
 
         await interaction.channel?.send({ ...await PackPanelMessage({ interaction, pack: pack! }) })
 
-        interaction.update({ ...PackSuccessfullySet({ interaction }) })
+        interaction.update({ ...PackSetedSuccessfully({ interaction }) })
     }
 }
 

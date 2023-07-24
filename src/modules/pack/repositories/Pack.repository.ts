@@ -46,6 +46,6 @@ export class PackRepository {
 
     static async count(): Promise<number> {
         const result = await new Database().get('packs') as { [key: string]: PackModel }
-        return Object.keys(result).length ?? 0;
+        return result && Object.keys(result) ? Object.keys(result).length : 0;
     }
 }
