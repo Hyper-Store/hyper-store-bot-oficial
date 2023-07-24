@@ -5,6 +5,7 @@ import { ProductRepository } from "@/modules/product/repositories/product.reposi
 import { Interaction, } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { PanelChangeProductMessage } from "../open-panel-change-product/messages/panel-change-product.message";
+import { ProductUpdatedSucessfullyMessage } from "../@shared/messages/product-updated-successfully.message";
 
 
 class ModalSubmitedChangeProductInfoEvent extends BaseEvent {
@@ -36,15 +37,14 @@ class ModalSubmitedChangeProductInfoEvent extends BaseEvent {
         const roleDelivery = interaction.fields.getTextInputValue('roledelivery');
         const messageDelivery = interaction.fields.getTextInputValue('messagedelivery');
 
-        const product_updated = await ProductRepository.create({
+        const product_updated = await ProductRepository.update({
             ...product,
             roleDelivery,
             messageDelivery
         })
 
-        await interaction.deferUpdate();
-
-        interaction.editReply({ ...await PanelChangeProductMessage({ client, interaction, product: product_updated! }) })
+        await interaction.editReply({ ...await PanelChangeProductMessage({ client, interaction, product: product_updated! }) })
+        interaction.followUp({ ...ProductUpdatedSucessfullyMessage({ client, interaction }) })
         return;
     }
 }

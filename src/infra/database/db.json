@@ -9,25 +9,5 @@
             "sessionId": "75c63ae3-8b7e-44a0-b23c-0aad7526d359",
             "createdAt": "2023-07-22T17:25:33.347Z"
         }
-    },
-    "products": {
-        "78a08b4a-dea1-40b0-ab59-3ddd287a1ade": {
-            "title": "Produto teste23",
-            "description": "teste",
-            "price": 25,
-            "image": "",
-            "youtubeURL": "youtube.com",
-            "id": "78a08b4a-dea1-40b0-ab59-3ddd287a1ade",
-            "createdAt": "2023-07-24T15:05:42.422Z"
-        },
-        "78a08b4a-dea1-40b0-ab59-3ddd287a1ad2": {
-            "title": "Produto teste 2",
-            "description": "teste",
-            "price": 25,
-            "image": "",
-            "youtubeURL": "youtube.com@",
-            "id": "78a08b4a-dea1-40b0-ab59-3ddd287a1ad2",
-            "createdAt": "2023-07-24T15:05:42.422Z"
-        }
     }
 }

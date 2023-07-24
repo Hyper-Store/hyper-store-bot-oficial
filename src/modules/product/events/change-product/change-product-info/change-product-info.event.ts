@@ -36,7 +36,6 @@ class ChangeProductInfoEvent extends BaseEvent {
             .setCustomId("roledelivery")
             .setLabel("Cargo entrega")
             .setPlaceholder('000000000000')
-            .setMinLength(5)
             .setRequired(true)
             .setStyle(1)
             .setValue(product?.roleDelivery ?? "")
@@ -45,15 +44,13 @@ class ChangeProductInfoEvent extends BaseEvent {
             .setCustomId("messagedelivery")
             .setLabel("Mensagem entrega")
             .setPlaceholder('Example')
-            .setMinLength(5)
             .setRequired(true)
-            .setStyle(1)
+            .setStyle(2)
             .setValue(product?.messageDelivery ?? "")
 
         modal.addComponents(
-            new Discord.ActionRowBuilder<any>().addComponents(modal),
+            new Discord.ActionRowBuilder<any>().addComponents(roleDelivery),
             new Discord.ActionRowBuilder<any>().addComponents(messageDelivery),
-            new Discord.ActionRowBuilder<any>().addComponents(roleDelivery)
         )
 
         interaction.showModal(modal);
