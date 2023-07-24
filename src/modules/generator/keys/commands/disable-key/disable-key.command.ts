@@ -3,24 +3,24 @@ import { BaseSlashCommand } from "@/modules/@shared/domain/command/base-slash-co
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
-import { KeyGeneratedModel } from "../../keys/models/KeyGenerated.model";
 import { AxiosGeneratorTemplate } from "../../@shared/utils/axios-template";
 import { KeyNotFoundMessage } from "../../@shared/messages/KeyNotFound.message";
 import { QueryingTheKeyMessage } from "../../@shared/messages/QueryingTheKey.message";
-import { KeyAlreadyActivatedMessage } from "./messages/KeyAlreadyActivated.message";
-import { KeyActivateSuccessfullyMessage } from "./messages/KeyActivateSuccessfully.message";
+import { KeyDisableSuccessfullyMessage } from "./messages/KeyDisableSuccessfully.message";
+import { KeyAlreadyDisabledMessage } from "./messages/KeyAlreadyDisabled.message";
+import { KeyGeneratedModel } from "../../models/KeyGenerated.model";
 
-class ActivateKeyGeneratorCommand extends BaseSlashCommand {
+class DisableKeyGeneratorCommand extends BaseSlashCommand {
 
     constructor() {
         super({
-            name: "generator_activatekey",
-            description: "Ativar uma key que esteja desativada",
+            name: "generator_disablekey",
+            description: "Crie uma key para resgatar",
             type: Discord.ApplicationCommandType.ChatInput,
             options: [
                 {
                     name: "key",
-                    description: "Insira a key que você deseja buscar",
+                    description: "Desativar uma key que esteja ativada",
                     type: 3,
                     required: true
                 }
@@ -40,16 +40,16 @@ class ActivateKeyGeneratorCommand extends BaseSlashCommand {
         await interaction.reply({ ...QueryingTheKeyMessage({ interaction, client }) });
 
         try {
-            const request = await AxiosGeneratorTemplate.post(`/server/keys/activate/${key}`)
+            const request = await AxiosGeneratorTemplate.post(`/server/keys/disable/${key}`)
 
-            if (request.data.error.name === "KeyAlreadyActivatedError") {
-                interaction.editReply({ ...KeyAlreadyActivatedMessage({ interaction, client }) });
+            if (request.data.error.name === "KeyAlreadyDisabledError") {
+                interaction.editReply({ ...KeyAlreadyDisabledMessage({ interaction, client }) });
                 return;
             }
 
             if (request.status !== 201) throw new Error('Error not found');
 
-            await interaction.editReply({ ...KeyActivateSuccessfullyMessage({ interaction, client }) })
+            await interaction.editReply({ ...KeyDisableSuccessfullyMessage({ interaction, client }) })
         } catch (error) {
             interaction.editReply({ ...KeyNotFoundMessage({ client, interaction }) })
         }
@@ -58,6 +58,6 @@ class ActivateKeyGeneratorCommand extends BaseSlashCommand {
 
 
 export default (commandContainer: CommandContainer): void => {
-    const command = new ActivateKeyGeneratorCommand()
+    const command = new DisableKeyGeneratorCommand()
     commandContainer.addCommand(command)
 }
