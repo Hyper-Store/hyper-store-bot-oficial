@@ -17,8 +17,9 @@ export class ProductRepository {
         return result as ProductModel ?? null
     }
 
-    static async update(product: ProductModel): Promise<void> {
-        new Database().set(`products.${product.id}`, product)
+    static async update(product: ProductModel): Promise<ProductModel> {
+        const result = new Database().set(`products.${product.id}`, product)
+        return result as ProductModel;
     }
 
     static async getAll(): Promise<ProductModel[] | []> {

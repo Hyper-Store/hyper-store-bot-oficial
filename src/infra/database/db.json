@@ -12,11 +12,11 @@
     },
     "products": {
         "78a08b4a-dea1-40b0-ab59-3ddd287a1ade": {
-            "title": "Produto teste",
+            "title": "Produto teste23",
             "description": "teste",
             "price": 25,
             "image": "",
-            "youtubeURL": "youtube.com@",
+            "youtubeURL": "youtube.com",
             "id": "78a08b4a-dea1-40b0-ab59-3ddd287a1ade",
             "createdAt": "2023-07-24T15:05:42.422Z"
         },
