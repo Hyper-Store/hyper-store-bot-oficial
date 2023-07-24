@@ -4,11 +4,10 @@ import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-pe
 import { RoleNotExistMessage } from "@/modules/@shared/messages/role-not-exist/role-not-exist.message";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
-import { CreateKeyModel, CreateKeyModelMap } from "../../keys/models/CreateKey.model";
-import { KeyGeneratedModel } from "../../keys/models/KeyGenerated.model";
 import { QueryingTheKeyMessage } from "../../@shared/messages/QueryingTheKey.message";
 import { AxiosGeneratorTemplate } from "../../@shared/utils/axios-template";
 import { KeyNotFoundMessage } from "../../@shared/messages/KeyNotFound.message";
+import { KeyGeneratedModel } from "../../models/KeyGenerated.model";
 
 class CreateKeyGeneratoCommand extends BaseSlashCommand {
 

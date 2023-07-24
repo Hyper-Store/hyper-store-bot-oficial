@@ -21,7 +21,7 @@ export class ProductStockRepository {
     static async stockCount(productId: string): Promise<number> {
         const result: ProductStockModel[] | null = new Database().get(`products.${productId}.stock`) as ProductStockModel[] | null
 
-        return Object.keys(result!).length ?? 0
+        return result && Object.keys(result!) ? Object.keys(result!).length : 0
     }
 
     static async delete(productId: string, stockId: string): Promise<void> {

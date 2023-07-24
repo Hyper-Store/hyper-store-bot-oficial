@@ -13,7 +13,7 @@ class DeleteKeyGeneratorCommand extends BaseSlashCommand {
 
     constructor() {
         super({
-            name: "generator_disablekey",
+            name: "generator_deletekey",
             description: "Crie uma key para resgatar",
             type: Discord.ApplicationCommandType.ChatInput,
             options: [
