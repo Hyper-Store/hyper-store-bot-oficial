@@ -10,6 +10,9 @@ import { TypeTicket } from "../../@shared/type-tickets/type-tickets";
 import { SucessfullyReopenedTicket } from "./messages/sucessfully-reopened-ticket.message";
 import { TicketRepository } from "../../repositories/Ticket.repository";
 import { PanelTicketMessage } from "../../@shared/ticket-messages/panel-ticket.message";
+import { HasPermissionTeam } from "../../@shared/has-permission-team/has-permission-team";
+import { TicketConfigRepository } from "../../repositories/TicketConfig.repository";
+import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
 
 class ReopenTicketEvent extends BaseEvent {
     constructor() {
@@ -22,8 +25,14 @@ class ReopenTicketEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== "reopen-ticket") return;
 
-        const ticketData = await TicketRepository.findById(interaction.channelId);
+        const ticketConfig = await TicketConfigRepository.getAllOption()
 
+        if (!HasPermissionTeam({ interaction, client, support_role: ticketConfig?.support_role! })) {
+            interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: 'Suporte' }) })
+            return;
+        }
+
+        const ticketData = await TicketRepository.findById(interaction.channelId);
         const ownerUser = interaction.guild?.members.cache.get(ticketData?.ownerId!)
 
         if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;

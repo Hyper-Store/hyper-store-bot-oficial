@@ -10,6 +10,7 @@ import { ClosedTicketMessage } from "../../@shared/ticket-messages/closed-ticket
 import { DatabaseConfig } from "@/infra/app/setup-config";
 import { TicketClosedSucessfullyMessage } from "./messages/ticket-closed-sucessfully.message";
 import { TicketRepository } from "../../repositories/Ticket.repository";
+import { TicketConfigRepository } from "../../repositories/TicketConfig.repository";
 
 class ConfirmCloseTicketEvent extends BaseEvent {
     constructor() {
@@ -22,6 +23,7 @@ class ConfirmCloseTicketEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== "confirm-close-ticket") return;
 
+        const ticketConfig = await TicketConfigRepository.getAllOption()
         const ticketData = await TicketRepository.findById(interaction.channelId);
 
         if (ticketData?.ownerId !== interaction.user.id) {
@@ -40,7 +42,12 @@ class ConfirmCloseTicketEvent extends BaseEvent {
                     deny: ["ViewChannel"]
                 },
                 {
-                    id: ticketData.ownerId,
+                    id: ticketConfig?.support_role!,
+                    allow: ["ViewChannel"],
+                    deny: ["SendMessages", "ReadMessageHistory", "AddReactions", "AttachFiles"]
+                },
+                {
+                    id: ticketData?.ownerId!,
                     deny: ["ViewChannel", "SendMessages", "ReadMessageHistory", "AddReactions", "AttachFiles"]
                 }
             ]
