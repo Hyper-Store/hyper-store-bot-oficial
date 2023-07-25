@@ -59,7 +59,7 @@ class AddStockProductEvent extends BaseEvent {
                 })
             })
 
-            UpdateMessageProduct({ interaction, productId: product?.id! });
+            UpdateMessageProduct({ interaction, client, productId: product?.id! });
 
             interaction.editReply({ ...ProductStockAddedSuccessfullyMessage({ client, interaction, product: product!, stock_collector }) })
             return;
