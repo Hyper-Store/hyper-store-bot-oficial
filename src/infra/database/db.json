@@ -77,6 +77,24 @@
             "createdAt": "2023-07-25T13:48:04.608Z",
             "channelId": "1133379111058952222",
             "messageId": "1133429587825672322"
+        },
+        "1d23ca78-c443-48ec-9139-dfc3bd4870c7": {
+            "title": "Gerador Rockstar Trial",
+            "description": "💚 Funfando",
+            "price": 25,
+            "image": "",
+            "youtubeURL": "",
+            "id": "1d23ca78-c443-48ec-9139-dfc3bd4870c7",
+            "createdAt": "2023-07-25T18:38:26.398Z"
+        },
+        "0d366267-594c-4ece-85b8-ccee266f69b2": {
+            "title": "Gerador Rockstar Semanal",
+            "description": "💚 Funfando",
+            "price": 50,
+            "image": "",
+            "youtubeURL": "",
+            "id": "0d366267-594c-4ece-85b8-ccee266f69b2",
+            "createdAt": "2023-07-25T18:39:40.923Z"
         }
     },
     "product-groups": {
