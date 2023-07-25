@@ -5,6 +5,7 @@ import { ProductRepository } from "@/modules/product/repositories/product.reposi
 import { DatabaseConfig } from "@/infra/app/setup-config";
 import { LogsPublicSaleMessage } from "./messages/LogsPublicSale.message";
 import { CloseChannelCheckoutRabbitMq } from "../../@shared/rabbitmq/close-channel-checkout.rabbitmq";
+import { LogsPrivateSaleMessage } from "./messages/LogsPrivateSale.message";
 
 export class HandleReviewUsecase {
     static async execute(client: Client, { checkoutId }: HandleReviewUsecase.Input): Promise<void | boolean> {
@@ -25,6 +26,18 @@ export class HandleReviewUsecase {
         const channel_logs_public = guild?.channels.cache.get(checkoutConfig.channel_logs_public)
         if (channel_logs_public && channel_logs_public.isTextBased()) channel_logs_public.send({
             ...await LogsPublicSaleMessage({
+                checkout: checkout!,
+                client,
+                guild: guild!,
+                product: product!,
+                user: owner!
+            })
+        })
+
+
+        const channel_logs_private = guild?.channels.cache.get(checkoutConfig.channel_logs_private)
+        if (channel_logs_private && channel_logs_private.isTextBased()) channel_logs_private.send({
+            ...await LogsPrivateSaleMessage({
                 checkout: checkout!,
                 client,
                 guild: guild!,
