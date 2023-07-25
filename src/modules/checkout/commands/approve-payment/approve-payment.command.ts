@@ -5,6 +5,8 @@ import { ApproveMercadopagoPaymentUsecase } from "@/modules/payment/providers/me
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
 import { PaymentNotFoundMessage } from "./messages/PaymentNotFound.message";
+import { PaymentAlreadyApprovedMessage } from "./messages/PaymentAlreadyApproved.message";
+import { PaymentApprovedSucessfullyMessage } from "./messages/PaymentApprovedSucessfully.message";
 
 class ApprovePaymentCommand extends BaseSlashCommand {
     constructor() {
@@ -36,6 +38,14 @@ class ApprovePaymentCommand extends BaseSlashCommand {
             interaction.reply({ ...PaymentNotFoundMessage({ interaction, paymentId }) })
             return;
         }
+
+        if (result === "PaymentAlreadyApproved") {
+            interaction.reply({ ...PaymentAlreadyApprovedMessage({ interaction, paymentId }) })
+            return;
+        }
+
+        interaction.reply({ ...PaymentApprovedSucessfullyMessage({ interaction, paymentId }) });
+        return;
     }
 }
 
