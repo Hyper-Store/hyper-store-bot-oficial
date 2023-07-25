@@ -13,6 +13,7 @@ export const GroupProductSetedSucessfully = (props: Props): InteractionUpdateOpt
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
                 .setDescription(`> ${emojis.success} Grupo setado com sucesso a este canal!`)
-        ]
+        ],
+        components: []
     }
 }

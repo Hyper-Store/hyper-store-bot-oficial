@@ -8,14 +8,15 @@ import { GroupNotExistMessage } from '../group-not-exist/group-not-exist.message
 import { ProductModel } from '@/modules/product/models/product.model';
 import { ProductRepository } from '@/modules/product/repositories/product.repository';
 import { NotHaveProductGroupMessage } from '../not-have-product-group/not-have-product-group.message';
+import { RandomEmoji } from '@/modules/@shared/utils/random-emoji';
 
-type Props = {
+export type GroupPanelMessageProps = {
     interaction: Interaction,
     client: Client
     groupId: string
 }
 
-export const GroupPanelMessage = async (props: Props): Promise<any> => {
+export const GroupPanelMessage = async (props: GroupPanelMessageProps): Promise<any> => {
 
     const group = await ProductGroupRepository.findById(props.groupId);
     if (!group) return GroupNotExistMessage({ ...props })
@@ -43,7 +44,7 @@ export const GroupPanelMessage = async (props: Props): Promise<any> => {
         const stockCount = await ProductStockRepository.stockCount(product.id!);
 
         product_options.push({
-            emoji: '🛒',
+            emoji: RandomEmoji(),
             label: `${product.title}`,
             description: `💸 | Valor: R$${product.price.toFixed(2)} - 📦 | Estoque: ${stockCount}`,
             value: product.id!,
