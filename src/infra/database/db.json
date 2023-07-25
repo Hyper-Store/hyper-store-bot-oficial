@@ -357,7 +357,8 @@
             "type": "doubt",
             "messageId": "1133440154997116948",
             "sessionId": "d338a40b-cd31-4e4e-b5b7-c10adb316021",
-            "createdAt": "2023-07-25T17:00:30.324Z"
+            "createdAt": "2023-07-25T17:00:30.324Z",
+            "reopenedAt": "2023-07-25T17:10:03.359Z"
         }
     }
 }
