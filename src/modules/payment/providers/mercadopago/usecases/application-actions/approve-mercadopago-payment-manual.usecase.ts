@@ -6,12 +6,11 @@ import { RabbitmqSingletonService } from "@/modules/@shared/services"
 
 export class ApproveMercadopagoPaymentManualUsecase {
 
-    static async execute({ mercadopagoPaymentId }: ApproveMercadopagoPaymentUsecase.Input) {
+    static async execute({ mercadopagoPaymentId }: ApproveMercadopagoPaymentManualUsecase.Input) {
         const mercadopagoPayment = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
         if (!mercadopagoPayment) return
 
         if(mercadopagoPayment.status === "APPROVED") return
-
         mercadopagoPayment.status = "APPROVED"
 
         await MercadopagoRepository.update(mercadopagoPayment)
@@ -25,7 +24,7 @@ export class ApproveMercadopagoPaymentManualUsecase {
     }
 }
 
-export namespace ApproveMercadopagoPaymentUsecase {
+export namespace ApproveMercadopagoPaymentManualUsecase {
     
     export type Input = {
         mercadopagoPaymentId: string
