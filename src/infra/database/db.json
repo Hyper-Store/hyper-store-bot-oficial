@@ -9,18 +9,6 @@
             "id": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "createdAt": "2023-07-25T12:37:33.961Z",
             "stock": {
-                "b8415ed7-66c3-4fa7-a98a-158ca53f04b7": {
-                    "content": "te",
-                    "id": "b8415ed7-66c3-4fa7-a98a-158ca53f04b7"
-                },
-                "bd2f181b-978c-489f-b3a7-11907cdfc1af": {
-                    "content": "a",
-                    "id": "bd2f181b-978c-489f-b3a7-11907cdfc1af"
-                },
-                "1a6aa98d-f405-40c1-a855-0b5f6621b193": {
-                    "content": "a",
-                    "id": "1a6aa98d-f405-40c1-a855-0b5f6621b193"
-                },
                 "b8366879-c572-4dac-85c6-4ddbd4111bb9": {
                     "content": "teste",
                     "id": "b8366879-c572-4dac-85c6-4ddbd4111bb9"
@@ -379,6 +367,71 @@
             "price": 0.01,
             "review": 4,
             "createdAt": "2023-07-25T21:10:24.458Z"
+        },
+        "1133514284480077824": {
+            "id": "1133514284480077824",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "30c271f0-2a8c-4d85-b9b1-4234a7b77c44",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": 4,
+            "createdAt": "2023-07-25T21:41:05.943Z",
+            "stocks": [
+                {
+                    "content": "te",
+                    "id": "b8415ed7-66c3-4fa7-a98a-158ca53f04b7"
+                }
+            ],
+            "reviewSent": true
+        },
+        "1133514883070185595": {
+            "id": "1133514883070185595",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "f35ebee8-a9e2-470a-a3a4-c53f8713fe65",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": 4,
+            "createdAt": "2023-07-25T21:43:28.807Z",
+            "stocks": [
+                {
+                    "content": "a",
+                    "id": "bd2f181b-978c-489f-b3a7-11907cdfc1af"
+                }
+            ],
+            "reviewSent": true
+        },
+        "1133515173613809664": {
+            "id": "1133515173613809664",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "2ce522c1-7563-4a51-ba30-d90ab6ead0a6",
+            "status": "PENDING",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-25T21:44:38.250Z"
+        },
+        "1133515622576304178": {
+            "id": "1133515622576304178",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "b6ae851e-20a4-417d-b59c-6b3ef7a13f4e",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": 4,
+            "createdAt": "2023-07-25T21:46:25.198Z",
+            "stocks": [
+                {
+                    "content": "a",
+                    "id": "1a6aa98d-f405-40c1-a855-0b5f6621b193"
+                }
+            ],
+            "reviewSent": true
         }
     },
     "payment": {
@@ -406,6 +459,34 @@
                 "status": "APPROVED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61122521421"
+            },
+            "1133514284480077824": {
+                "checkoutId": "1133514284480077824",
+                "dateTimeCreated": "2023-07-25T21:41:13.896Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61236769688"
+            },
+            "1133514883070185595": {
+                "checkoutId": "1133514883070185595",
+                "dateTimeCreated": "2023-07-25T21:43:35.407Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61236961014"
+            },
+            "1133515173613809664": {
+                "checkoutId": "1133515173613809664",
+                "dateTimeCreated": "2023-07-25T21:44:43.618Z",
+                "status": "PENDING",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61124311047"
+            },
+            "1133515622576304178": {
+                "checkoutId": "1133515622576304178",
+                "dateTimeCreated": "2023-07-25T21:46:33.599Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61124406957"
             }
         },
         "mercadopago": {
@@ -422,6 +503,34 @@
                 "paymentManagementId": "1133506559612301322",
                 "status": "APPROVED",
                 "expirationDate": "2023-07-25T21:20:31.257Z"
+            },
+            "ref-61236769688": {
+                "paymentId": "61236769688",
+                "amount": 0.01,
+                "paymentManagementId": "1133514284480077824",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T21:51:13.899Z"
+            },
+            "ref-61236961014": {
+                "paymentId": "61236961014",
+                "amount": 0.01,
+                "paymentManagementId": "1133514883070185595",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T21:53:35.410Z"
+            },
+            "ref-61124311047": {
+                "paymentId": "61124311047",
+                "amount": 0.01,
+                "paymentManagementId": "1133515173613809664",
+                "status": "PENDING",
+                "expirationDate": "2023-07-25T21:54:43.621Z"
+            },
+            "ref-61124406957": {
+                "paymentId": "61124406957",
+                "amount": 0.01,
+                "paymentManagementId": "1133515622576304178",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T21:56:33.602Z"
             }
         }
     }

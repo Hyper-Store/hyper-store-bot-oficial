@@ -130,7 +130,7 @@ class StartCheckoutEvent extends BaseEvent {
         await CheckoutRepository.create({
             id: channel_created?.id!,
             ownerId: interaction.user.id,
-            productId: product.id!
+            productId: product.id!,
         })
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()

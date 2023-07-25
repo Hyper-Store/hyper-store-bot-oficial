@@ -10,7 +10,7 @@ export type CheckoutModel = {
     status?: CheckoutModel.Status,
     review?: number | null,
     reviewSent?: boolean,
-    stocks: ProductStockModel[]
+    stocks?: ProductStockModel[]
     createdAt?: Date,
 }
 

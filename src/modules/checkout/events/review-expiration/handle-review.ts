@@ -6,6 +6,7 @@ export class HandleReviewUsecase {
     static async execute(client: Client, { checkoutId }: HandleReviewUsecase.Input): Promise<void | boolean> {
         const checkout = await CheckoutRepository.findById(checkoutId);
 
+        console.log('ta aqui');
         if (checkout?.reviewSent) return;
 
         await CheckoutRepository.update({
@@ -13,7 +14,6 @@ export class HandleReviewUsecase {
             reviewSent: true
         })
 
-        console.log('ta aqui');
     }
 }
 
