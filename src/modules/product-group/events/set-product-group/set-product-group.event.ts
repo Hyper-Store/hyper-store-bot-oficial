@@ -5,6 +5,7 @@ import Discord, { Client } from "discord.js"
 import { ProductGroupRepository } from "../../repositories/product-group.repository";
 import { GroupNotExistMessage } from "../../@shared/messages/group-not-exist/group-not-exist.message";
 import { GroupPanelMessage } from "../../@shared/messages/group-panel/group-panel.message";
+import { GroupProductSetedSucessfully } from "./messages/group-product-seted-sucessfully.message";
 
 
 class SetProductGroupEvent extends BaseEvent {
@@ -28,7 +29,8 @@ class SetProductGroupEvent extends BaseEvent {
             return;
         }
 
-        interaction.channel?.send({ ...await GroupPanelMessage({ client, interaction, groupId: group.id! }) })
+        await interaction.channel?.send({ ...await GroupPanelMessage({ client, interaction, groupId: group.id! }) })
+        interaction.update({ ...GroupProductSetedSucessfully({ client, interaction }) })
     }
 }
 
