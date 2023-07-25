@@ -6,13 +6,8 @@ export const commands = new Discord.Collection<string, BaseSlashCommand>();
 export const setupCommand = (client: any): void => {
 
     const commandContainer = new CommandContainer()
-    if (process.env.NODE_ENV === "developement") {
-        fg.sync("**/src/modules/**/**.command.ts")
-            .map(async file => { (await import(`../../../${file}`)).default(commandContainer) })
-    } else {
-        fg.sync("**/dist/modules/**/**.command.js")
-            .map(async file => { (await import(`../../../${file}`)).default(commandContainer) })
-    }
+    fg.sync("**/src/modules/**/**.command.ts")
+        .map(async file => { (await import(`../../../${file}`)).default(commandContainer) })
 
     client.on("ready", async () => {
         commandContainer.getCommands().forEach(command => {
