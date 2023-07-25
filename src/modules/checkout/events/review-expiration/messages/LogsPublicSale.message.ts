@@ -16,7 +16,7 @@ type Props = {
 
 export const LogsPublicSaleMessage = async (props: Props): Promise<MessageCreateOptions> => {
     return {
-        content: `${props.user}`,
+        content: `||${props.user}||`,
         embeds: [
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
