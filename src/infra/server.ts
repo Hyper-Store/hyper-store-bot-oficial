@@ -4,8 +4,13 @@ import "dotenv/config"
 import fg from "fast-glob"
 
 const setupConsumers = () => {
-    fg.sync("**/src/modules/**/**.consumer.ts")
-        .map(async file => { (await import(`../../${file}`)) })
+    if (process.env.TS_NODE_DEV) {
+        fg.sync("**/src/modules/**/**.consumer.ts")
+            .map(async file => { (await import(`../../${file}`)) })
+    } else {
+        fg.sync("**/dist/modules/**/**.consumer.js")
+            .map(async file => { (await import(`../../${file}`)) })
+    }
 
 }
 
