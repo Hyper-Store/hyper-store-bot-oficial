@@ -22,14 +22,8 @@ export const FinishPaymentMercadoPagoMessage = (props: Props) => {
         embeds: [
             new Discord.EmbedBuilder()
                 .setColor(colors.invisible!)
-                .setDescription(`\`\`\`Selecione uma opção abaixo de pagamento para pareceber o produto.\`\`\`\n**${emojis.box} | Produto:** \`${props.product.title}\`\n**${emojis.money} | Valor:** \`R$${props.totalValue.toFixed(2)}\`\n**${emojis.date} | Expira em:** <t:${Math.floor(expire_in.getTime() / 1000)}:f> \`(\`<t:${Math.floor(expire_in.getTime() / 1000)}:R>\`)\``)
+                .setDescription(`\`\`\`Selecione uma opção abaixo de pagamento para pareceber o produto.\`\`\`\n**${emojis.box} | Produto:** \`${props.product.title}\`\n**${emojis.money} | Valor:** \`R$${props.totalValue.toFixed(2)}\`\n**${emojis.date} | Expira em:** <t:${Math.floor(expire_in.getTime() / 1000)}:f> \`(\`<t:${Math.floor(expire_in.getTime() / 1000)}:R>\`)\`\n**${emojis.id} | ID do produto:** \`${props.paymentId}\``)
                 .setImage(new DatabaseConfig().get('purchases.products.banner') as string)
-                .setFields(
-                    {
-                        name: `${emojis.id} ID do pagamento:`,
-                        value: `\`${props.paymentId}\``
-                    }
-                )
                 .setFooter({ text: 'Agora realize o pagamento para receber seu produto' })
         ],
         components: [
