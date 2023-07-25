@@ -1,6 +1,7 @@
 import { EventEmitterSingleton } from "@/modules/@shared/providers"
 import { MercadopagoRepository } from "../../repositories"
 import { RabbitmqSingletonService } from "@/modules/@shared/services"
+import { MercadopagoGateway } from "../../gateways"
 
 
 export class CancelMercadopagoPaymentUsecase {
@@ -10,6 +11,9 @@ export class CancelMercadopagoPaymentUsecase {
         if (!mercadopagoPayment) return
 
         if(mercadopagoPayment.status === "CANCELLED") return
+
+        const mercadopagoPaymentGateway = await MercadopagoGateway.findById(mercadopagoPayment.paymentId)
+        if(mercadopagoPaymentGateway?.status !== "CANCELLED") return
 
         mercadopagoPayment.status = "CANCELLED"
 

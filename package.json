@@ -4,7 +4,7 @@
   "description": "",
   "exports": "./src/index.ts",
   "scripts": {
-    "start": "rimraf dist",
+    "start": "concurrently \"node dist/infra/server.js \" \"node dist/infra/http/express/server.js\"",
     "dev": "concurrently \"npm run dev:discord\" \"npm run dev:express\"",
     "dev:discord": "ts-node-dev -r tsconfig-paths/register --poll --inspect=0.0.0.0:9230 --exit-child src/infra/server.ts",
     "dev:express": "ts-node-dev -r tsconfig-paths/register --poll --inspect --exit-child src/infra/http/express/server.ts",

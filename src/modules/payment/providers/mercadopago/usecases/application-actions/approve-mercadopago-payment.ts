@@ -1,5 +1,6 @@
 
 
+import { MercadopagoGateway } from "../../gateways"
 import { MercadopagoRepository } from "../../repositories"
 import { RabbitmqSingletonService } from "@/modules/@shared/services"
 
@@ -11,6 +12,9 @@ export class ApproveMercadopagoPaymentUsecase {
         if (!mercadopagoPayment) return
 
         if(mercadopagoPayment.status === "APPROVED") return
+
+        const mercadopagoPaymentGateway = await MercadopagoGateway.findById(mercadopagoPayment.paymentId)
+        if(mercadopagoPaymentGateway?.status !== "APPROVED") return
 
         mercadopagoPayment.status = "APPROVED"
 
@@ -31,3 +35,4 @@ export namespace ApproveMercadopagoPaymentUsecase {
         mercadopagoPaymentId: string
     }
 }
+
