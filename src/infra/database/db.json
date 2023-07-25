@@ -242,6 +242,17 @@
             "price": 0.01,
             "review": null,
             "createdAt": "2023-07-25T20:50:16.073Z"
+        },
+        "1133502135649181716": {
+            "id": "1133502135649181716",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "f490305d-738d-4a8e-b6b7-517640317996",
+            "status": "PENDING",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-25T20:52:49.428Z"
         }
     },
     "payment": {
@@ -288,6 +299,11 @@
             "1133501490250645504": {
                 "checkoutId": "1133501490250645504",
                 "dateTimeCreated": "2023-07-25T20:50:25.906Z",
+                "status": "PENDING"
+            },
+            "1133502135649181716": {
+                "checkoutId": "1133502135649181716",
+                "dateTimeCreated": "2023-07-25T20:52:56.480Z",
                 "status": "PENDING"
             }
         },
