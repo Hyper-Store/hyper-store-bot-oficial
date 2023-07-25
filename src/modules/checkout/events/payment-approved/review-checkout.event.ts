@@ -37,7 +37,6 @@ class ReviewCheckoutEvent extends BaseEvent {
             ],
             components: []
         })
-
         return;
     }
 }

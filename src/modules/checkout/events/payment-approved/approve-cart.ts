@@ -55,20 +55,6 @@ export class ApproveCartUsecase {
                 checkoutId: checkout?.id
             })
         )
-
-        setTimeout(async () => {
-            const channel_logs_public = guild?.channels.cache.get(checkoutConfig.channel_logs_public)
-            if (channel_logs_public && channel_logs_public.isTextBased()) channel_logs_public.send({
-                ...await LogsPublicSaleMessage({
-                    user: owner!,
-                    checkout: checkout!,
-                    client,
-                    guild: guild!,
-                    product: product!
-                })
-            })
-        }, 1000);
-
         return true
     }
 }

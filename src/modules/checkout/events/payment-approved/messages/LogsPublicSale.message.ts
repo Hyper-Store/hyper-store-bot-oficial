@@ -25,7 +25,7 @@ export const LogsPublicSaleMessage = async (props: Props): Promise<MessageCreate
                 .addFields(
                     {
                         name: `**${emojis.support} | Comprador:**`,
-                        value: `\`${props.user.user.username}\` - \`${props.user.user.id}\``
+                        value: `\`${props.user.user.username}\`(\`${props.user.user.id}\`)`
                     },
                     {
                         name: `**${emojis.box} | Produto:**`,
@@ -45,7 +45,7 @@ export const LogsPublicSaleMessage = async (props: Props): Promise<MessageCreate
                     },
                     {
                         name: `** ${emojis.date} | Data da compra:** `,
-                        value: `< t:${Math.floor(new Date().getTime() / 1000)}: f > \`(\`<t:${Math.floor(new Date().getTime() / 1000)}:R>\`)\``
+                        value: `<t:${Math.floor(new Date().getTime() / 1000)}:f> \`(\`<t:${Math.floor(new Date().getTime() / 1000)}:R>\`)\``
                     }
                 )
                 .setImage(await new DatabaseConfig().get('purchases.products.banner') as string)

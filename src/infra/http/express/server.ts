@@ -10,7 +10,6 @@ const app = express()
 app.use(express.json())
 
 app.post("/payment/mercadopago/callback", async (req, res) => {
-    console.log(req.body)
     await MercadopagoRedirectorUsecase.execute({
         action: req.body.action,
         paymentId: req.body?.data?.id ?? ""
