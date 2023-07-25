@@ -6,7 +6,7 @@ export const commands = new Discord.Collection<string, BaseSlashCommand>();
 export const setupCommand = (client: any): void => {
 
     const commandContainer = new CommandContainer()
-    if (process.env.NODE_ENV === "developement") {
+    if (process.env.TS_NODE_DEV) {
         fg.sync("**/src/modules/**/**.command.ts")
             .map(async file => { (await import(`../../../${file}`)).default(commandContainer) })
     } else {
