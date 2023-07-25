@@ -4,6 +4,7 @@ import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-pe
 import { ApproveMercadopagoPaymentUsecase } from "@/modules/payment/providers/mercadopago/usecases/application-actions";
 import { ChatInputCommandInteraction, Client } from "discord.js";
 import Discord from "discord.js"
+import { PaymentNotFoundMessage } from "./messages/PaymentNotFound.message";
 
 class ApprovePaymentCommand extends BaseSlashCommand {
     constructor() {
@@ -28,8 +29,13 @@ class ApprovePaymentCommand extends BaseSlashCommand {
             return;
         }
 
-        const paymentId = interaction.options.getString('paymentid');
+        const paymentId = interaction.options.getString('paymentid') as string;
         const result = await ApproveMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId! })
+
+        if (result === "PaymentNotFound") {
+            interaction.reply({ ...PaymentNotFoundMessage({ interaction, paymentId }) })
+            return;
+        }
     }
 }
 
