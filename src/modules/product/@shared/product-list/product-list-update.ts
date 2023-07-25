@@ -1,7 +1,7 @@
 import Discord, { Client, Interaction } from 'discord.js';
 import { ProductStockRepository } from '@/modules/product/repositories/product-stock.repository';
 import { ProductRepository } from '@/modules/product/repositories/product.repository';
-import { NotHaveProductMessage } from './messages/not-have-product.message';
+import { NotHaveProductMessage } from '../messages/not-have-product/not-have-product.message';
 import { ProductListMessage } from './messages/product-list.message';
 
 type Props = {

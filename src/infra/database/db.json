@@ -9,7 +9,27 @@
             "id": "452a6fdf-5300-410c-a6ed-1247297a296f",
             "createdAt": "2023-07-24T21:56:03.133Z",
             "roleDelivery": "123123123123123123",
-            "messageDelivery": "Video no yotuube para baixar: asdasd"
+            "messageDelivery": "Video no yotuube para baixar: asdasd",
+            "channelId": "1126886459484422205",
+            "messageId": "1133317327803400252"
+        },
+        "75437ad9-108f-4339-a9d6-1aeb9b0bfebf": {
+            "title": "teste",
+            "description": "testee",
+            "price": 2,
+            "image": "https://s.imgur.com/images/404/giraffeweyes.png",
+            "youtubeURL": "",
+            "id": "75437ad9-108f-4339-a9d6-1aeb9b0bfebf",
+            "createdAt": "2023-07-25T08:38:15.232Z"
+        }
+    },
+    "product-groups": {
+        "84d4afea-7f9b-449f-a2cc-dcce79ae15cd": {
+            "products": [
+                "75437ad9-108f-4339-a9d6-1aeb9b0bfebf"
+            ],
+            "placeholder": "💚 Escolha um produto",
+            "id": "84d4afea-7f9b-449f-a2cc-dcce79ae15cd"
         }
     }
 }
