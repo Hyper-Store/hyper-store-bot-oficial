@@ -31,6 +31,7 @@ const emojis = {
     qrcode: "<:qrcode:1127431347812712528>",
     oficial: "💚",
     youtube: "<:youtube:1128558266025263124>",
+    start: "<a:star:1127252794362044426>",
     download: "📋"
 }
 

@@ -4,7 +4,7 @@ import Discord, { Client } from "discord.js"
 import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
-import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel";
+import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel.message";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 
 class ReviewCheckoutEvent extends BaseEvent {

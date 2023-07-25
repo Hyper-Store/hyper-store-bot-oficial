@@ -231,6 +231,17 @@
             "price": 0.01,
             "review": null,
             "createdAt": "2023-07-25T20:13:23.280Z"
+        },
+        "1133501490250645504": {
+            "id": "1133501490250645504",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "28af5266-761e-42c7-9810-ec8025d9d23c",
+            "status": "PENDING",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-25T20:50:16.073Z"
         }
     },
     "payment": {
@@ -273,6 +284,11 @@
                 "status": "APPROVED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61232202726"
+            },
+            "1133501490250645504": {
+                "checkoutId": "1133501490250645504",
+                "dateTimeCreated": "2023-07-25T20:50:25.906Z",
+                "status": "PENDING"
             }
         },
         "mercadopago": {
