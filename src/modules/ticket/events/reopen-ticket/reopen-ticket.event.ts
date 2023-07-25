@@ -6,8 +6,10 @@ import { Interaction } from "discord.js";
 import Discord, { Client } from "discord.js"
 import { NotIsOwnerMessage } from "../../@shared/not-is-owner/not-is-owner.message";
 import { GetUserNameLowerCase } from "@/modules/@shared/utils/get-user-name-lowercase";
-import { OpenTicketMessage } from "../../@shared/ticket-messages/open-ticket.message";
 import { TypeTicket } from "../../@shared/type-tickets/type-tickets";
+import { SucessfullyReopenedTicket } from "./messages/sucessfully-reopened-ticket.message";
+import { TicketRepository } from "../../repositories/Ticket.repository";
+import { PanelTicketMessage } from "../../@shared/ticket-messages/panel-ticket.message";
 
 class ReopenTicketEvent extends BaseEvent {
     constructor() {
@@ -20,13 +22,13 @@ class ReopenTicketEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== "reopen-ticket") return;
 
-        const ticketData: any = await new Database().get(`ticket.sessions.${interaction.channelId}`);
+        const ticketData = await TicketRepository.findById(interaction.channelId);
 
-        const ownerUser = interaction.guild?.members.cache.get(ticketData.ownerId)
+        const ownerUser = interaction.guild?.members.cache.get(ticketData?.ownerId!)
 
         if (interaction.channel?.type !== Discord.ChannelType.GuildText) return;
 
-        const typeTicket = TypeTicket.find(type => type.id === ticketData.type)
+        const typeTicket = TypeTicket.find(type => type.id === ticketData?.type)
         await interaction.channel?.edit({
             name: `${typeTicket?.emoji}}・${typeTicket?.title}-${GetUserNameLowerCase(ownerUser?.user.username!)}`,
             parent: (await new Database().db.get('ticket.config.category_id') as string),
@@ -36,42 +38,31 @@ class ReopenTicketEvent extends BaseEvent {
                     deny: ["ViewChannel"]
                 },
                 {
-                    id: ticketData.ownerId,
+                    id: ticketData?.ownerId!,
                     allow: ["ViewChannel", "SendMessages", "ReadMessageHistory", "AddReactions", "AttachFiles"]
                 }
             ]
         })
 
-        const session_db = await new Database().db.get(`ticket.sessions.${interaction.channelId}`) as any;
-
-        const message = await interaction.channel.messages.cache.get(session_db.messageId)
+        const message = await interaction.channel.messages.cache.get(ticketData?.messageId!)
 
         const message_edited = await message?.edit({
-            ...OpenTicketMessage({
+            ...PanelTicketMessage({
                 interaction,
                 client,
-                type: session_db.type,
-                reason: session_db.reason,
-                createdAt: new Date(session_db.createdAt)
+                type: ticketData?.type!,
+                reason: ticketData?.reason!,
+                createdAt: new Date(ticketData?.createdAt!)
             })
         })
 
-        await new Database().db.set(`ticket.sessions.${interaction.channelId}`, {
-            ...session_db,
-            messageId: message_edited?.id,
-            closedAt: "",
+        await TicketRepository.update({
+            ...ticketData!,
+            messageId: message_edited?.id!,
             reopenedAt: new Date()
         })
 
-        interaction.reply({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Ticket do usuário ${ownerUser} aberto com sucesso!`)
-            ],
-            ephemeral: true
-        })
-
+        interaction.reply({ ...SucessfullyReopenedTicket({ client, interaction }) })
         return;
     }
 }

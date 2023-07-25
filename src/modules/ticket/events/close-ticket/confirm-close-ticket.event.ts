@@ -8,6 +8,8 @@ import { NotIsOwnerMessage } from "../../@shared/not-is-owner/not-is-owner.messa
 import { GetUserNameLowerCase } from "@/modules/@shared/utils/get-user-name-lowercase";
 import { ClosedTicketMessage } from "../../@shared/ticket-messages/closed-ticket.message";
 import { DatabaseConfig } from "@/infra/app/setup-config";
+import { TicketClosedSucessfullyMessage } from "./messages/ticket-closed-sucessfully.message";
+import { TicketRepository } from "../../repositories/Ticket.repository";
 
 class ConfirmCloseTicketEvent extends BaseEvent {
     constructor() {
@@ -20,9 +22,9 @@ class ConfirmCloseTicketEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== "confirm-close-ticket") return;
 
-        const ticketData: any = await new Database().get(`ticket.sessions.${interaction.channelId}`);
+        const ticketData = await TicketRepository.findById(interaction.channelId);
 
-        if (ticketData.ownerId !== interaction.user.id) {
+        if (ticketData?.ownerId !== interaction.user.id) {
             interaction.reply({ ...NotIsOwnerMessage({ interaction, client }) })
             return;
         }
@@ -44,31 +46,24 @@ class ConfirmCloseTicketEvent extends BaseEvent {
             ]
         })
 
-        const session_db = await new Database().db.get(`ticket.sessions.${interaction.channelId}`) as any;
-
-        const message = await interaction.channel.messages.cache.get(session_db.messageId)
+        const message = await interaction.channel.messages.cache.get(ticketData.messageId)
 
         await message?.edit({
             ...ClosedTicketMessage({
                 interaction,
                 client,
-                type: session_db.type,
-                reason: session_db.reason,
-                createdAt: new Date(session_db.createdAt)
+                type: ticketData.type,
+                reason: ticketData.reason,
+                createdAt: new Date(ticketData.createdAt)
             })
         })
 
-        await new Database().db.set(`ticket.sessions.${interaction.channelId}.closedAt`, new Date())
-
-        interaction.update({
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.success} Seu ticket foi fechado com sucesso!`)
-            ],
-            components: []
+        await TicketRepository.update({
+            ...ticketData,
+            closedAt: new Date()
         })
 
+        interaction.update({ ...TicketClosedSucessfullyMessage({ client, interaction }) })
         return;
     }
 }

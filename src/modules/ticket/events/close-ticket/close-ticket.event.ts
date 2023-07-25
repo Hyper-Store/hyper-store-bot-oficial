@@ -1,10 +1,9 @@
-import { Database } from "@/infra/app/setup-database";
 import { BaseEvent } from "@/modules/@shared/domain";
-import { colors } from "@/modules/@shared/utils/colors";
-import { emojis } from "@/modules/@shared/utils/emojis";
 import { Interaction } from "discord.js";
-import Discord, { Client } from "discord.js"
+import { Client } from "discord.js"
 import { NotIsOwnerMessage } from "../../@shared/not-is-owner/not-is-owner.message";
+import { TicketRepository } from "../../repositories/Ticket.repository";
+import { ConfirmCloseTicketMessage } from "./messages/confirm-close-ticket.message";
 
 class CloseTicketEvent extends BaseEvent {
     constructor() {
@@ -17,40 +16,14 @@ class CloseTicketEvent extends BaseEvent {
         if (!interaction.isButton()) return;
         if (interaction.customId !== "close-ticket") return;
 
-        const ticketData: any = await new Database().get(`ticket.sessions.${interaction.channelId}`);
+        const ticketData = await TicketRepository.findById(interaction.channelId);
 
-        if (ticketData.ownerId !== interaction.user.id) {
+        if (ticketData?.ownerId !== interaction.user.id) {
             interaction.reply({ ...NotIsOwnerMessage({ interaction, client }) })
             return;
         }
 
-        interaction.reply({
-            content: `||${interaction.user}||`,
-            embeds: [
-                new Discord.EmbedBuilder()
-                    .setColor(colors.invisible!)
-                    .setDescription(`> ${emojis.notifiy} Você realmente deseja fechar seu ticket?`)
-            ],
-            components: [
-                new Discord.ActionRowBuilder<any>()
-                    .addComponents(
-                        new Discord.ButtonBuilder()
-                            .setCustomId('confirm-close-ticket')
-                            .setLabel('Fechar ticket')
-                            .setEmoji(emojis.confirm)
-                            .setStyle(Discord.ButtonStyle.Danger)
-                    )
-                    .addComponents(
-                        new Discord.ButtonBuilder()
-                            .setCustomId('cancel-close-ticket')
-                            .setLabel('Cancelar')
-                            .setEmoji(emojis.cancel)
-                            .setStyle(Discord.ButtonStyle.Secondary)
-                    )
-            ],
-            ephemeral: true
-        })
-
+        interaction.reply({ ...ConfirmCloseTicketMessage({ client, interaction }) });
         return;
     }
 }

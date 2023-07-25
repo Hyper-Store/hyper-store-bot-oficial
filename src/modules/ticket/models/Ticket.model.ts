@@ -7,5 +7,7 @@ export type TicketModel = {
     reason: string,
     type: TicketTypeModel["id"]
     messageId: string
+    closedAt?: Date
+    reopenedAt?: Date
     createdAt: Date
 }
