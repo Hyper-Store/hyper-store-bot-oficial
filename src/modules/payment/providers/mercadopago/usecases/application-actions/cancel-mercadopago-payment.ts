@@ -12,9 +12,6 @@ export class CancelMercadopagoPaymentUsecase {
 
         if(mercadopagoPayment.status === "CANCELLED") return
 
-        const mercadopagoPaymentGateway = await MercadopagoGateway.findById(mercadopagoPayment.paymentId)
-        if(mercadopagoPaymentGateway?.status !== "CANCELLED") return
-
         mercadopagoPayment.status = "CANCELLED"
 
         await MercadopagoRepository.update(mercadopagoPayment)

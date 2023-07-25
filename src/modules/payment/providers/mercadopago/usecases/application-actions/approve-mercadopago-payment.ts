@@ -13,9 +13,6 @@ export class ApproveMercadopagoPaymentUsecase {
 
         if(mercadopagoPayment.status === "APPROVED") return
 
-        const mercadopagoPaymentGateway = await MercadopagoGateway.findById(mercadopagoPayment.paymentId)
-        if(mercadopagoPaymentGateway?.status !== "APPROVED") return
-
         mercadopagoPayment.status = "APPROVED"
 
         await MercadopagoRepository.update(mercadopagoPayment)

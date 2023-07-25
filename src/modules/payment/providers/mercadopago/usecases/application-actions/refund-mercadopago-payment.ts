@@ -10,9 +10,6 @@ export class RefundMercadopagoPaymentUsecase {
         const mercadopagoPayment = await MercadopagoRepository.findByPaymentId(mercadopagoPaymentId)
         if (!mercadopagoPayment) return
 
-        const mercadopagoPaymentGateway = await MercadopagoGateway.findById(mercadopagoPayment.paymentId)
-        if(mercadopagoPaymentGateway?.status !== "REFUNDED") return
-
         if(mercadopagoPayment.status === "REFUNDED") return
 
         mercadopagoPayment.status = "REFUNDED"
