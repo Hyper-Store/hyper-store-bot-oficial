@@ -148,5 +148,25 @@
                 "status": "PENDING"
             }
         }
+    },
+    "packs": {
+        "665df514-ffa6-4d31-adbc-395c13556a58": {
+            "title": "Pack Bots - Booster",
+            "description": "Pack Booster para boosters do servidor",
+            "role": "1132332199497179137",
+            "id": "665df514-ffa6-4d31-adbc-395c13556a58",
+            "options": {
+                "0c027876-867d-405d-8e1f-eea5e04a7027": {
+                    "title": "testetete",
+                    "content": "testeeee",
+                    "url": "youtube.com/teste",
+                    "youtubeURL": "",
+                    "emoji": "🎃",
+                    "id": "0c027876-867d-405d-8e1f-eea5e04a7027",
+                    "createdAt": "2023-07-25T14:41:49.745Z"
+                }
+            },
+            "createdAt": "2023-07-25T14:40:18.215Z"
+        }
     }
 }

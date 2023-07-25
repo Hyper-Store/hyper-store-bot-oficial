@@ -29,11 +29,11 @@ export const PackPanelMessage = async (props: Props): Promise<Discord.MessageCre
     const embed = new Discord.EmbedBuilder()
         .setColor(colors.invisible!)
         .setTitle(props.pack.title)
-        .setDescription(`> ${props.pack.description}`)
+        .setDescription(`> ${emojis.info} ${props.pack.description}`)
         .addFields(
             {
                 name: `🟢 Cargo para resgatar`,
-                value: `> \`${role?.name}\``
+                value: `> ${role}`
             }
         )
         .setFooter(Footer({ guild: props.interaction.guild! }))
