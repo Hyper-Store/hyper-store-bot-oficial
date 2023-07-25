@@ -5,6 +5,7 @@ import { CheckoutProductMessagePrivate } from "./messages/CheckoutProductMessage
 import { ProductStockModel } from "@/modules/product/models/product-stock.model";
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
 import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel";
+import { DatabaseConfig } from "@/infra/app/setup-config";
 
 export class ApproveCartUsecase {
     static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<void | boolean> {
@@ -24,6 +25,16 @@ export class ApproveCartUsecase {
                 checkout: checkout!
             })
         })
+
+        const checkoutConfig = await new DatabaseConfig().get('purchases') as any;
+
+        if (!owner.roles.cache.get(checkoutConfig.role_customer)) {
+            await owner.roles.add(checkoutConfig.role_customer)
+        }
+
+        if (product?.roleDelivery) {
+            await owner.roles.add(product.roleDelivery);
+        }
 
         owner?.send({
             ...await CheckoutProductMessagePrivate({

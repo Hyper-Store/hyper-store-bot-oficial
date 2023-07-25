@@ -10,7 +10,8 @@
         "products": {
             "banner": "https://cdn.discordapp.com/attachments/1037732718290665573/1085949536935084112/standard.gif"
         },
-        "channel_avaibles": "1126885491548110878"
+        "channel_avaibles": "1126885491548110878",
+        "role_customer": "1126933829056221234"
     },
     "reedemkey": {
         "banner": "https://cdn.discordapp.com/attachments/1126899145517572206/1126924848703217694/standard.gif",
