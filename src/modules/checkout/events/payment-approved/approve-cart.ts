@@ -6,7 +6,6 @@ import { ProductStockModel } from "@/modules/product/models/product-stock.model"
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
 import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel.message";
 import { DatabaseConfig } from "@/infra/app/setup-config";
-import { LogsPublicSaleMessage } from "./messages/LogsPublicSale.message";
 
 export class ApproveCartUsecase {
     static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<void | boolean> {
@@ -17,6 +16,11 @@ export class ApproveCartUsecase {
         const owner = guild?.members.cache.get(checkout?.ownerId!);
 
         if (!owner || !channel || !channel.isTextBased()) return;
+
+        await CheckoutRepository.update({
+            ...checkout!,
+            stocks
+        })
 
         await channel.send({
             ...await CheckoutProductMessageChannel({
@@ -55,6 +59,16 @@ export class ApproveCartUsecase {
                 checkoutId: checkout?.id
             })
         )
+
+        await rabbitmq.assertQueue('handle-review-expiration')
+        await rabbitmq.assertQueue('review-expiration', {
+            deadLetterExchange: "",
+            deadLetterRoutingKey: "handle-review-expiration",
+            expires: 1000 * 60
+        })
+        await rabbitmq.publishInQueue("review-expiration", JSON.stringify({
+            checkoutId
+        }))
         return true
     }
 }

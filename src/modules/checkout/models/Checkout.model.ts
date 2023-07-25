@@ -1,3 +1,5 @@
+import { ProductStockModel } from "@/modules/product/models/product-stock.model"
+
 export type CheckoutModel = {
     id: string,
     ref?: string,
@@ -7,6 +9,8 @@ export type CheckoutModel = {
     price?: number,
     status?: CheckoutModel.Status,
     review?: number | null,
+    reviewSent?: boolean,
+    stocks: ProductStockModel[]
     createdAt?: Date,
 }
 

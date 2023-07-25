@@ -6,6 +6,7 @@ import { colors } from "@/modules/@shared/utils/colors";
 import { emojis } from "@/modules/@shared/utils/emojis";
 import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel.message";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
+import { RabbitmqSingletonService } from "@/modules/@shared/services";
 
 class ReviewCheckoutEvent extends BaseEvent {
     constructor() {
@@ -27,6 +28,12 @@ class ReviewCheckoutEvent extends BaseEvent {
         if (checkout.status !== "APPROVED") return;
 
         await CheckoutRepository.update({ ...checkout, review: parseInt(interaction.customId.split('_')[1]) })
+
+        const rabbitmq = await RabbitmqSingletonService.getInstance()
+        await rabbitmq.assertQueue('handle-review-expiration')
+        await rabbitmq.publishInQueue("handle-review-expiration", JSON.stringify({
+            checkoutId: checkout.id
+        }))
 
         interaction.update({
             embeds: [
