@@ -9,10 +9,6 @@
             "id": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "createdAt": "2023-07-25T12:37:33.961Z",
             "stock": {
-                "6c8dfeff-ec37-4a23-8631-ce8a38ed8e5d": {
-                    "content": "t",
-                    "id": "6c8dfeff-ec37-4a23-8631-ce8a38ed8e5d"
-                },
                 "1a5caff6-27ff-4c02-a8fe-db1ca6cbc795": {
                     "content": "t",
                     "id": "1a5caff6-27ff-4c02-a8fe-db1ca6cbc795"
@@ -552,6 +548,25 @@
                 }
             ],
             "reviewSent": true
+        },
+        "1133538664312471692": {
+            "id": "1133538664312471692",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "77194630-bdf1-4dcb-bf0c-45d5e069bac4",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": 5,
+            "createdAt": "2023-07-25T23:17:58.757Z",
+            "paymentId": "61129110181",
+            "stocks": [
+                {
+                    "content": "t",
+                    "id": "6c8dfeff-ec37-4a23-8631-ce8a38ed8e5d"
+                }
+            ],
+            "reviewSent": true
         }
     },
     "payment": {
@@ -656,6 +671,13 @@
                 "status": "APPROVED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61241532296"
+            },
+            "1133538664312471692": {
+                "checkoutId": "1133538664312471692",
+                "dateTimeCreated": "2023-07-25T23:18:04.724Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61129110181"
             }
         },
         "mercadopago": {
@@ -749,6 +771,13 @@
                 "paymentManagementId": "1133536939086200933",
                 "status": "APPROVED",
                 "expirationDate": "2023-07-25T23:21:13.778Z"
+            },
+            "ref-61129110181": {
+                "paymentId": "61129110181",
+                "amount": 0.01,
+                "paymentManagementId": "1133538664312471692",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T23:28:04.729Z"
             }
         }
     }

@@ -15,7 +15,7 @@ export const CheckoutProductMessageChannel = async (props: Props) => {
 
     const buttons = new Discord.ActionRowBuilder<any>();
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 5; i++) {
         buttons.addComponents(
             new Discord.ButtonBuilder()
                 .setCustomId(`review_${i + 1}`)
