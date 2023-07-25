@@ -6,6 +6,7 @@ import { PackRepository } from "../../repositories/Pack.repository";
 import { PackNotExistErrorMessage } from "../../@shared/messages/pack-not-exist-error.message";
 import { PackOptionRepository } from "../../repositories/PackOption.repository";
 import { OptionPackCreatedSuccessMessage } from "./messages/option-pack-created-success.message";
+import { UpdateMessagePack } from "../../@shared/workers/update-message-pack";
 
 
 class AddOptionPackEvent extends BaseEvent {
@@ -45,6 +46,8 @@ class AddOptionPackEvent extends BaseEvent {
             youtubeURL: youtubeURL,
             emoji,
         })
+
+        await UpdateMessagePack({ interaction, packId })
 
         interaction.editReply({ ...OptionPackCreatedSuccessMessage({ interaction, pack: pack!, option }) })
         return;

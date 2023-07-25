@@ -76,7 +76,7 @@
             "id": "4969499c-baab-4ca9-8d8d-b15daeb905f8",
             "createdAt": "2023-07-25T13:48:04.608Z",
             "channelId": "1133379111058952222",
-            "messageId": "1133395293048680488"
+            "messageId": "1133429587825672322"
         }
     },
     "product-groups": {
@@ -91,7 +91,7 @@
             "image": "https://cdn.discordapp.com/ephemeral-attachments/1133353093438914610/1133379633958629436/banner_rockstar.png",
             "id": "dc942264-65a7-459e-8641-e6bc1edbc5d6",
             "channelId": "1126886459484422205",
-            "messageId": "1133387595817173063"
+            "messageId": "1133429544867610704"
         }
     },
     "checkouts": {
@@ -155,18 +155,189 @@
             "description": "Pack Booster para boosters do servidor",
             "role": "1132332199497179137",
             "id": "665df514-ffa6-4d31-adbc-395c13556a58",
+            "image": "https://media.tenor.com/5bhTXRlhCb0AAAAC/banner-seja.gif",
             "options": {
                 "0c027876-867d-405d-8e1f-eea5e04a7027": {
-                    "title": "testetete",
-                    "content": "testeeee",
-                    "url": "youtube.com/teste",
+                    "title": "Bot ticket",
+                    "content": "🚀 Bot ticket completo atualizado",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133411443216240750/bot_ticket.rar",
                     "youtubeURL": "",
-                    "emoji": "🎃",
+                    "emoji": "🎫",
                     "id": "0c027876-867d-405d-8e1f-eea5e04a7027",
                     "createdAt": "2023-07-25T14:41:49.745Z"
+                },
+                "cad5f381-bd49-4ab4-b75f-386143b3cfb1": {
+                    "title": "Bot vendas 1.0",
+                    "content": "💚 Bot vendas 1.0 atualizado\n💚 Funcionando perfeitamente.",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133411443564347422/bot_vendas1.0.zip",
+                    "youtubeURL": "",
+                    "emoji": "💳",
+                    "id": "cad5f381-bd49-4ab4-b75f-386143b3cfb1",
+                    "createdAt": "2023-07-25T14:58:16.218Z"
+                },
+                "f58406ae-fdc1-403f-b6e2-286b6c1c06ae": {
+                    "title": "Bot vendas 2.0",
+                    "content": "💚 Bot vendas 2.0 atualizado\n💚 Funcionando perfeitamente.",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133411444285788311/bot-vendas2.0.zip",
+                    "youtubeURL": "",
+                    "emoji": "🛒",
+                    "id": "f58406ae-fdc1-403f-b6e2-286b6c1c06ae",
+                    "createdAt": "2023-07-25T14:59:31.708Z"
+                },
+                "ff45519e-2f14-4f5e-94c8-12ec8d00b6bb": {
+                    "title": "Bot self pix",
+                    "content": "💸 Bot self pix funcionando.\n💸 Token (conta).",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133411442876485743/bot_selfpix.zip",
+                    "youtubeURL": "",
+                    "emoji": "💸",
+                    "id": "ff45519e-2f14-4f5e-94c8-12ec8d00b6bb",
+                    "createdAt": "2023-07-25T15:00:31.565Z"
+                },
+                "e344fa83-a686-4dd4-a13b-5f0a69b3dd76": {
+                    "title": "Bot divulgação 1.0",
+                    "content": "🚀 Bot divulgação 1.0\n🚀 Risco de ban na conta (cuidado).",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133411442222190692/bot_div_1.zip",
+                    "youtubeURL": "",
+                    "emoji": "🚀",
+                    "id": "e344fa83-a686-4dd4-a13b-5f0a69b3dd76",
+                    "createdAt": "2023-07-25T15:02:48.732Z"
+                },
+                "9d923866-ac2a-45e0-b4c1-1c44a0731046": {
+                    "title": "Bot divulgação 2.0",
+                    "content": "🚀 Bot divulgação 2.0\n🚀 Risco de ban na conta (cuidado).",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133411442566103111/bot_div2.zip",
+                    "youtubeURL": "",
+                    "emoji": "📌",
+                    "id": "9d923866-ac2a-45e0-b4c1-1c44a0731046",
+                    "createdAt": "2023-07-25T15:04:55.840Z"
+                },
+                "c0fc2a0b-8bc6-4218-999b-0bb6d288d372": {
+                    "title": "Pack bots 1.0",
+                    "content": "📦 Pack com mais de 3 bots\n📦 Todas as sources funcionando",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133415257046523954/Pack_1.zip",
+                    "youtubeURL": "",
+                    "emoji": "📦",
+                    "id": "c0fc2a0b-8bc6-4218-999b-0bb6d288d372",
+                    "createdAt": "2023-07-25T15:12:20.148Z"
+                },
+                "0c40af51-b59c-4cb5-94f2-c9dc24af6787": {
+                    "title": "Pack bots 2.0",
+                    "content": "📦 Pack com mais de 9 bots\n📦 Todas as sources funcionando",
+                    "url": "https://cdn.discordapp.com/attachments/1133411380142284830/1133415257344323694/Pack_2.zip",
+                    "youtubeURL": "",
+                    "emoji": "🎉",
+                    "id": "0c40af51-b59c-4cb5-94f2-c9dc24af6787",
+                    "createdAt": "2023-07-25T15:12:52.697Z"
                 }
             },
-            "createdAt": "2023-07-25T14:40:18.215Z"
+            "createdAt": "2023-07-25T14:40:18.215Z",
+            "messageId": "1133420353457225728",
+            "channelId": "1133404650742235196"
+        },
+        "b635feff-d49d-4c95-8226-d0d72c04847e": {
+            "title": "Pack Métodos - Booster",
+            "description": "Pack de métodos completos para membros boosters",
+            "role": "1132332199497179137",
+            "image": "https://cdn.discordapp.com/ephemeral-attachments/1128532503905447966/1133421503573143552/sjbooster.gif",
+            "id": "b635feff-d49d-4c95-8226-d0d72c04847e",
+            "options": {
+                "587c4d2e-112d-454a-8f12-94c6a5be919a": {
+                    "title": "COMO CRIAR NETFLIX",
+                    "content": "📌 Método completo",
+                    "url": "https://t.me/+Pva3YktYNIc0OWFh",
+                    "youtubeURL": "",
+                    "emoji": "😍",
+                    "id": "587c4d2e-112d-454a-8f12-94c6a5be919a",
+                    "createdAt": "2023-07-25T15:34:16.373Z"
+                },
+                "6e111d7f-0b78-4a43-adc6-a75cdc390d2a": {
+                    "title": "COMO PUXAR INFO CC",
+                    "content": "📌 Método completo",
+                    "url": "https://t.me/+Pva3YktYNIc0OWFh",
+                    "youtubeURL": "",
+                    "emoji": "💳",
+                    "id": "6e111d7f-0b78-4a43-adc6-a75cdc390d2a",
+                    "createdAt": "2023-07-25T15:34:51.666Z"
+                },
+                "391a79aa-a55c-4495-b5ce-964afedfcc53": {
+                    "title": "ESQUEMA APROVAÇÕES",
+                    "content": "📌 Método completo",
+                    "url": "https://t.me/+Pva3YktYNIc0OWFh",
+                    "youtubeURL": "",
+                    "emoji": "📶",
+                    "id": "391a79aa-a55c-4495-b5ce-964afedfcc53",
+                    "createdAt": "2023-07-25T15:35:47.170Z"
+                },
+                "b37d6ea6-94ca-49e0-93a4-1647e6be81a3": {
+                    "title": "COMO CRIAR LARA MP",
+                    "content": "📌 Método completo",
+                    "url": "https://t.me/+Pva3YktYNIc0OWFh",
+                    "youtubeURL": "",
+                    "emoji": "<:mercadopago:1127291259443236954>",
+                    "id": "b37d6ea6-94ca-49e0-93a4-1647e6be81a3",
+                    "createdAt": "2023-07-25T15:36:31.980Z"
+                },
+                "e41ad483-fd17-4d59-85d4-9e8187ae9e4b": {
+                    "title": "APROVAR SHOPEE NA GG",
+                    "content": "📌 Método completo",
+                    "url": "https://t.me/+Pva3YktYNIc0OWFh",
+                    "youtubeURL": "",
+                    "emoji": "<:shopee:1133422860271091813>",
+                    "id": "e41ad483-fd17-4d59-85d4-9e8187ae9e4b",
+                    "createdAt": "2023-07-25T15:38:14.550Z"
+                },
+                "7146b11f-6816-4ad2-9868-8b07905c8a21": {
+                    "title": "COMO FAZER RECARGAS",
+                    "content": "📌 Método completo",
+                    "url": "https://t.me/+Pva3YktYNIc0OWFh",
+                    "youtubeURL": "",
+                    "emoji": "📱",
+                    "id": "7146b11f-6816-4ad2-9868-8b07905c8a21",
+                    "createdAt": "2023-07-25T15:38:50.620Z"
+                },
+                "50e3c9e3-8e83-4157-b780-b24375d55a23": {
+                    "title": "APROVAÇÃO ALIEXPRESS",
+                    "content": "📌 Método completo",
+                    "url": "https://t.me/+Pva3YktYNIc0OWFh",
+                    "youtubeURL": "",
+                    "emoji": "🛍️",
+                    "id": "50e3c9e3-8e83-4157-b780-b24375d55a23",
+                    "createdAt": "2023-07-25T15:39:16.951Z"
+                },
+                "cfaec2e3-7647-40ef-9b90-fa9ba666bf6b": {
+                    "title": "Seguidores instagram",
+                    "content": "📌 Método completo",
+                    "url": "https://ggmax.com.br/perfil/hyperstore",
+                    "youtubeURL": "",
+                    "emoji": "<:instagram:1133423521016594602>",
+                    "id": "cfaec2e3-7647-40ef-9b90-fa9ba666bf6b",
+                    "createdAt": "2023-07-25T15:40:57.766Z"
+                }
+            },
+            "createdAt": "2023-07-25T15:32:21.737Z",
+            "messageId": "1133422007648788581",
+            "channelId": "1133404694396543056"
+        },
+        "72e078d2-8b32-4ac4-9e74-d148a20b485a": {
+            "title": "Pack Sources - Booster",
+            "description": "Pack de sources completos para membros boosters",
+            "role": "1132332199497179137",
+            "image": "https://cdn.discordapp.com/ephemeral-attachments/1128532503905447966/1133424920035074148/sjbooster.gif",
+            "id": "72e078d2-8b32-4ac4-9e74-d148a20b485a",
+            "options": {
+                "53bc7350-48de-490f-9529-7416e295e3a7": {
+                    "title": "GERADOR ROCKSTAR - CX2",
+                    "content": "🐻 Gerador funcionando.\n🐻 Demora um pouco para pegar conta boa, mais pega.",
+                    "url": "https://cdn.discordapp.com/attachments/1133411431509930067/1133411450547871784/cx2_rockstar.zip",
+                    "youtubeURL": "",
+                    "emoji": "🐻",
+                    "id": "53bc7350-48de-490f-9529-7416e295e3a7",
+                    "createdAt": "2023-07-25T15:47:09.963Z"
+                }
+            },
+            "createdAt": "2023-07-25T15:45:56.228Z",
+            "messageId": "1133425256325992468",
+            "channelId": "1133407686222954527"
         }
     }
 }

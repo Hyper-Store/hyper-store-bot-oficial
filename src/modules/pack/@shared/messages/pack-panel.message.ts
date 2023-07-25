@@ -4,19 +4,24 @@ import { colors } from "@/modules/@shared/utils/colors"
 import { PackOptionModel } from "../../models/PackOption.model"
 import { emojis } from "@/modules/@shared/utils/emojis"
 import { Footer } from "@/modules/@shared/utils/footer"
+import { PackRepository } from "../../repositories/Pack.repository"
+import { PackNotExistErrorMessage } from "./pack-not-exist-error.message"
 
-type Props = {
+export type PackPanelMessageProps = {
     interaction: Interaction,
-    pack: PackModel
+    packId: string
 }
-export const PackPanelMessage = async (props: Props): Promise<Discord.MessageCreateOptions> => {
+export const PackPanelMessage = async (props: PackPanelMessageProps): Promise<any> => {
+
+    const pack = await PackRepository.findById(props.packId);
+    if (!pack) return PackNotExistErrorMessage({ ...props });
 
     const options: Discord.SelectMenuComponentOptionData[] = [];
 
-    const role = props.interaction.guild?.roles.cache.get(props.pack.role);
+    const role = props.interaction.guild?.roles.cache.get(pack.role);
 
-    for (const packOptionId in props.pack.options) {
-        const packOption = props.pack.options[packOptionId];
+    for (const packOptionId in pack.options) {
+        const packOption = pack.options[packOptionId];
 
         options.push({
             label: packOption.title,
@@ -28,8 +33,8 @@ export const PackPanelMessage = async (props: Props): Promise<Discord.MessageCre
 
     const embed = new Discord.EmbedBuilder()
         .setColor(colors.invisible!)
-        .setTitle(props.pack.title)
-        .setDescription(`> ${emojis.info} ${props.pack.description}`)
+        .setTitle(pack.title)
+        .setDescription(`> ${emojis.info} ${pack.description}`)
         .addFields(
             {
                 name: `🟢 Cargo para resgatar`,
@@ -38,7 +43,7 @@ export const PackPanelMessage = async (props: Props): Promise<Discord.MessageCre
         )
         .setFooter(Footer({ guild: props.interaction.guild! }))
 
-    if (props.pack.image) embed.setImage(props.pack.image);
+    if (pack.image) embed.setImage(pack.image);
 
     return {
         embeds: [embed],
@@ -46,7 +51,7 @@ export const PackPanelMessage = async (props: Props): Promise<Discord.MessageCre
             new Discord.ActionRowBuilder<Discord.StringSelectMenuBuilder>()
                 .addComponents(
                     new Discord.StringSelectMenuBuilder()
-                        .setCustomId(`pack-download_${props.pack.id}`)
+                        .setCustomId(`pack-download_${pack.id}`)
                         .setPlaceholder(`🟢 Escolha uma opção do pack`)
                         .setOptions(options)
                 )

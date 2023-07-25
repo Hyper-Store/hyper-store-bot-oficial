@@ -7,5 +7,7 @@ export type PackModel = {
     options?: { [key: string]: PackOptionModel }
     image?: string,
     role: string,
+    messageId?: string,
+    channelId?: string,
     createdAt?: Date
 }

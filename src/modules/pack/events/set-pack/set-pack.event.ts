@@ -30,7 +30,12 @@ class SetPackEvent extends BaseEvent {
             interaction.update({ ...PackNotExistErrorMessage({ interaction }) })
         }
 
-        await interaction.channel?.send({ ...await PackPanelMessage({ interaction, pack: pack! }) })
+        const message_created = await interaction.channel?.send({ ...await PackPanelMessage({ interaction, packId: pack?.id! }) })
+        await PackRepository.update({
+            ...pack!,
+            messageId: message_created?.id,
+            channelId: message_created?.channelId
+        })
 
         interaction.update({ ...PackSetedSuccessfully({ interaction }) })
     }
