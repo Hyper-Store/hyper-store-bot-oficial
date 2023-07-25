@@ -32,12 +32,18 @@ export class FinishPaymentMercadoPagoCheckoutEvent {
             paymentManagementId: checkout.id
         })
 
+        await CheckoutRepository.update({
+            ...checkout,
+            paymentId: payment_data.paymentId
+        })
+
         interaction.editReply({
             ...FinishPaymentMercadoPagoMessage({
                 product: product!,
                 totalValue: product?.price! * checkout.quantity!,
                 linkPayment: payment_data.data.paymentLink,
-                ...ButtonPixQrCode
+                ...ButtonPixQrCode,
+                paymentId: payment_data.paymentId
             })
         })
 

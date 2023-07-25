@@ -8,22 +8,7 @@
             "youtubeURL": "",
             "id": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "createdAt": "2023-07-25T12:37:33.961Z",
-            "stock": {
-                "b8366879-c572-4dac-85c6-4ddbd4111bb9": {
-                    "content": "teste",
-                    "id": "b8366879-c572-4dac-85c6-4ddbd4111bb9"
-                },
-                "7104c8cc-f024-4039-99f4-fd8a7e4ce437": {
-                    "content": "teste",
-                    "id": "7104c8cc-f024-4039-99f4-fd8a7e4ce437"
-                },
-                "6edc17de-bd9b-4e82-be79-91c28e1b0d6c": {
-                    "content": "teste",
-                    "id": "6edc17de-bd9b-4e82-be79-91c28e1b0d6c"
-                }
-            },
-            "channelId": "1126886459484422205",
-            "messageId": "1133387530058879066",
+            "stock": {},
             "roleDelivery": "1133475137090502706",
             "messageDelivery": "Sua conta ta logo abaixo fdp"
         },
@@ -85,9 +70,7 @@
             "title": "Contas rockstar",
             "description": "Contas rockstar todas checkadas e com garantia",
             "image": "https://cdn.discordapp.com/ephemeral-attachments/1133353093438914610/1133379633958629436/banner_rockstar.png",
-            "id": "dc942264-65a7-459e-8641-e6bc1edbc5d6",
-            "channelId": "1126886459484422205",
-            "messageId": "1133429544867610704"
+            "id": "dc942264-65a7-459e-8641-e6bc1edbc5d6"
         }
     },
     "packs": {
@@ -409,7 +392,7 @@
             "ownerId": "1124265861109256282",
             "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "ref": "2ce522c1-7563-4a51-ba30-d90ab6ead0a6",
-            "status": "PENDING",
+            "status": "CANCELLED",
             "quantity": 1,
             "price": 0.01,
             "review": null,
@@ -429,6 +412,96 @@
                 {
                     "content": "a",
                     "id": "1a6aa98d-f405-40c1-a855-0b5f6621b193"
+                }
+            ],
+            "reviewSent": true
+        },
+        "1133516507108868147": {
+            "id": "1133516507108868147",
+            "ownerId": "1035695838707585044",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "1e70e1e8-68ab-41c8-946a-f7c59cd84a1e",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": 4,
+            "createdAt": "2023-07-25T21:49:55.784Z",
+            "stocks": [
+                {
+                    "content": "teste",
+                    "id": "b8366879-c572-4dac-85c6-4ddbd4111bb9"
+                }
+            ],
+            "reviewSent": true
+        },
+        "1133517918949351544": {
+            "id": "1133517918949351544",
+            "ownerId": "1035695838707585044",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "386077a3-2ef2-4fc9-9e86-907276d895f4",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-25T21:55:32.503Z",
+            "stocks": [
+                {
+                    "content": "teste",
+                    "id": "7104c8cc-f024-4039-99f4-fd8a7e4ce437"
+                }
+            ]
+        },
+        "1133518749018894430": {
+            "id": "1133518749018894430",
+            "ownerId": "1035695838707585044",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "e0b62bf5-f1eb-410c-95d2-587240342493",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": null,
+            "createdAt": "2023-07-25T21:58:50.371Z",
+            "stocks": [
+                {
+                    "content": "teste",
+                    "id": "6edc17de-bd9b-4e82-be79-91c28e1b0d6c"
+                }
+            ],
+            "reviewSent": true
+        },
+        "1133520944103698482": {
+            "id": "1133520944103698482",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "1660fd9d-b162-4b63-96c3-2b1aa3a476ac",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": 4,
+            "createdAt": "2023-07-25T22:07:33.958Z",
+            "stocks": [
+                {
+                    "content": "teste",
+                    "id": "1ba61c7c-687e-40aa-8ce5-1ada51e27e3c"
+                }
+            ],
+            "reviewSent": true
+        },
+        "1133524593513078784": {
+            "id": "1133524593513078784",
+            "ownerId": "1124265861109256282",
+            "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
+            "ref": "d9acabbc-9d6e-4e09-8baa-f74dadd442b8",
+            "status": "APPROVED",
+            "quantity": 1,
+            "price": 0.01,
+            "review": 4,
+            "createdAt": "2023-07-25T22:22:04.142Z",
+            "paymentId": "61238952602",
+            "stocks": [
+                {
+                    "content": "teste",
+                    "id": "551b7e82-33e4-4aef-b673-72b53876f3a3"
                 }
             ],
             "reviewSent": true
@@ -477,7 +550,7 @@
             "1133515173613809664": {
                 "checkoutId": "1133515173613809664",
                 "dateTimeCreated": "2023-07-25T21:44:43.618Z",
-                "status": "PENDING",
+                "status": "CANCELLED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61124311047"
             },
@@ -487,6 +560,41 @@
                 "status": "APPROVED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61124406957"
+            },
+            "1133516507108868147": {
+                "checkoutId": "1133516507108868147",
+                "dateTimeCreated": "2023-07-25T21:50:04.043Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61237462440"
+            },
+            "1133517918949351544": {
+                "checkoutId": "1133517918949351544",
+                "dateTimeCreated": "2023-07-25T21:55:41.023Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61237742724"
+            },
+            "1133518749018894430": {
+                "checkoutId": "1133518749018894430",
+                "dateTimeCreated": "2023-07-25T21:59:02.366Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61125050421"
+            },
+            "1133520944103698482": {
+                "checkoutId": "1133520944103698482",
+                "dateTimeCreated": "2023-07-25T22:07:40.194Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61125433969"
+            },
+            "1133524593513078784": {
+                "checkoutId": "1133524593513078784",
+                "dateTimeCreated": "2023-07-25T22:22:10.381Z",
+                "status": "APPROVED",
+                "paymentProvider": "mercadopago",
+                "paymentProviderId": "61238952602"
             }
         },
         "mercadopago": {
@@ -522,7 +630,7 @@
                 "paymentId": "61124311047",
                 "amount": 0.01,
                 "paymentManagementId": "1133515173613809664",
-                "status": "PENDING",
+                "status": "CANCELLED",
                 "expirationDate": "2023-07-25T21:54:43.621Z"
             },
             "ref-61124406957": {
@@ -531,6 +639,41 @@
                 "paymentManagementId": "1133515622576304178",
                 "status": "APPROVED",
                 "expirationDate": "2023-07-25T21:56:33.602Z"
+            },
+            "ref-61237462440": {
+                "paymentId": "61237462440",
+                "amount": 0.01,
+                "paymentManagementId": "1133516507108868147",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T22:00:04.046Z"
+            },
+            "ref-61237742724": {
+                "paymentId": "61237742724",
+                "amount": 0.01,
+                "paymentManagementId": "1133517918949351544",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T22:05:41.026Z"
+            },
+            "ref-61125050421": {
+                "paymentId": "61125050421",
+                "amount": 0.01,
+                "paymentManagementId": "1133518749018894430",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T22:09:02.369Z"
+            },
+            "ref-61125433969": {
+                "paymentId": "61125433969",
+                "amount": 0.01,
+                "paymentManagementId": "1133520944103698482",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T22:17:40.198Z"
+            },
+            "ref-61238952602": {
+                "paymentId": "61238952602",
+                "amount": 0.01,
+                "paymentManagementId": "1133524593513078784",
+                "status": "APPROVED",
+                "expirationDate": "2023-07-25T22:32:10.384Z"
             }
         }
     }

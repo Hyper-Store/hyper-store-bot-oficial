@@ -1,0 +1,40 @@
+import { CommandContainer } from "@/modules/@shared/domain";
+import { BaseSlashCommand } from "@/modules/@shared/domain/command/base-slash-command";
+import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
+import { ApproveMercadopagoPaymentUsecase } from "@/modules/payment/providers/mercadopago/usecases/application-actions";
+import { ChatInputCommandInteraction, Client } from "discord.js";
+import Discord from "discord.js"
+
+class ApprovePaymentCommand extends BaseSlashCommand {
+    constructor() {
+        super({
+            name: "approve-papyment",
+            description: "Adicionar uma opção a um pack",
+            options: [
+                {
+                    name: 'paymentid',
+                    description: 'Insira o id do pagamento',
+                    type: 3,
+                    required: true
+                }
+            ],
+            type: Discord.ApplicationCommandType.ChatInput
+        })
+    }
+
+    async exec(interaction: ChatInputCommandInteraction, client: Client): Promise<void> {
+        if (!interaction.memberPermissions?.has(Discord.PermissionFlagsBits.Administrator)) {
+            interaction.reply({ ...NotHavePermissionMessage({ interaction, client, permission: "Administrator" }) })
+            return;
+        }
+
+        const paymentId = interaction.options.getString('paymentid');
+        const result = await ApproveMercadopagoPaymentUsecase.execute({ mercadopagoPaymentId: paymentId! })
+    }
+}
+
+
+export default (commandContainer: CommandContainer): void => {
+    const command = new ApprovePaymentCommand()
+    commandContainer.addCommand(command)
+}

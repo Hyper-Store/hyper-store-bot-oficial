@@ -10,6 +10,7 @@ export type CheckoutModel = {
     status?: CheckoutModel.Status,
     review?: number | null,
     reviewSent?: boolean,
+    paymentId?: string,
     stocks?: ProductStockModel[]
     createdAt?: Date,
 }

@@ -39,7 +39,8 @@ class PixMercadoPagoCheckoutEvent extends BaseEvent {
                 product: product!,
                 totalValue: product?.price! * checkout.quantity!,
                 linkPayment: payment_data.body.point_of_interaction.transaction_data.ticket_url,
-                ...ButtonPixQrCode
+                ...ButtonPixQrCode,
+                paymentId: checkout.paymentId!
             })
         })
 

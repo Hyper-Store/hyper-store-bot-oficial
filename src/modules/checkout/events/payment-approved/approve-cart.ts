@@ -64,7 +64,9 @@ export class ApproveCartUsecase {
         await rabbitmq.assertQueue('review-expiration', {
             deadLetterExchange: "",
             deadLetterRoutingKey: "handle-review-expiration",
-            expires: 1000 * 60
+            arguments: {
+                'x-message-ttl': 1000 * 60
+            }
         })
         await rabbitmq.publishInQueue("review-expiration", JSON.stringify({
             checkoutId

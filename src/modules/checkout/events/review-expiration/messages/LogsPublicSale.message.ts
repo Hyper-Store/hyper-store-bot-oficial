@@ -41,7 +41,7 @@ export const LogsPublicSaleMessage = async (props: Props): Promise<MessageCreate
                     },
                     {
                         name: `**${emojis.start} | Avaliação**`,
-                        value: `${props.checkout.review ? `${"⭐".repeat(props.checkout.review)} \`${props.checkout.review}\`` : `\`Nenhuma avaliação\``}`
+                        value: `${props.checkout.review ? `${"⭐".repeat(props.checkout.review)} \`(${props.checkout.review}/5)\`` : `\`Nenhuma avaliação\``}`
                     },
                     {
                         name: `** ${emojis.date} | Data da compra:** `,
