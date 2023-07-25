@@ -21,10 +21,13 @@ class StartCheckoutEvent extends BaseEvent {
     }
 
     async exec(interaction: Interaction, client: Client): Promise<void> {
-        if (!interaction.isButton()) return;
+        if (!interaction.isButton() && !interaction.isStringSelectMenu()) return;
         if (!interaction.customId.startsWith('buy')) return;
 
-        const [, product_id] = interaction.customId.split("_");
+        let product_id: string = ""
+
+        if (interaction.isButton()) product_id = interaction.customId.split("_")[1]
+        if (interaction.isStringSelectMenu()) product_id = interaction.values[0];
 
         const product = await ProductRepository.findById(product_id);
 

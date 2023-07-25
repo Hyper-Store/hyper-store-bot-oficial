@@ -29,7 +29,14 @@ class SetProductGroupEvent extends BaseEvent {
             return;
         }
 
-        await interaction.channel?.send({ ...await GroupPanelMessage({ client, interaction, groupId: group.id! }) })
+        const message_created = await interaction.channel?.send({ ...await GroupPanelMessage({ client, interaction, groupId: group.id! }) })
+
+        await ProductGroupRepository.update({
+            ...group!,
+            channelId: message_created?.channelId,
+            messageId: message_created?.id
+        })
+
         interaction.update({ ...GroupProductSetedSucessfully({ client, interaction }) })
     }
 }

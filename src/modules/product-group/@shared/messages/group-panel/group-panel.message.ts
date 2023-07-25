@@ -24,10 +24,10 @@ export const GroupPanelMessage = async (props: GroupPanelMessageProps): Promise<
     const embed = new Discord.EmbedBuilder()
         .setColor(colors.invisible!)
         .setTitle(group.title)
-        .setFooter({ text: 'Para comprar selecione um produto abaixo' })
+        .setFooter({ text: '💚 Para comprar selecione um produto abaixo' })
 
     if (group.image) embed.setImage(group.image);
-    if (group.description) embed.setImage(group.description);
+    if (group.description) embed.setDescription(`> ${emojis.info} ${group.description}`);
 
     const products: ProductModel[] = [];
 
@@ -35,6 +35,7 @@ export const GroupPanelMessage = async (props: GroupPanelMessageProps): Promise<
         const product = await ProductRepository.findById(productId!);
         if (product) products.push(product);
     }
+
 
     if (products.length < 1) return NotHaveProductGroupMessage({ ...props })
 
