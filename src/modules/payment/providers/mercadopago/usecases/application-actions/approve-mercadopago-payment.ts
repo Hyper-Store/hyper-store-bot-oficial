@@ -1,5 +1,6 @@
 
 
+import { MercadopagoGateway } from "../../gateways"
 import { MercadopagoRepository } from "../../repositories"
 import { RabbitmqSingletonService } from "@/modules/@shared/services"
 
@@ -31,3 +32,4 @@ export namespace ApproveMercadopagoPaymentUsecase {
         mercadopagoPaymentId: string
     }
 }
+

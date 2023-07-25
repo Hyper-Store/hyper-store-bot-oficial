@@ -23,7 +23,7 @@ export class CheckCheckoutTimeoutUsecase {
                 checkoutId: checkout?.id
             })
         )
-        
+                
 
     }
 }
