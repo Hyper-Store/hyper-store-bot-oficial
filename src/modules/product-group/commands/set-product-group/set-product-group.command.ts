@@ -11,7 +11,7 @@ class SetProductGroupCommand extends BaseSlashCommand {
 
     constructor() {
         super({
-            name: "set-product-group",
+            name: "productgroup_set",
             description: "Setar um grupo a este canal",
             type: Discord.ApplicationCommandType.ChatInput,
         })

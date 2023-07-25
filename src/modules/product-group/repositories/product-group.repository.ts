@@ -7,7 +7,6 @@ import { ProductRepository } from "@/modules/product/repositories/product.reposi
 export class ProductGroupRepository {
     static async create(productGroup: ProductGroupModel): Promise<ProductGroupModel> {
         productGroup.id = randomUUID()
-        productGroup.placeholder = productGroup.placeholder ?? "💚 Escolha um produto"
 
         await new Database().set(`product-groups.${productGroup.id}`, productGroup)
         return productGroup
@@ -32,7 +31,7 @@ export class ProductGroupRepository {
         return result as ProductGroupModel[] ?? []
     }
 
-    static async checkProductIsInGroup(productId: string): Promise<ProductModel | null> {
+    static async checkProductIsInGroup(productId: string): Promise<ProductGroupModel | null> {
         const productGroups = await this.getAll();
         const productGroupsLists: ProductGroupModel[] = []
 
@@ -44,7 +43,7 @@ export class ProductGroupRepository {
         for (const group of productGroupsLists) {
             const productIdSearch = group.products.find(p => p === productId)
             const productSearch = await ProductRepository.findById(productIdSearch!);
-            if (productSearch) return productSearch;
+            if (productSearch) return group;
         }
 
         return null;

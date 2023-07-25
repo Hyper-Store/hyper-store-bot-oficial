@@ -14,10 +14,16 @@ class CreateProductGroupCommand extends BaseSlashCommand {
 
     constructor() {
         super({
-            name: "create-product-group",
+            name: "productgroup_create",
             description: "Criar vários produtos a um grupo",
             type: Discord.ApplicationCommandType.ChatInput,
             options: [
+                {
+                    name: 'title',
+                    description: 'Insira o titlo do grupo',
+                    type: 3,
+                    required: true
+                },
                 {
                     name: 'productsid',
                     description: 'Insira o id de cada produto a ser adicionado, separando por virgula!',
@@ -25,9 +31,15 @@ class CreateProductGroupCommand extends BaseSlashCommand {
                     required: true
                 },
                 {
-                    name: 'placeholder',
-                    description: 'Insira o texto que vai ficar no menu de seleção',
+                    name: 'description',
+                    description: 'Insira o a descrição do grupo',
                     type: 3,
+                    required: false
+                },
+                {
+                    name: 'image',
+                    description: 'Insira uma imagem para o grupo',
+                    type: 11,
                     required: false
                 }
             ]
@@ -40,8 +52,10 @@ class CreateProductGroupCommand extends BaseSlashCommand {
             return;
         }
 
+        const title = interaction.options.getString('title') as string;
         const productsId = interaction.options.getString('productsid') as string;
-        const placeholder = interaction.options.getString('placeholder') as string;
+        const description = interaction.options.getString('description') as string;
+        const image = interaction.options.getAttachment('image');
 
         const products: ProductModel[] = [];
 
@@ -63,7 +77,9 @@ class CreateProductGroupCommand extends BaseSlashCommand {
 
         await ProductGroupRepository.create({
             products: products.map(p => p.id),
-            placeholder
+            title,
+            description,
+            image: image?.url
         })
 
         interaction.reply({ ...ProductGroupCreatedSucessfullyMessage({ client, interaction }) });

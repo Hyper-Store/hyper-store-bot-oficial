@@ -20,16 +20,20 @@
             "image": "https://s.imgur.com/images/404/giraffeweyes.png",
             "youtubeURL": "",
             "id": "75437ad9-108f-4339-a9d6-1aeb9b0bfebf",
-            "createdAt": "2023-07-25T08:38:15.232Z"
+            "createdAt": "2023-07-25T08:38:15.232Z",
+            "channelId": "1126886459484422205",
+            "messageId": "1133353350704922694"
         }
     },
     "product-groups": {
-        "84d4afea-7f9b-449f-a2cc-dcce79ae15cd": {
+        "06310c45-61d6-45e0-9ca4-bd4c68402199": {
             "products": [
                 "75437ad9-108f-4339-a9d6-1aeb9b0bfebf"
             ],
-            "placeholder": "💚 Escolha um produto",
-            "id": "84d4afea-7f9b-449f-a2cc-dcce79ae15cd"
+            "title": "testetetete",
+            "description": null,
+            "image": "https://cdn.discordapp.com/ephemeral-attachments/1133353093438914610/1133353312515788902/Leinad6.png",
+            "id": "06310c45-61d6-45e0-9ca4-bd4c68402199"
         }
     }
 }

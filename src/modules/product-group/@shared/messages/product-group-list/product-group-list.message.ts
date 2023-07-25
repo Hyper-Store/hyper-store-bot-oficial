@@ -28,7 +28,7 @@ export const ProductGroupListMessage = async (props: Props): Promise<Interaction
 
         list_group.push({
             emoji: "📦",
-            label: `${props.groups[groupId].id}`,
+            label: `${props.groups[groupId].title} | ID: ${props.groups[groupId].id}`,
             description: `🎁 Produtos: ${products.map(p => p.title).join(', ')}`,
             value: groupId,
         })
