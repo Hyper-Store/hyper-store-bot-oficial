@@ -4,6 +4,7 @@ import { CheckoutRepository } from "../../repositories/Checkout.repository";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { DatabaseConfig } from "@/infra/app/setup-config";
 import { LogsPublicSaleMessage } from "./messages/LogsPublicSale.message";
+import { CloseChannelCheckoutRabbitMq } from "../../@shared/rabbitmq/close-channel-checkout.rabbitmq";
 
 export class HandleReviewUsecase {
     static async execute(client: Client, { checkoutId }: HandleReviewUsecase.Input): Promise<void | boolean> {
@@ -31,6 +32,9 @@ export class HandleReviewUsecase {
                 user: owner!
             })
         })
+
+        await CloseChannelCheckoutRabbitMq.execute({ checkoutId });
+        return;
     }
 }
 
