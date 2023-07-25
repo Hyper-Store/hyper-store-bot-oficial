@@ -33,7 +33,7 @@ services:
       - "host.docker.internal:172.17.0.1"
 
 
-  app:
+  hyper-store-app:
     build: .
     command: sh -c "npm run build && npm run start"
     restart: always
@@ -41,6 +41,8 @@ services:
       - "80:5000"
     volumes:
       - .:/usr/src/app
+    depends_on:
+      - bot-rabbitmq
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
 
