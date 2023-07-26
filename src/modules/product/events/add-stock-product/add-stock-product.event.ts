@@ -2,18 +2,12 @@ import { BaseEvent } from "@/modules/@shared/domain";
 import { NotHavePermissionMessage } from "@/modules/@shared/messages/not-have-permission/not-have-permission.message";
 import { Interaction, Message } from "discord.js";
 import Discord, { Client } from "discord.js"
-import { Database } from "@/infra/app/setup-database";
-import { ProductNotExistError } from "../../@shared/errors/product-not-exist";
-import { colors } from "@/modules/@shared/utils/colors";
-import { emojis } from "@/modules/@shared/utils/emojis";
-import { randomUUID } from "crypto";
 import { UpdateMessageProduct } from "../../@shared/workers/update-message-product";
 import { ProductRepository } from "../../repositories/product.repository";
 import { ProductStockRepository } from "../../repositories/product-stock.repository";
 import { ProductNotFoundMessage } from "../../@shared/messages/product-not-found/product-not-found.message";
 import { AddStockProductMessage } from "./messages/add-stock-product.message";
 import { ProductStockAddedSuccessfullyMessage } from "./messages/stock-added-successfully.message";
-
 
 class AddStockProductEvent extends BaseEvent {
     constructor() {
@@ -59,7 +53,7 @@ class AddStockProductEvent extends BaseEvent {
                 })
             })
 
-            UpdateMessageProduct({ interaction, client, productId: product?.id! });
+            UpdateMessageProduct({ guild: interaction.guild!, client, productId: product?.id! });
 
             interaction.editReply({ ...ProductStockAddedSuccessfullyMessage({ client, interaction, product: product!, stock_collector }) })
             return;

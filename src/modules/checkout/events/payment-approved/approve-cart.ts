@@ -6,6 +6,7 @@ import { ProductStockModel } from "@/modules/product/models/product-stock.model"
 import { RabbitmqSingletonService } from "@/modules/@shared/services";
 import { CheckoutProductMessageChannel } from "./messages/CheckoutProductMessageChannel.message";
 import { DatabaseConfig } from "@/infra/app/setup-config";
+import { UpdateMessageProduct } from "@/modules/product/@shared/workers/update-message-product";
 
 export class ApproveCartUsecase {
     static async execute(client: Client, { checkoutId, stocks }: ApproveCartUsecase.Input): Promise<void | boolean> {
@@ -41,7 +42,7 @@ export class ApproveCartUsecase {
             await owner.roles.add(product.roleDelivery);
         }
 
-        owner?.send({
+        await owner?.send({
             ...await CheckoutProductMessagePrivate({
                 client,
                 user: owner,
@@ -50,6 +51,8 @@ export class ApproveCartUsecase {
                 checkout: checkout!
             })
         })
+
+        await UpdateMessageProduct({ client, guild: guild!, productId: product?.id! })
 
         const rabbitmq = await RabbitmqSingletonService.getInstance()
         await rabbitmq.publishInExchange(

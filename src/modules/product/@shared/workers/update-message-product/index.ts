@@ -1,12 +1,11 @@
-import { Database } from "@/infra/app/setup-database"
-import Discord, { Client, Interaction } from "discord.js"
+import Discord, { Client, Guild, Interaction } from "discord.js"
 import { ProductMessage } from "../../messages/product-message/product-message";
 import { ProductRepository } from "@/modules/product/repositories/product.repository";
 import { ProductGroupRepository } from "@/modules/product-group/repositories/product-group.repository";
 import { UpdateMessageProductGroup } from "@/modules/product-group/@shared/workers/update-message-product-group";
 
 type Props = {
-    interaction: Interaction,
+    guild: Guild,
     client: Client,
     productId: string
 }
@@ -17,7 +16,7 @@ export const UpdateMessageProduct = async (props: Props): Promise<void> => {
     const group = await ProductGroupRepository.checkProductIsInGroup(product?.id!);
     if (group) UpdateMessageProductGroup({ ...props, groupId: group.id! })
 
-    const channel = props.interaction.guild?.channels.cache.get(product?.channelId!);
+    const channel = props.guild.channels.cache.get(product?.channelId!);
     if (channel?.type !== Discord.ChannelType.GuildText) return;
 
 
@@ -30,6 +29,5 @@ export const UpdateMessageProduct = async (props: Props): Promise<void> => {
         return;
     }
 
-
-    message.edit(await ProductMessage({ interaction: props.interaction, product: product! }));
+    message.edit(await ProductMessage({ ...props, product: product! }));
 }

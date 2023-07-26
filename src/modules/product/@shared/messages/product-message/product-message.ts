@@ -1,12 +1,12 @@
 import { colors } from '@/modules/@shared/utils/colors';
 import { emojis } from '@/modules/@shared/utils/emojis';
-import Discord, { Interaction } from 'discord.js';
+import Discord, { Guild, Interaction } from 'discord.js';
 import { DatabaseConfig } from '@/infra/app/setup-config';
 import { ProductModel } from '@/modules/product/models/product.model';
 import { ProductStockRepository } from '@/modules/product/repositories/product-stock.repository';
 
 type Props = {
-    interaction: Interaction,
+    guild: Guild,
     product: ProductModel
 }
 
@@ -16,7 +16,7 @@ export const ProductMessage = async (props: Props) => {
 
     const embed = new Discord.EmbedBuilder()
         .setColor(colors.invisible!)
-        .setTitle(`${props.interaction.guild?.name} | Produto`)
+        .setTitle(`${props.guild.name} | Produto`)
         .setDescription(`\`\`\`${props.product.description}\`\`\`\n**${emojis.info} | Nome:** \`${props.product.title}\`\n**${emojis.money} | Preço:** \`R$${props.product.price.toFixed(2)}\`\n**${emojis.box} | Estoque:** \`${stockCount}\``)
         .setImage(product_image)
         .setFooter({ text: 'Para comprar clique no botão comprar' })

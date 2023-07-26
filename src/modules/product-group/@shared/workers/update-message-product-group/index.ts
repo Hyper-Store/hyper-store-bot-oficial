@@ -7,7 +7,7 @@ import { ProductGroupRepository } from "@/modules/product-group/repositories/pro
 export const UpdateMessageProductGroup = async (props: GroupPanelMessageProps): Promise<void> => {
     const group = await ProductGroupRepository.findById(props.groupId);
 
-    const channel = props.interaction.guild?.channels.cache.get(group?.channelId!);
+    const channel = props.guild?.channels.cache.get(group?.channelId!);
     if (channel?.type !== Discord.ChannelType.GuildText) return;
 
     const message = channel?.messages.cache.get(group?.messageId!);

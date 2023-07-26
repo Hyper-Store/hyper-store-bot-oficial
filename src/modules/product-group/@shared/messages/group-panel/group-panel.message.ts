@@ -1,6 +1,6 @@
 import { colors } from '@/modules/@shared/utils/colors';
 import { emojis } from '@/modules/@shared/utils/emojis';
-import Discord, { Client, Interaction } from 'discord.js';
+import Discord, { Client, Guild, Interaction } from 'discord.js';
 import { DatabaseConfig } from '@/infra/app/setup-config';
 import { ProductStockRepository } from '@/modules/product/repositories/product-stock.repository';
 import { ProductGroupRepository } from '@/modules/product-group/repositories/product-group.repository';
@@ -11,9 +11,9 @@ import { NotHaveProductGroupMessage } from '../not-have-product-group/not-have-p
 import { RandomEmoji } from '@/modules/@shared/utils/random-emoji';
 
 export type GroupPanelMessageProps = {
-    interaction: Interaction,
     client: Client
     groupId: string
+    guild: Guild
 }
 
 export const GroupPanelMessage = async (props: GroupPanelMessageProps): Promise<any> => {
