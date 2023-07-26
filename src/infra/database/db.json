@@ -26,7 +26,6 @@
                     "id": "067d2239-8845-4c2f-9c11-128fa70c7bfe"
                 }
             },
-            "roleDelivery": "1133475137090502706",
             "messageDelivery": "Caso tenha problemas ao logar e não saiba como receber o código, tire suas dúvidas no canal: <#1133378542466498660>"
         },
         "54f7ae6b-11db-4e1c-8fa2-43edfac6261b": {
@@ -36,7 +35,8 @@
             "image": "",
             "youtubeURL": "",
             "id": "54f7ae6b-11db-4e1c-8fa2-43edfac6261b",
-            "createdAt": "2023-07-25T12:38:30.340Z"
+            "createdAt": "2023-07-25T12:38:30.340Z",
+            "messageDelivery": "Caso tenha problemas ao logar e não saiba como receber o código, tire suas dúvidas no canal: <#1133378542466498660>"
         },
         "c0816271-d954-4e04-ac01-8a3d21ce856c": {
             "title": "Conta Red Dead 2 Instalável",
@@ -45,13 +45,14 @@
             "image": "",
             "youtubeURL": "",
             "id": "c0816271-d954-4e04-ac01-8a3d21ce856c",
-            "createdAt": "2023-07-25T12:40:39.070Z"
+            "createdAt": "2023-07-25T12:40:39.070Z",
+            "messageDelivery": "Caso tenha problemas ao logar e não saiba como receber o código, tire suas dúvidas no canal: <#1133378542466498660>"
         },
         "4969499c-baab-4ca9-8d8d-b15daeb905f8": {
             "title": "Combo rockstar",
             "description": "✅ Combo 10 contas rockstar\n✅ Contas totalmente checkadas.\n✅ Garantia de acordo com os termos",
             "price": 15,
-            "image": "https://cdn.discordapp.com/attachments/1126899145517572206/1133395006737096765/banner_rockstar_2.png",
+            "image": "https://media.discordapp.net/attachments/1126899145517572206/1133666781546950666/combo_rockstar.png",
             "youtubeURL": "",
             "id": "4969499c-baab-4ca9-8d8d-b15daeb905f8",
             "createdAt": "2023-07-25T13:48:04.608Z",
@@ -86,7 +87,7 @@
             ],
             "title": "Contas rockstar",
             "description": "Contas rockstar todas checkadas e com garantia",
-            "image": "https://cdn.discordapp.com/ephemeral-attachments/1133353093438914610/1133379633958629436/banner_rockstar.png",
+            "image": "https://media.discordapp.net/attachments/1126899145517572206/1133667393286185011/banner_rockstar.png",
             "id": "dc942264-65a7-459e-8641-e6bc1edbc5d6",
             "channelId": "1126886459484422205",
             "messageId": "1133654434426126346"
@@ -644,7 +645,7 @@
             "ownerId": "1124265861109256282",
             "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "ref": "93d0daf7-e8aa-40eb-bc66-7df305ca7d0f",
-            "status": "APPROVED",
+            "status": "CANCELLED",
             "quantity": 1,
             "price": 0.01,
             "review": null,
@@ -663,7 +664,7 @@
             "ownerId": "1124265861109256282",
             "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "ref": "26c3e0c6-56f3-40e9-9f61-db4f4a287a00",
-            "status": "APPROVED",
+            "status": "CANCELLED",
             "quantity": 1,
             "price": 0.01,
             "review": 3,
@@ -682,7 +683,7 @@
             "ownerId": "1124265861109256282",
             "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "ref": "2704e392-fe12-449b-a19f-4b26fd3ed296",
-            "status": "APPROVED",
+            "status": "CANCELLED",
             "quantity": 1,
             "price": 0.01,
             "review": 2,
@@ -701,7 +702,7 @@
             "ownerId": "1124265861109256282",
             "productId": "6a6ffc07-abbe-48a5-921d-70ffd3de09cd",
             "ref": "9af4736a-a377-4fd4-bdc1-a896a6f4eb02",
-            "status": "APPROVED",
+            "status": "CANCELLED",
             "quantity": 1,
             "price": 0.01,
             "review": 3,
@@ -850,28 +851,28 @@
             "1133651845026430997": {
                 "checkoutId": "1133651845026430997",
                 "dateTimeCreated": "2023-07-26T06:47:50.497Z",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61138419811"
             },
             "1133652843929276478": {
                 "checkoutId": "1133652843929276478",
                 "dateTimeCreated": "2023-07-26T06:51:51.104Z",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61251198498"
             },
             "1133654543301877910": {
                 "checkoutId": "1133654543301877910",
                 "dateTimeCreated": "2023-07-26T06:58:37.605Z",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61251199468"
             },
             "1133655308028346388": {
                 "checkoutId": "1133655308028346388",
                 "dateTimeCreated": "2023-07-26T07:01:36.616Z",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "paymentProvider": "mercadopago",
                 "paymentProviderId": "61251199882"
             }
@@ -1000,28 +1001,28 @@
                 "paymentId": "61138419811",
                 "amount": 0.01,
                 "paymentManagementId": "1133651845026430997",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "expirationDate": "2023-07-26T06:57:50.502Z"
             },
             "ref-61251198498": {
                 "paymentId": "61251198498",
                 "amount": 0.01,
                 "paymentManagementId": "1133652843929276478",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "expirationDate": "2023-07-26T07:01:51.108Z"
             },
             "ref-61251199468": {
                 "paymentId": "61251199468",
                 "amount": 0.01,
                 "paymentManagementId": "1133654543301877910",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "expirationDate": "2023-07-26T07:08:37.614Z"
             },
             "ref-61251199882": {
                 "paymentId": "61251199882",
                 "amount": 0.01,
                 "paymentManagementId": "1133655308028346388",
-                "status": "APPROVED",
+                "status": "CANCELLED",
                 "expirationDate": "2023-07-26T07:11:36.621Z"
             }
         }

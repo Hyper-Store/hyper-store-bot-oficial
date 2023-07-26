@@ -8,7 +8,7 @@
     "purchases": {
         "mercadopago": {},
         "products": {
-            "banner": "https://cdn.discordapp.com/attachments/1037732718290665573/1085949536935084112/standard.gif"
+            "banner": "https://media.discordapp.net/attachments/1126899145517572206/1133666781265924176/banner_vendas.png"
         },
         "channel_avaibles": "1126885491548110878",
         "role_customer": "1126933829056221234",
@@ -16,7 +16,7 @@
         "channel_logs_private": "1133538970425364480"
     },
     "reedemkey": {
-        "banner": "https://cdn.discordapp.com/attachments/1126899145517572206/1126924848703217694/standard.gif",
+        "banner": "https://media.discordapp.net/attachments/1126899145517572206/1133666781836353566/resgatar_key.png",
         "role_notification_stock": "1127202955142107258",
         "category_id": "1127195910829527051",
         "channel_terms_of_services": "1126885396190597140"
