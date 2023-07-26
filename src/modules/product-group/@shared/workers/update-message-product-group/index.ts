@@ -1,6 +1,4 @@
-import { Database } from "@/infra/app/setup-database"
-import Discord, { Client, Interaction } from "discord.js"
-import { ProductRepository } from "@/modules/product/repositories/product.repository";
+import Discord from "discord.js"
 import { GroupPanelMessage, GroupPanelMessageProps } from "../../messages/group-panel/group-panel.message";
 import { ProductGroupRepository } from "@/modules/product-group/repositories/product-group.repository";
 
