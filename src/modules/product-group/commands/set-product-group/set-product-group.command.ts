@@ -25,7 +25,7 @@ class SetProductGroupCommand extends BaseSlashCommand {
 
         const groupList = await ProductGroupRepository.getAll();
         if (groupList.length < 1) {
-            interaction.reply({ ...NotHaveProductGroupMessage({ client, interaction }) })
+            interaction.reply({ ...NotHaveProductGroupMessage({ client }) })
             return;
         }
 

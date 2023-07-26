@@ -27,6 +27,14 @@ export const LogsPrivateSaleMessage = async (props: Props): Promise<MessageCreat
                         value: `\`${props.user.user.username}\`(\`${props.user.user.id}\`)`
                     },
                     {
+                        name: `**${emojis.id} | ID do pagamentto:**`,
+                        value: `\`${props.checkout.paymentId}\``
+                    },
+                    {
+                        name: `**${emojis.info} | ID da compra (PROTOCOLO):**`,
+                        value: `\`${props.checkout.id}\``
+                    },
+                    {
                         name: `**${emojis.box} | Produto:**`,
                         value: `\`${props.product.title}\``
                     },

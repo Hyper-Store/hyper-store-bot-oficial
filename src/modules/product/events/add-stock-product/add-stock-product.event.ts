@@ -46,14 +46,16 @@ class AddStockProductEvent extends BaseEvent {
             })
         })
 
-        collector?.on('end', (message) => {
+        collector?.on('end', async (message) => {
             stock_collector.forEach(async (item) => {
                 await ProductStockRepository.add(product?.id!, {
                     content: item
                 })
             })
 
-            UpdateMessageProduct({ guild: interaction.guild!, client, productId: product?.id! });
+            await UpdateMessageProduct({
+                guild: interaction.guild!, client, productId: product?.id!
+            });
 
             interaction.editReply({ ...ProductStockAddedSuccessfullyMessage({ client, interaction, product: product!, stock_collector }) })
             return;

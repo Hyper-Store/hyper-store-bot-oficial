@@ -29,7 +29,7 @@ class SetProductEvent extends BaseEvent {
             interaction.update({ ...ProductNotFoundMessage({ client, interaction }) })
         }
 
-        const message_created = await interaction.channel?.send(await ProductMessage({ interaction, product: product! }))
+        const message_created = await interaction.channel?.send(await ProductMessage({ guild: interaction.guild!, product: product! }))
 
         await ProductRepository.update({
             ...product!,

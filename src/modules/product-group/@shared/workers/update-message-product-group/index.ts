@@ -19,5 +19,10 @@ export const UpdateMessageProductGroup = async (props: GroupPanelMessageProps): 
         return;
     }
 
-    message.edit(await GroupPanelMessage({ ...props }));
+    const message_edited = await message.edit(await GroupPanelMessage({ ...props }));
+    await ProductGroupRepository.update({
+        ...group!,
+        messageId: message_edited.id,
+        channelId: message_edited.channelId
+    })
 }

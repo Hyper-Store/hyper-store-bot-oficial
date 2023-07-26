@@ -25,11 +25,11 @@ class SetProductGroupEvent extends BaseEvent {
 
         const group = await ProductGroupRepository.findById(interaction.values[0]);
         if (!group) {
-            interaction.reply({ ...GroupNotExistMessage({ client, interaction }), ephemeral: true })
+            interaction.reply({ ...GroupNotExistMessage({ client }), ephemeral: true })
             return;
         }
 
-        const message_created = await interaction.channel?.send({ ...await GroupPanelMessage({ client, interaction, groupId: group.id! }) })
+        const message_created = await interaction.channel?.send({ ...await GroupPanelMessage({ client, guild: interaction.guild!, groupId: group.id! }) })
 
         await ProductGroupRepository.update({
             ...group!,

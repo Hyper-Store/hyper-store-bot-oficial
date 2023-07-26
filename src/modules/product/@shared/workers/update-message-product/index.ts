@@ -11,6 +11,7 @@ type Props = {
 }
 
 export const UpdateMessageProduct = async (props: Props): Promise<void> => {
+    console.log('ta aq')
     const product = await ProductRepository.findById(props.productId);
 
     const group = await ProductGroupRepository.checkProductIsInGroup(product?.id!);
