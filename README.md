@@ -1,4 +1,4 @@
-# 💗 Hyper Store (BOT VENDAS)
+# 💗 Hyper Store (BOT SALES)
 This bot is a complete sales bot system made with typescript and RabbitMQ integration along with paid marketplace. basically in general the system is a fully scalable bot application for product sales within discord, with the application built with events, basically we have the guarantee that if you provide a problem during the purchase process and the bot crashes, when it returns can recover from the entire operation and stay with the purchase.
 
 #### **❤️ Languages:** `Typescript`, `Javascript`
