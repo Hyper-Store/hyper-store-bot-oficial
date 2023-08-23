@@ -38,7 +38,7 @@ npm run dev
 ```
 
 ## 🤝 Collaborators
-<table style="display: flex;">
+<table>
   <tr>
     <td align="center">
       <a href="https://github.com/Daniel-D3V">
@@ -48,8 +48,6 @@ npm run dev
         </sub>
       </a>
     </td>
-  </tr>
-  <tr>
     <td align="center">
       <a href="https://github.com/rethred">
         <img src="https://avatars.githubusercontent.com/u/92902916?v=4" width="100px;" alt="Daniel Silva"/><br>
