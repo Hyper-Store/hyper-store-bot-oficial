@@ -38,7 +38,7 @@ npm run dev
 ```
 
 ## 🤝 Collaborators
-<table>
+<table style="display: flex;">
   <tr>
     <td align="center">
       <a href="https://github.com/Daniel-D3V">
